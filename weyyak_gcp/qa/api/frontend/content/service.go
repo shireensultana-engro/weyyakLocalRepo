@@ -542,11 +542,11 @@ func MultiTierContentDetails(contentId string, language string, country int, c *
 						join content_rights_plan crp on
 							crp.rights_id = pi2.rights_id
 						where
-							(e.episode_key = ?)` ,episode.Id ).Find(&SubsPlansEpi).Error; err != nil {
+							(e.episode_key = ?)`, episode.Id).Find(&SubsPlansEpi).Error; err != nil {
 								fmt.Println("err", err)
 								return
 							}
-							EpiPlans:= make([]int, 0)
+							EpiPlans := make([]int, 0)
 							EpiPlansName := make([]string, 0)
 							// var EpiSubsPlans []ContentSubsPlans
 							for _, plan := range SubsPlansEpi {
@@ -562,8 +562,8 @@ func MultiTierContentDetails(contentId string, language string, country int, c *
 								EpiPlansName = append(EpiPlansName, planNameSubsEpi.Name)
 								EpiPlans = append(EpiPlans, plan.SubscriptionPlanId)
 							}
-							fmt.Println("plansName" ,EpiPlansName)
-							fmt.Println("plans" , EpiPlans)
+							fmt.Println("plansName", EpiPlansName)
+							fmt.Println("plans", EpiPlans)
 							//episode Imaginery Details
 							var Imagery ContentImageryDetails
 							ImageryDetails := make(chan ContentImageryDetails)
@@ -2687,8 +2687,7 @@ func (hs *HandlerService) GetResumbleContentsFlutterContinuewatching(c *gin.Cont
 			Name:               details.Title,
 			OneTierContentId:   details.OneTierContentId,
 			Isaddtoplaylist:    Isaddtoplaylist,
-			LastWatchPosition: details.LastWatchPosition, 
-			
+			LastWatchPosition:  details.LastWatchPosition,
 		})
 
 		resumableContent.UserData = &userRating
