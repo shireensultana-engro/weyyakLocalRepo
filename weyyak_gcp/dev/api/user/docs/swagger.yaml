@@ -1,0 +1,1327 @@
+definitions:
+  geoblock.NewsLetter:
+    properties:
+      email:
+        type: string
+    type: object
+  register.ConfirmEmail:
+    properties:
+      confirmationToken:
+        type: string
+      dateTimeToken:
+        type: string
+      source:
+        description: sync usecase
+        type: string
+      userId:
+        description: sync usecase
+        type: string
+    type: object
+  register.LogoutToken:
+    properties:
+      refresh_token:
+        type: string
+    type: object
+  register.Number:
+    properties:
+      Phonenumber:
+        type: string
+      requestType:
+        type: string
+    type: object
+  register.Password:
+    properties:
+      Password:
+        type: string
+      oldPassword:
+        type: string
+    type: object
+  register.PaycmsStatus:
+    properties:
+      userid:
+        type: string
+    type: object
+  register.RequestPairingCode:
+    properties:
+      deviceId:
+        type: string
+      deviceName:
+        type: string
+      devicePlatform:
+        type: string
+    type: object
+  register.RequestRegisterUserUsingEmail:
+    properties:
+      Alpha2code:
+        type: string
+      IsRecommend:
+        type: boolean
+      PrivacyPolicy:
+        type: boolean
+      countryName:
+        type: string
+      email:
+        type: string
+      isAdult:
+        type: boolean
+      languageId:
+        type: integer
+      password:
+        type: string
+      source:
+        description: sync usecase
+        type: string
+      userId:
+        description: sync usecase
+        type: string
+    type: object
+  register.RequestRegisterUserUsingSMS:
+    properties:
+      DeviceId:
+        type: string
+      IsRecommend:
+        type: boolean
+      PrivacyPolicy:
+        type: boolean
+      isAdult:
+        type: boolean
+      languageId:
+        type: integer
+      password:
+        type: string
+      phonenumber:
+        type: string
+      recaptcha_token:
+        type: string
+      silentregistration:
+        type: boolean
+      source:
+        description: sync usecase
+        type: string
+      userId:
+        description: sync usecase
+        type: string
+    type: object
+  register.ResendEmail:
+    properties:
+      Alpha2code:
+        type: string
+      email:
+        type: string
+    type: object
+  register.UpdateUser:
+    properties:
+      advertising:
+        type: boolean
+      aique:
+        type: boolean
+      appFlyer:
+        type: boolean
+      cleverTap:
+        type: boolean
+      countryId:
+        type: integer
+      countryName:
+        type: string
+      email:
+        type: string
+      emailConfirmed:
+        type: boolean
+      facebookAds:
+        type: boolean
+      firebase:
+        type: boolean
+      firstName:
+        type: string
+      googleAds:
+        type: boolean
+      googleAnalytics:
+        type: boolean
+      isAdult:
+        type: boolean
+      isGdprAccepted:
+        type: boolean
+      isRecommend:
+        type: boolean
+      languageId:
+        type: integer
+      lastName:
+        type: string
+      newslettersEnabled:
+        type: boolean
+      nickName:
+        type: string
+      performance:
+        type: boolean
+      phoneNumber:
+        type: string
+      phoneNumberConfirmed:
+        type: boolean
+      privacyPolicy:
+        type: boolean
+      promotionsEnabled:
+        type: boolean
+      registrationSource:
+        type: integer
+      userLead:
+        type: string
+    type: object
+  register.UpdateUserDetails:
+    properties:
+      countryId:
+        type: integer
+      firstName:
+        type: string
+      languageId:
+        type: integer
+      lastName:
+        type: string
+    type: object
+  register.User:
+    properties:
+      advertising:
+        type: boolean
+      aique:
+        type: boolean
+      appFlyer:
+        type: boolean
+      callingCode:
+        type: string
+      countryId:
+        type: integer
+      countryName:
+        type: string
+      delete_initiates_at:
+        type: string
+      email:
+        type: string
+      emailConfirmed:
+        type: boolean
+      facebookAds:
+        type: boolean
+      firebase:
+        type: boolean
+      firstName:
+        type: string
+      googleAds:
+        type: boolean
+      googleAnalytics:
+        type: boolean
+      id:
+        type: string
+      isAdult:
+        type: boolean
+      isBackOfficeUser:
+        type: boolean
+      isDeleted:
+        type: boolean
+      isGdprAccepted:
+        type: boolean
+      isRecommend:
+        type: boolean
+      languageId:
+        type: integer
+      lastActivityAt:
+        type: string
+      lastName:
+        type: string
+      nationalNumber:
+        type: string
+      newslettersEnabled:
+        type: boolean
+      nickName:
+        type: string
+      passwordHash:
+        type: string
+      payCMSStatus:
+        type: boolean
+      performance:
+        type: boolean
+      phoneNumber:
+        type: string
+      phoneNumberConfirmed:
+        type: boolean
+      privacyPolicy:
+        type: boolean
+      promotionsEnabled:
+        type: boolean
+      registeredAt:
+        type: string
+      registrationSource:
+        type: integer
+      searchableText:
+        type: string
+      securityStamp:
+        type: string
+      userLead:
+        type: string
+      userName:
+        type: string
+    required:
+    - passwordHash
+    type: object
+  register.UserDevicesResponse:
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      platform:
+        type: integer
+    type: object
+  register.UsercodeRequest:
+    properties:
+      subscriptiondate:
+        type: string
+      user_code:
+        type: string
+    required:
+    - user_code
+    type: object
+  register.Valid:
+    properties:
+      otp:
+        type: string
+      phoneNumber:
+        type: string
+      source:
+        description: sync usecase
+        type: string
+    type: object
+  register.Verify:
+    properties:
+      otp:
+        type: string
+      phoneNumber:
+        type: string
+      source:
+        description: sync usecase
+        type: string
+    type: object
+  register.VerifyDetails:
+    properties:
+      otp:
+        type: string
+      password:
+        type: string
+      phoneNumber:
+        type: string
+      source:
+        description: sync usecase
+        type: string
+    type: object
+  register.VerifyEmail:
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+      resetPasswordToken:
+        type: string
+      source:
+        description: sync usecase
+        type: string
+    type: object
+  register.userProfileResponse:
+    properties:
+      advertising:
+        type: boolean
+      aique:
+        type: boolean
+      appFlyer:
+        type: boolean
+      callingCode:
+        type: string
+      cleverTap:
+        type: boolean
+      countryId:
+        type: integer
+      countryName:
+        type: string
+      email:
+        type: string
+      emailConfirmed:
+        type: boolean
+      facebookAds:
+        type: boolean
+      firebase:
+        type: boolean
+      firstName:
+        type: string
+      googleAds:
+        type: boolean
+      googleAnalytics:
+        type: boolean
+      isAdult:
+        type: boolean
+      isGdprAccepted:
+        type: boolean
+      isRecommend:
+        type: boolean
+      languageId:
+        type: integer
+      languageName:
+        type: string
+      lastName:
+        type: string
+      nationalNumber:
+        type: string
+      newslettersEnabled:
+        type: boolean
+      nickName:
+        type: string
+      performance:
+        type: boolean
+      phoneNumber:
+        type: string
+      phoneNumberConfirmed:
+        type: boolean
+      privacyPolicy:
+        type: boolean
+      promotionsEnabled:
+        type: boolean
+      registrationSource:
+        type: integer
+      userLead:
+        type: string
+      verificationStatus:
+        type: boolean
+    type: object
+info:
+  contact: {}
+paths:
+  /{lang}/getAccessToken:
+    get:
+      consumes:
+      - application/json
+      description: Get User access token twitter
+      parameters:
+      - description: lang
+        in: path
+        name: lang
+        required: true
+        type: string
+      - description: oauth_token
+        in: query
+        name: oauth_token
+        type: string
+      - description: oauth_verifier
+        in: query
+        name: oauth_verifier
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      summary: Get User access token twitter
+      tags:
+      - User
+  /{lang}/usertoken:
+    get:
+      consumes:
+      - application/json
+      description: Get User token twitter
+      parameters:
+      - description: lang
+        in: path
+        name: lang
+        required: true
+        type: string
+      - description: callback url
+        in: query
+        name: callback
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      summary: Get User token twitter
+      tags:
+      - User
+  /api/admin/password:
+    put:
+      consumes:
+      - application/json
+      description: Admin password set
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      summary: Admin password set
+      tags:
+      - Admin
+  /api/admin/reset_password_emails:
+    put:
+      consumes:
+      - application/json
+      description: Admin password reset
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      summary: Admin password reset
+      tags:
+      - Admin
+  /api/admins:
+    get:
+      consumes:
+      - application/json
+      description: Get all user details
+      parameters:
+      - description: Offset
+        in: query
+        name: offset
+        type: string
+      - description: Limit
+        in: query
+        name: limit
+        type: string
+      - description: Search Text
+        in: query
+        name: searchText
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      security:
+      - Authorization: []
+      summary: Get all user details
+      tags:
+      - User
+    post:
+      consumes:
+      - application/json
+      description: Update admin details
+      parameters:
+      - description: Id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      security:
+      - Authorization: []
+      summary: Update admin details
+      tags:
+      - Admin
+    put:
+      consumes:
+      - application/json
+      description: Create admin details
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      security:
+      - Authorization: []
+      summary: Create admin details
+      tags:
+      - Admin
+  /api/admins/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete user details
+      parameters:
+      - description: Id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      security:
+      - Authorization: []
+      summary: Delete user details
+      tags:
+      - User
+  /api/devices/limit:
+    get:
+      consumes:
+      - application/json
+      description: Get User Devices Limit
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      security:
+      - Authorization: []
+      summary: Get User Devices Limit
+      tags:
+      - User
+    post:
+      consumes:
+      - application/json
+      description: Updating User Devices Limit Count
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      security:
+      - Authorization: []
+      summary: Updating User Devices Limit Count
+      tags:
+      - User
+  /api/users:
+    get:
+      consumes:
+      - application/json
+      description: get Users List and Search by Filters with Pagination
+      parameters:
+      - description: userStatus
+        in: path
+        name: userStatus
+        type: string
+      - description: RegistrationSourceType
+        in: path
+        name: RegistrationSourceType
+        type: string
+      - description: NewsLetter
+        in: path
+        name: NewsLetter
+        type: string
+      - description: PromotionsEnabled
+        in: path
+        name: PromotionsEnabled
+        type: string
+      - description: VerificationStatus
+        in: path
+        name: VerificationStatus
+        type: string
+      - description: UserLead
+        in: path
+        name: UserLead
+        type: string
+      - description: activeDevicePlatform
+        in: path
+        name: activeDevicePlatform
+        type: string
+      - description: countryId
+        in: path
+        name: countryId
+        type: string
+      - description: searchText
+        in: path
+        name: searchText
+        type: string
+      - description: StartDate
+        in: path
+        name: StartDate
+        type: string
+      - description: EndDate
+        in: path
+        name: EndDate
+        type: string
+      - description: Offset
+        in: query
+        name: offset
+        type: string
+      - description: Limit
+        in: query
+        name: limit
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      security:
+      - Authorization: []
+      summary: ShowUsers List and Search by Filters with Pagination
+      tags:
+      - User
+  /api/users/{id}:
+    post:
+      consumes:
+      - application/json
+      description: post UpdateUserDetailsByUserid
+      parameters:
+      - description: Id
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Raw JSON string
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/register.UpdateUserDetails'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      security:
+      - Authorization: []
+      summary: Show UpdateUserDetailsByUserid
+      tags:
+      - User
+  /api/users/{id}/ratings:
+    get:
+      consumes:
+      - application/json
+      description: Get User Ratings details with search text
+      parameters:
+      - description: Id
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: SearchText
+        in: path
+        name: searchText
+        type: string
+      - description: Offset
+        in: query
+        name: offset
+        type: string
+      - description: Limit
+        in: query
+        name: limit
+        type: string
+      responses:
+        "200":
+          description: OK
+      security:
+      - Authorization: []
+      summary: Get User Ratings details with search text
+      tags:
+      - User
+  /api/users/{id}/viewactivities:
+    get:
+      consumes:
+      - application/json
+      description: get User view activity by filters
+      parameters:
+      - description: Search Text
+        in: path
+        name: searchText
+        type: string
+      - description: content Type
+        in: path
+        name: contentType
+        type: string
+      - description: Offset
+        in: query
+        name: offset
+        type: string
+      - description: Limit
+        in: query
+        name: limit
+        type: string
+      - description: Page
+        in: query
+        name: page
+        type: string
+      - description: Id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      security:
+      - Authorization: []
+      summary: Show User view activity by filters
+      tags:
+      - User
+  /api/users/export:
+    get:
+      consumes:
+      - application/json
+      description: Updating Paycms status in user table
+      parameters:
+      - description: userStatus
+        in: path
+        name: userStatus
+        type: string
+      - description: RegistrationSourceType
+        in: path
+        name: RegistrationSourceType
+        type: string
+      - description: NewsLetter
+        in: path
+        name: NewsLetter
+        type: string
+      - description: PromotionsEnabled
+        in: path
+        name: PromotionsEnabled
+        type: string
+      - description: VerificationStatus
+        in: path
+        name: VerificationStatus
+        type: string
+      - description: UserLead
+        in: path
+        name: UserLead
+        type: string
+      - description: activeDevicePlatform
+        in: path
+        name: activeDevicePlatform
+        type: string
+      - description: countryId
+        in: path
+        name: countryId
+        type: string
+      - description: searchText
+        in: path
+        name: searchText
+        type: string
+      - description: Start Date
+        in: path
+        name: StartDate
+        type: string
+      - description: End Date
+        in: path
+        name: EndDate
+        type: string
+      - description: Offset
+        in: query
+        name: offset
+        type: string
+      - description: Limit
+        in: query
+        name: limit
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      summary: Updating Paycms status in user table
+      tags:
+      - User
+  /api/users/filters:
+    get:
+      consumes:
+      - application/json
+      description: post UserFilterslist
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      security:
+      - Authorization: []
+      summary: Show UserFilterslist
+      tags:
+      - User
+  /geoblock:
+    post:
+      consumes:
+      - application/json
+      description: post geoblock email
+      parameters:
+      - description: Raw JSON string
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/geoblock.NewsLetter'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      summary: post geoblock email
+      tags:
+      - User
+  /oauth2/device/auth:
+    post:
+      consumes:
+      - application/json
+      description: Verify pairing code
+      parameters:
+      - description: Raw JSON string
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/register.UsercodeRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      security:
+      - Authorization: []
+      summary: Verify pairing code
+      tags:
+      - Device
+  /oauth2/device/code:
+    post:
+      consumes:
+      - application/json
+      description: Pairing Code Generates
+      parameters:
+      - description: Raw JSON string
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/register.RequestPairingCode'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      summary: Pairing Code Generates
+      tags:
+      - Device
+  /oauth2/token:
+    post:
+      consumes:
+      - multipart/form-data
+      description: User login with generate token
+      parameters:
+      - description: Enter Grant Type
+        in: formData
+        name: grant_type
+        required: true
+        type: string
+      - description: Enter Username
+        in: formData
+        name: username
+        type: string
+      - description: Enter Password
+        in: formData
+        name: password
+        type: string
+      - description: Enter DeviceId
+        in: formData
+        name: DeviceId
+        type: string
+      - description: Enter DeviceName
+        in: formData
+        name: DeviceName
+        type: string
+      - description: Enter DevicePlatform
+        in: formData
+        name: DevicePlatform
+        type: string
+      - description: Enter DeviceId twitter
+        in: formData
+        name: deviceId
+        type: string
+      - description: Enter DeviceName twitter
+        in: formData
+        name: deviceName
+        type: string
+      - description: Enter DevicePlatform twitter
+        in: formData
+        name: devicePlatform
+        type: string
+      - description: Enter Refresh Token
+        in: formData
+        name: refresh_token
+        type: string
+      - description: Enter Facebook Token
+        in: formData
+        name: facebook_token
+        type: string
+      - description: Enter Device Code
+        in: formData
+        name: device_code
+        type: string
+      - description: Enter Apple Token
+        in: formData
+        name: apple_token
+        type: string
+      - description: Enter Token
+        in: formData
+        name: token
+        type: string
+      - description: Enter Token secret
+        in: formData
+        name: tokensecret
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      summary: User login with generate token
+      tags:
+      - Login
+  /user/password:
+    post:
+      consumes:
+      - application/json
+      description: Send an Email for password reset
+      parameters:
+      - description: Raw JSON string
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/register.VerifyEmail'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      summary: Send an Email for password reset
+      tags:
+      - User
+  /user/registration_confirmation:
+    post:
+      consumes:
+      - application/json
+      description: Updating information by conformation
+      parameters:
+      - description: Raw JSON string
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/register.ConfirmEmail'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      summary: Updating User information by conformation
+      tags:
+      - User
+  /user/reset_password_emails:
+    put:
+      consumes:
+      - application/json
+      description: Send an Email for password reset
+      parameters:
+      - description: Raw JSON string
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/register.ResendEmail'
+      produces:
+      - application/json
+      responses:
+        "202":
+          description: Accepted
+      summary: Send an Email for password reset
+      tags:
+      - User
+  /users/password_otp:
+    post:
+      consumes:
+      - application/json
+      description: Change Password by verifying otp
+      parameters:
+      - description: Raw JSON string
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/register.VerifyDetails'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      summary: Change Password by verifying otp
+      tags:
+      - User
+  /users/register_email:
+    post:
+      consumes:
+      - application/json
+      description: Creates a user using email id
+      parameters:
+      - description: Raw JSON string
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/register.RequestRegisterUserUsingEmail'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/register.User'
+            type: array
+      summary: Creates a user using email id
+      tags:
+      - User
+  /users/register_sms:
+    post:
+      consumes:
+      - application/json
+      description: Creates a user using sms
+      parameters:
+      - description: Raw JSON string
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/register.RequestRegisterUserUsingSMS'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/register.User'
+            type: array
+      summary: Creates a user using sms
+      tags:
+      - User
+  /users/resend_email:
+    post:
+      consumes:
+      - application/json
+      description: Send an Email for verification
+      parameters:
+      - description: Raw JSON string
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/register.ResendEmail'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      summary: Send an Email for verification
+      tags:
+      - User
+  /users/self/password:
+    post:
+      consumes:
+      - application/json
+      description: Change Password by confirming old password
+      parameters:
+      - description: Raw JSON string
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/register.Password'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      security:
+      - Authorization: []
+      summary: Change Password by confirming old password
+      tags:
+      - User
+  /users/self/paycms_status:
+    post:
+      consumes:
+      - application/json
+      description: Updating Paycms status in user table
+      parameters:
+      - description: Raw JSON string
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/register.PaycmsStatus'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      summary: Updating Paycms status in user table
+      tags:
+      - User
+  /users/self/phone_number:
+    post:
+      consumes:
+      - application/json
+      description: Change PhoneNumber by verifying otp
+      parameters:
+      - description: Raw JSON string
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/register.Verify'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      security:
+      - Authorization: []
+      summary: Change PhoneNumber by verifying otp
+      tags:
+      - User
+  /users/send_otp:
+    post:
+      consumes:
+      - application/json
+      description: Sending otp to User
+      parameters:
+      - description: Raw JSON string
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/register.Number'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      summary: Sending otp to User
+      tags:
+      - User
+  /users/verify_otp:
+    post:
+      consumes:
+      - application/json
+      description: Sending otp to User
+      parameters:
+      - description: Raw JSON string
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/register.Valid'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      summary: Sending otp to User
+      tags:
+      - User
+  /v1/devices/:
+    get:
+      consumes:
+      - application/json
+      description: Get User Logged In Devices
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/register.UserDevicesResponse'
+            type: array
+      security:
+      - Authorization: []
+      summary: Get User Logged In Devices
+      tags:
+      - User
+  /v1/devices/{deviceid}:
+    delete:
+      consumes:
+      - application/json
+      description: Get User Logged In Devices
+      parameters:
+      - description: DeviceId
+        in: path
+        name: deviceid
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/register.UserDevicesResponse'
+            type: array
+      security:
+      - Authorization: []
+      summary: Get User Logged In Devices
+      tags:
+      - User
+  /v1/logout:
+    post:
+      consumes:
+      - application/json
+      description: User logout by token id
+      parameters:
+      - description: Raw JSON string
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/register.LogoutToken'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      summary: User Logout
+      tags:
+      - User
+  /v1/users/self:
+    get:
+      consumes:
+      - application/json
+      description: Get User Profile Details
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/register.userProfileResponse'
+            type: array
+      security:
+      - Authorization: []
+      summary: Get User Profile Details
+      tags:
+      - User
+    post:
+      consumes:
+      - application/json
+      description: Update User Profile by user id
+      parameters:
+      - description: Raw JSON string
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/register.UpdateUser'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      security:
+      - Authorization: []
+      summary: Update User Profile
+      tags:
+      - User
+securityDefinitions:
+  Authorization:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"

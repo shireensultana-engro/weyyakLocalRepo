@@ -1,0 +1,29 @@
+I210608 12:23:53.437741 37 util/log/file_sync_buffer.go:238 ⋮ [config]   file created at: 2021/06/08 12:23:53
+I210608 12:23:53.437760 37 util/log/file_sync_buffer.go:238 ⋮ [config]   running on machine: ‹6e3115057728›
+I210608 12:23:53.437777 37 util/log/file_sync_buffer.go:238 ⋮ [config]   binary: CockroachDB CCL v21.1.1 (x86_64-unknown-linux-gnu, built 2021/05/24 14:56:43, go1.15.11)
+I210608 12:23:53.437788 37 util/log/file_sync_buffer.go:238 ⋮ [config]   arguments: ‹[/cockroach/cockroach start-single-node --insecure]›
+I210608 12:23:53.437803 37 util/log/file_sync_buffer.go:238 ⋮ [config]   line format: [IWEF]yymmdd hh:mm:ss.uuuuuu goid file:line msg utf8=✓
+I210608 12:23:53.437329 37 3@vendor/github.com/cockroachdb/pebble/compaction.go:2039 ⋮ [n?,pebble] 1  [JOB 1] flushing: sstable created 000134
+I210608 12:23:53.457974 37 3@vendor/github.com/cockroachdb/pebble/compaction.go:2039 ⋮ [n?,pebble] 2  [JOB 1] flushing: sstable created 000135
+I210608 12:23:53.516137 37 3@vendor/github.com/cockroachdb/pebble/compaction.go:2039 ⋮ [n?,pebble] 3  [JOB 1] flushing: sstable created 000136
+I210608 12:23:53.606285 37 3@vendor/github.com/cockroachdb/pebble/compaction.go:2039 ⋮ [n?,pebble] 4  [JOB 1] flushing: sstable created 000137
+I210608 12:23:53.664657 37 3@vendor/github.com/cockroachdb/pebble/open.go:305 ⋮ [n?,pebble] 5  [JOB 1] WAL created 000138
+I210608 12:23:53.689403 37 3@vendor/github.com/cockroachdb/pebble/version_set.go:457 ⋮ [n?,pebble] 6  [JOB 1] MANIFEST created 000139
+I210608 12:23:53.694461 94 3@vendor/github.com/cockroachdb/pebble/compaction.go:1845 ⋮ [n?,pebble] 7  [JOB 3] compacting(default) L0 [000134 000135 000136 000137] (434 K) + L6 [000130] (1.5 M)
+I210608 12:23:53.694537 92 3@vendor/github.com/cockroachdb/pebble/compaction.go:2766 ⋮ [n?,pebble] 8  [JOB 1] WAL deleted 000127
+I210608 12:23:53.694816 93 3@vendor/github.com/cockroachdb/pebble/table_stats.go:118 ⋮ [n?,pebble] 9  [JOB 2] all initial table stats loaded
+I210608 12:23:53.695623 92 3@vendor/github.com/cockroachdb/pebble/compaction.go:2766 ⋮ [n?,pebble] 10  [JOB 1] WAL deleted 000131
+I210608 12:23:53.695914 94 3@vendor/github.com/cockroachdb/pebble/compaction.go:2039 ⋮ [n?,pebble] 11  [JOB 3] compacting: sstable created 000141
+I210608 12:23:53.697222 92 3@vendor/github.com/cockroachdb/pebble/compaction.go:2766 ⋮ [n?,pebble] 12  [JOB 1] WAL deleted 000132
+I210608 12:23:53.699219 92 3@vendor/github.com/cockroachdb/pebble/compaction.go:2766 ⋮ [n?,pebble] 13  [JOB 1] WAL deleted 000133
+I210608 12:23:53.699288 92 3@vendor/github.com/cockroachdb/pebble/compaction.go:2773 ⋮ [n?,pebble] 14  [JOB 1] MANIFEST deleted 000128
+I210608 12:23:53.714067 37 3@vendor/github.com/cockroachdb/pebble/version_set.go:156 ⋮ [n?,pebble] 15  [JOB 1] MANIFEST created 000001
+I210608 12:23:53.718896 37 3@vendor/github.com/cockroachdb/pebble/open.go:305 ⋮ [n?,pebble] 16  [JOB 1] WAL created 000002
+I210608 12:23:53.736194 108 3@vendor/github.com/cockroachdb/pebble/table_stats.go:118 ⋮ [n?,pebble] 17  [JOB 2] all initial table stats loaded
+I210608 12:23:53.804435 94 3@vendor/github.com/cockroachdb/pebble/compaction.go:1886 ⋮ [n1,pebble] 18  [JOB 3] compacted(default) L0 [000134 000135 000136 000137] (434 K) + L6 [000130] (1.5 M) -> L6 [000141] (1.6 M), in 0.1s, output rate 16 M/s
+I210608 12:23:53.806825 24 3@vendor/github.com/cockroachdb/pebble/compaction.go:2780 ⋮ [n1,pebble] 19  [JOB 3] sstable deleted 000130
+I210608 12:23:53.807005 24 3@vendor/github.com/cockroachdb/pebble/compaction.go:2780 ⋮ [n1,pebble] 20  [JOB 3] sstable deleted 000134
+I210608 12:23:53.807059 24 3@vendor/github.com/cockroachdb/pebble/compaction.go:2780 ⋮ [n1,pebble] 21  [JOB 3] sstable deleted 000135
+I210608 12:23:53.807114 24 3@vendor/github.com/cockroachdb/pebble/compaction.go:2780 ⋮ [n1,pebble] 22  [JOB 3] sstable deleted 000136
+I210608 12:23:53.807163 24 3@vendor/github.com/cockroachdb/pebble/compaction.go:2780 ⋮ [n1,pebble] 23  [JOB 3] sstable deleted 000137
+I210608 12:23:53.933861 186 3@vendor/github.com/cockroachdb/pebble/db.go:1449 ⋮ [n1,pebble] 24  [JOB 4] WAL created 000142

@@ -1,0 +1,988 @@
+definitions:
+  content.AboutTheContent:
+    properties:
+      acquisitionDepartment:
+        type: string
+      ageGroups:
+        type: integer
+      arabicSynopsis:
+        type: string
+      englishSynopsis:
+        type: string
+      originalLanguage:
+        type: string
+      productionCountries:
+        items:
+          type: integer
+        type: array
+      productionHouse:
+        type: string
+      productionYear:
+        type: integer
+      supplier:
+        type: string
+    type: object
+  content.AllContentSeasons:
+    properties:
+      aboutTheContent:
+        $ref: '#/definitions/content.AboutTheContent'
+      cast:
+        $ref: '#/definitions/content.Cast'
+      contentId:
+        type: string
+      createdAt:
+        type: string
+      id:
+        description: season ID
+        type: string
+      modifiedAt:
+        type: string
+      music:
+        $ref: '#/definitions/content.Music'
+      nonTextualData:
+        $ref: '#/definitions/content.ContentNonTextualData'
+      primaryInfo:
+        $ref: '#/definitions/content.SeasonPrimaryInfo'
+      rights:
+        $ref: '#/definitions/content.Rights'
+      seasonKey:
+        type: integer
+      seasonNumber:
+        type: integer
+      tagInfo:
+        $ref: '#/definitions/content.TagInfo'
+      translation:
+        $ref: '#/definitions/content.Translation'
+    type: object
+  content.AllMultiTier:
+    properties:
+      contentGenres:
+        items: {}
+        type: array
+      contentKey:
+        type: string
+      contentSeasons:
+        $ref: '#/definitions/content.AllContentSeasons'
+      createdAt:
+        type: string
+      id:
+        type: string
+      modifiedAt:
+        type: string
+      primaryInfo:
+        $ref: '#/definitions/content.ContentPrimaryInfo'
+      seoDetails:
+        $ref: '#/definitions/content.SeoDetails'
+    type: object
+  content.AllOnetierContent:
+    properties:
+      aboutTheContent:
+        $ref: '#/definitions/content.AboutTheContent'
+      cast:
+        $ref: '#/definitions/content.Cast'
+      contentGenres:
+        items: {}
+        type: array
+      contentKey:
+        type: integer
+      contentVariances:
+        items: {}
+        type: array
+      createdAt:
+        type: string
+      id:
+        type: string
+      modifiedAt:
+        description: InsertedAt       time.Time       `json:"insertedAt,omitempty"`
+        type: string
+      music:
+        $ref: '#/definitions/content.Music'
+      nonTextualData:
+        $ref: '#/definitions/content.NonTextualData'
+      primaryInfo:
+        $ref: '#/definitions/content.PrimaryInfo'
+      seoDetails:
+        $ref: '#/definitions/content.SeoDetails'
+      tagInfo:
+        $ref: '#/definitions/content.TagInfo'
+    type: object
+  content.Cast:
+    properties:
+      actorArabic:
+        items:
+          type: string
+        type: array
+      actorEnglish:
+        items:
+          type: string
+        type: array
+      actorIds:
+        items:
+          type: string
+        type: array
+      castId:
+        type: string
+      directorArabic:
+        items:
+          type: string
+        type: array
+      directorEnglish:
+        items:
+          type: string
+        type: array
+      directorIds:
+        items:
+          type: string
+        type: array
+      mainActorArabic:
+        type: string
+      mainActorEnglish:
+        type: string
+      mainActorId:
+        type: string
+      mainActressArabic:
+        type: string
+      mainActressEnglish:
+        type: string
+      mainActressId:
+        type: string
+      writerArabic:
+        items:
+          type: string
+        type: array
+      writerEnglish:
+        items:
+          type: string
+        type: array
+      writerIds:
+        items:
+          type: string
+        type: array
+    type: object
+  content.ContentImageryDetails:
+    properties:
+      backdrop:
+        type: string
+      featured_img:
+        type: string
+      mobile_img:
+        type: string
+      overlayPoster:
+        type: string
+      thumbnail:
+        type: string
+    type: object
+  content.ContentNonTextualData:
+    properties:
+      detailsBackground:
+        type: string
+      mobileDetailsBackground:
+        type: string
+      overlayPosterImage:
+        type: string
+      posterImage:
+        type: string
+    type: object
+  content.ContentPrimaryInfo:
+    properties:
+      alternativeTitle:
+        type: string
+      arabicTitle:
+        type: string
+      contentType:
+        type: string
+      notes:
+        type: string
+      originalTitle:
+        type: string
+      transliteratedTitle:
+        type: string
+    type: object
+  content.ContentSeasons:
+    properties:
+      aboutTheContent:
+        $ref: '#/definitions/content.AboutTheContent'
+      cast:
+        $ref: '#/definitions/content.Cast'
+      contentId:
+        type: string
+      createdAt:
+        type: string
+      digitalRightsRegions:
+        items:
+          type: integer
+        type: array
+      episodes:
+        items: {}
+        type: array
+      id:
+        description: season ID
+        type: string
+      modifiedAt:
+        type: string
+      music:
+        $ref: '#/definitions/content.Music'
+      nonTextualData:
+        $ref: '#/definitions/content.ContentNonTextualData'
+      primaryInfo:
+        $ref: '#/definitions/content.SeasonPrimaryInfo'
+      seasonGeneres:
+        items: {}
+        type: array
+      seasonKey:
+        type: integer
+      seasonNumber:
+        type: integer
+      tagInfo:
+        $ref: '#/definitions/content.TagInfo'
+      translation:
+        $ref: '#/definitions/content.Translation'
+    type: object
+  content.EpisodeResult:
+    properties:
+      cast:
+        $ref: '#/definitions/content.Cast'
+      contentId:
+        type: string
+      createdAt:
+        type: string
+      digitalRightsRegions:
+        items:
+          type: integer
+        type: array
+      episodeKey:
+        type: integer
+      episodeNumber:
+        type: integer
+      id:
+        type: string
+      length:
+        type: integer
+      modifiedAt:
+        type: string
+      music:
+        $ref: '#/definitions/content.Music'
+      nonTextualData:
+        $ref: '#/definitions/content.NowTextualDataEpisode'
+      primaryInfo:
+        $ref: '#/definitions/content.PrimaryInfo'
+      seasonId:
+        type: string
+      seoDetails:
+        $ref: '#/definitions/content.SeoDetails'
+      synopsisArabic:
+        type: string
+      synopsisEnglish:
+        type: string
+      tagInfo:
+        $ref: '#/definitions/content.TagInfo'
+      translation:
+        $ref: '#/definitions/content.Translation'
+      videoContentUrl:
+        type: string
+    type: object
+  content.ErrorResponse:
+    properties:
+      code:
+        type: string
+      description:
+        type: string
+      error:
+        type: string
+      invalid:
+        properties:
+          additionalProp1:
+            properties:
+              code:
+                type: string
+              description:
+                type: string
+            type: object
+          additionalProp2:
+            properties:
+              code:
+                type: string
+              description:
+                type: string
+            type: object
+          additionalProp3:
+            properties:
+              code:
+                type: string
+              description:
+                type: string
+            type: object
+        type: object
+    type: object
+  content.FeaturedDetails:
+    properties:
+      id:
+        type: integer
+      playlists:
+        items:
+          $ref: '#/definitions/content.FeaturedPlaylists'
+        type: array
+      type:
+        type: string
+    type: object
+  content.FeaturedPlaylists:
+    properties:
+      content:
+        items:
+          $ref: '#/definitions/content.PlaylistContent'
+        type: array
+      id:
+        type: integer
+      playlist_type:
+        type: string
+    type: object
+  content.MenuData:
+    properties:
+      featured:
+        $ref: '#/definitions/content.FeaturedDetails'
+      friendly_url_arabic:
+        type: string
+      friendly_url_english:
+        type: string
+      id:
+        type: integer
+      playlists:
+        items:
+          $ref: '#/definitions/content.MenuPlaylists'
+        type: array
+      seo_description:
+        type: string
+      title_arabic:
+        type: string
+      title_english:
+        type: string
+      type:
+        type: string
+    type: object
+  content.MenuDetails:
+    properties:
+      current_page:
+        type: integer
+      data:
+        items:
+          $ref: '#/definitions/content.MenuData'
+        type: array
+      from:
+        type: integer
+      last_page:
+        type: integer
+      next_page_url:
+        type: string
+      per_page:
+        type: integer
+      prev_page_url:
+        type: string
+      to:
+        type: integer
+      total:
+        type: integer
+    type: object
+  content.MenuPlaylists:
+    properties:
+      content:
+        items:
+          $ref: '#/definitions/content.PlaylistContent'
+        type: array
+      id:
+        type: integer
+      title_arabic:
+        type: string
+      title_english:
+        type: string
+    type: object
+  content.MultiTierContent:
+    properties:
+      contentGenres:
+        items: {}
+        type: array
+      contentKey:
+        type: string
+      contentSeasons:
+        $ref: '#/definitions/content.ContentSeasons'
+      createdAt:
+        type: string
+      id:
+        description: content ID
+        type: string
+      modifiedAt:
+        type: string
+      primaryInfo:
+        $ref: '#/definitions/content.ContentPrimaryInfo'
+      seoDetails:
+        $ref: '#/definitions/content.SeoDetails'
+    type: object
+  content.Music:
+    properties:
+      musicComposerIds:
+        items:
+          type: string
+        type: array
+      musicComposersArabic:
+        items:
+          type: string
+        type: array
+      musicComposersEnglish:
+        items:
+          type: string
+        type: array
+      musicId:
+        type: string
+      singerIds:
+        items:
+          type: string
+        type: array
+      singersArabic:
+        items:
+          type: string
+        type: array
+      singersEnglish:
+        items:
+          type: string
+        type: array
+      songWriterIds:
+        items:
+          type: string
+        type: array
+      songWritersArabic:
+        items:
+          type: string
+        type: array
+      songWritersEnglish:
+        items:
+          type: string
+        type: array
+    type: object
+  content.NonTextualData:
+    properties:
+      detailsBackground:
+        type: string
+      dubbingScript:
+        type: string
+      mobileDetailsBackground:
+        type: string
+      overlayPosterImage:
+        type: string
+      posterImage:
+        type: string
+      subtitlingScript:
+        type: string
+    type: object
+  content.NowTextualDataEpisode:
+    properties:
+      detailsBackground:
+        type: string
+      dubbingScript:
+        type: string
+      mobileDetailsBackground:
+        type: string
+      overlayPosterImage:
+        type: string
+      posterImage:
+        type: string
+      subtitlingScript:
+        type: string
+    type: object
+  content.OnetierContent:
+    properties:
+      aboutTheContent:
+        $ref: '#/definitions/content.AboutTheContent'
+      cast:
+        $ref: '#/definitions/content.Cast'
+      contentGenres:
+        items: {}
+        type: array
+      contentKey:
+        type: integer
+      contentVariances:
+        items: {}
+        type: array
+      createdAt:
+        type: string
+      id:
+        type: string
+      modifiedAt:
+        description: InsertedAt       time.Time       `json:"insertedAt,omitempty"`
+        type: string
+      music:
+        $ref: '#/definitions/content.Music'
+      nonTextualData:
+        $ref: '#/definitions/content.NonTextualData'
+      primaryInfo:
+        $ref: '#/definitions/content.PrimaryInfo'
+      seoDetails:
+        $ref: '#/definitions/content.SeoDetails'
+      tagInfo:
+        $ref: '#/definitions/content.TagInfo'
+    type: object
+  content.PageDetails:
+    properties:
+      arabic_meta_description:
+        type: string
+      arabic_page_friendly_url:
+        type: string
+      arabic_title:
+        type: string
+      english_meta_description:
+        type: string
+      english_page_friendly_url:
+        type: string
+      english_title:
+        type: string
+      id:
+        type: string
+      page_key:
+        type: integer
+      page_type:
+        type: integer
+    type: object
+  content.Pagination:
+    properties:
+      limit:
+        type: integer
+      offset:
+        type: integer
+      size:
+        type: integer
+    type: object
+  content.PlaylistContent:
+    properties:
+      age_rating:
+        type: string
+      content_id:
+        type: string
+      content_key:
+        type: integer
+      content_type:
+        type: string
+      friendly_url:
+        type: string
+      imagery:
+        $ref: '#/definitions/content.ContentImageryDetails'
+      inserted_at:
+        type: string
+      length:
+        type: integer
+      modified_at:
+        type: string
+      seo_description_arabic:
+        type: string
+      seo_description_english:
+        type: string
+      seo_title:
+        type: string
+      seo_title_arabic:
+        type: string
+      seo_title_english:
+        type: string
+      synopsis_arabic:
+        type: string
+      synopsis_english:
+        type: string
+      title_arabic:
+        type: string
+      title_english:
+        type: string
+      video_id:
+        type: string
+    type: object
+  content.PrimaryInfo:
+    properties:
+      alternativeTitle:
+        type: string
+      arabicTitle:
+        type: string
+      contentTier:
+        type: integer
+      contentType:
+        type: string
+      notes:
+        type: string
+      number:
+        type: integer
+      originalTitle:
+        type: string
+      seasonNumber:
+        type: integer
+      synopsisArabic:
+        type: string
+      synopsisEnglish:
+        type: string
+      transliteratedTitle:
+        type: string
+      videoContentId:
+        type: string
+    type: object
+  content.Response:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/content.AllOnetierContent'
+        type: array
+      pagination:
+        $ref: '#/definitions/content.Pagination'
+    type: object
+  content.Rights:
+    properties:
+      digitalRightsRegion:
+        items:
+          type: integer
+        type: array
+    type: object
+  content.SeasonPrimaryInfo:
+    properties:
+      alternativeTitle:
+        type: string
+      arabicTitle:
+        type: string
+      notes:
+        type: string
+      originalTitle:
+        type: string
+      seasonNumber:
+        type: integer
+      transliteratedTitle:
+        type: string
+    type: object
+  content.SeoDetails:
+    properties:
+      arabicMetaDescription:
+        type: string
+      arabicMetaTitle:
+        type: string
+      englishMetaDescription:
+        type: string
+      englishMetaTitle:
+        type: string
+    type: object
+  content.TagInfo:
+    properties:
+      tag:
+        items:
+          type: string
+        type: array
+    type: object
+  content.Translation:
+    properties:
+      dubbingDialectId:
+        type: integer
+      dubbingLanguage:
+        type: string
+      languageType:
+        type: string
+      subtitlingLanguage:
+        type: string
+    type: object
+  content.VideoDurationInfo:
+    properties:
+      duration:
+        type: integer
+      thumbnails:
+        items: {}
+        type: array
+      url_trickplay:
+        type: string
+      url_video:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /contents/multitier:
+    get:
+      consumes:
+      - application/json
+      description: Get All Multi Tier Content Details
+      parameters:
+      - description: Zero-based index of the first requested item.
+        in: query
+        name: offset
+        type: string
+      - description: Maximum number of collection items to return for a single request.
+        in: query
+        name: limit
+        type: string
+      - description: Country code of the user.
+        in: path
+        name: country
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/content.AllMultiTier'
+        "404":
+          description: The object was not found.
+        "500":
+          description: Internal server error.
+          schema:
+            $ref: '#/definitions/content.ErrorResponse'
+      security:
+      - Authorization: []
+      tags:
+      - MultiTier
+  /contents/multitier/{contentId}:
+    get:
+      consumes:
+      - application/json
+      description: Get Multi Tier Content Details Based on Content ID
+      parameters:
+      - description: Content ID
+        in: path
+        name: contentId
+        required: true
+        type: string
+      - description: Country code of the user.
+        in: path
+        name: country
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/content.MultiTierContent'
+            type: array
+        "404":
+          description: The object was not found.
+        "500":
+          description: Internal server error.
+          schema:
+            $ref: '#/definitions/content.ErrorResponse'
+      security:
+      - Authorization: []
+      tags:
+      - MultiTier
+  /contents/onetier:
+    get:
+      consumes:
+      - application/json
+      description: Get All One Tier Contents Details
+      parameters:
+      - description: Zero-based index of the first requested item.
+        in: query
+        name: offset
+        type: string
+      - description: Maximum number of collection items to return for a single request.
+        in: query
+        name: limit
+        type: string
+      - description: Country code of the user.
+        in: path
+        name: country
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/content.Response'
+        "404":
+          description: The object was not found.
+        "500":
+          description: Internal server error.
+          schema:
+            $ref: '#/definitions/content.ErrorResponse'
+      security:
+      - Authorization: []
+      tags:
+      - OneTier
+  /contents/onetier/{contentId}:
+    get:
+      consumes:
+      - application/json
+      description: Get One Tier Content Details Based on Content ID
+      parameters:
+      - description: Content Id.
+        in: path
+        name: contentId
+        required: true
+        type: string
+      - description: Country code of the user.
+        in: path
+        name: country
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/content.OnetierContent'
+            type: array
+        "404":
+          description: The object was not found.
+        "500":
+          description: Internal server error.
+          schema:
+            $ref: '#/definitions/content.ErrorResponse'
+      security:
+      - Authorization: []
+      tags:
+      - OneTier
+  /episode/{contentId}:
+    get:
+      consumes:
+      - application/json
+      description: Get Episode Details By Episode Id
+      parameters:
+      - description: Content Id
+        in: path
+        name: contentId
+        required: true
+        type: string
+      - description: Country code of the user
+        in: path
+        name: country
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/content.EpisodeResult'
+        "404":
+          description: The object was not found.
+        "500":
+          description: Internal server error.
+          schema:
+            $ref: '#/definitions/content.ErrorResponse'
+      security:
+      - Authorization: []
+      tags:
+      - MultiTier
+  /get_info/{videoId}:
+    get:
+      consumes:
+      - application/json
+      description: Get all menu list details
+      parameters:
+      - description: video Id.
+        in: path
+        name: videoId
+        required: true
+        type: string
+      - description: Country code of the user.
+        in: path
+        name: country
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/content.VideoDurationInfo'
+        "404":
+          description: The object was not found.
+        "500":
+          description: Internal server error.
+          schema:
+            $ref: '#/definitions/content.ErrorResponse'
+      tags:
+      - Video
+  /get_menu:
+    get:
+      consumes:
+      - application/json
+      description: Get All menu list details by platform ID
+      parameters:
+      - description: Device Name
+        in: query
+        name: device
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/content.MenuDetails'
+        "404":
+          description: The object was not found.
+        "500":
+          description: Internal server error.
+          schema:
+            $ref: '#/definitions/content.ErrorResponse'
+      security:
+      - Authorization: []
+      tags:
+      - Menu
+  /get_page/{pageId}:
+    get:
+      consumes:
+      - application/json
+      description: Get All menu list details by platform ID
+      parameters:
+      - description: Page Id
+        in: path
+        name: pageId
+        required: true
+        type: string
+      - description: Country code of the user.
+        in: path
+        name: country
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/content.PageDetails'
+        "404":
+          description: The object was not found.
+        "500":
+          description: Internal server error.
+          schema:
+            $ref: '#/definitions/content.ErrorResponse'
+      security:
+      - Authorization: []
+      tags:
+      - Menu
+  /oauth2/token:
+    post:
+      consumes:
+      - multipart/form-data
+      description: User login with generate token
+      parameters:
+      - description: Enter Username
+        in: formData
+        name: username
+        required: true
+        type: string
+      - description: Enter Password
+        in: formData
+        name: password
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+        "400":
+          description: Bad Request.
+        "401":
+          description: Authorization has been denied for this request.
+      summary: User login with generate token
+      tags:
+      - Login
+securityDefinitions:
+  Authorization:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"

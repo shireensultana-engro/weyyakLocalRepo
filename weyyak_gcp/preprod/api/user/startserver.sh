@@ -1,0 +1,25 @@
+export SERVICE_PORT=3000 \
+export DB_SERVER=34.18.48.27 \
+export DB_PORT=5432 \
+export DB_USER=appuser \
+export DB_PASSWORD=Yy017EUY5aSz \
+export DB_DATABASE=wk_user_management \
+export CONTENT_DB_DATABASE=wyk_content \
+export FRONTEND_DB_DATABASE=wyk_frontend_config \
+export TEMPLATE_URL=/templates/ \
+export EMAILIMAGEBASEURL=https://s3.ap-south-1.amazonaws.com/mailtemp/ \
+export EMAILHEADIMAGEFILENAME=logo.png \
+export EMAILCONTENTIMAGEFILENAME=devices.png \
+export DEFAULT_PAGE_SIZE=20 \
+export AWS_REGION=ap-south-1 \
+export ACCESS_SECRET=AKIAYOGUWMUMEEQD6CPW \
+export REFRESH_SECRET=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 \
+export PASSWORDCHANGEURL=https://goapi-bo-qa.weyyak.com/password? \
+export BASE_URL=https://weyyak.com \
+export EGYPTBASE_URL=https://qa-weyyak1.z5.com \
+export DOTNET_URL=https://api-backoffice-production.weyyak.com/oauth2/tokendata?access_token= \
+export SES_REGION=ap-south-1 \
+export SES_ID=AKIAYOGUWMUMK2O4DT6B \
+export SES_SECRET=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 \
+export AWS_SNS_REGION=us-east-1
+go run *.go

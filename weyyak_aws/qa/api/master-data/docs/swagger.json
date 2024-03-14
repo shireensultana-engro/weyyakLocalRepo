@@ -1,0 +1,588 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "contact": {}
+    },
+    "paths": {
+        "/api/age-ratings/{rating_id}": {
+            "get": {
+                "description": "get list of all Age Ratings",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Age Ratings"
+                ],
+                "summary": "Show a list of all Age Ratings",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "AgeRating Id",
+                        "name": "castid",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/ageRatings.AgeRatings"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/content/digitalrights/types": {
+            "get": {
+                "description": "get list of all digital types",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Digital"
+                ],
+                "summary": "Show a list of all digital types",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/digitalRights.DigitalRights"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/content/displaystatuses": {
+            "get": {
+                "description": "get list of all display status",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Digital"
+                ],
+                "summary": "Show a list of all display status",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/digitalRights.DisplayStatus"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/contenttypes/multitier": {
+            "get": {
+                "description": "get list of all multi tier's data",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Content Types"
+                ],
+                "summary": "Show a list of all multi tier's data",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/contentType.ContentMultiTier"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/contenttypes/onetier": {
+            "get": {
+                "description": "get list of all one tier's data",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Content Types"
+                ],
+                "summary": "Show a list of all one tier's data",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/contentType.ContentOneTier"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/genre/{genre_id}": {
+            "get": {
+                "description": "get list of all genre",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Genre"
+                ],
+                "summary": "Show a list of all genre",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Genre Id",
+                        "name": "castid",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/genre.Genre"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/languages/ar/dialects": {
+            "get": {
+                "description": "get list of all Languages dialects",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Language"
+                ],
+                "summary": "Show a list of all Languages dialects",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/language.LanguageDialects"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/languages/dubbing": {
+            "get": {
+                "description": "get list of all Languages dubbing",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Language"
+                ],
+                "summary": "Show a list of all Languages dubbing",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/language.LanguageDubbing"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/languages/original": {
+            "get": {
+                "description": "get list of all Languages original",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Language"
+                ],
+                "summary": "Show a list of all Languages original",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/language.LanguageOriginal"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/languages/origintypes": {
+            "get": {
+                "description": "get list of all Languages  origin types",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Language"
+                ],
+                "summary": "Show a list of all Languages  origin types",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/language.LanguageOriginTypes"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/languages/subtitling": {
+            "get": {
+                "description": "get list of all Languages subtitle",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Language"
+                ],
+                "summary": "Show a list of all Languages subtitle",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/language.LanguageSubtitle"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/{langcode}/countries": {
+            "get": {
+                "description": "get list of all country's",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Country"
+                ],
+                "summary": "Show a list of all country's",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/country.Country"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/config": {
+            "get": {
+                "description": "Get application config details",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "OTT"
+                ],
+                "summary": "Get application config details",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/{lang}/contenttype": {
+            "get": {
+                "description": "Get topmenu details list",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "OTT"
+                ],
+                "summary": "Get topmenu details list",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Language Code",
+                        "name": "lang",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Device",
+                        "name": "device",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "ageRatings.AgeRatings": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "contentType.ContentMultiTier": {
+            "type": "object",
+            "properties": {
+                "arabicName": {
+                    "type": "string"
+                },
+                "contentType": {
+                    "type": "string"
+                },
+                "englishName": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "contentType.ContentOneTier": {
+            "type": "object",
+            "properties": {
+                "arabicName": {
+                    "type": "string"
+                },
+                "contentType": {
+                    "type": "string"
+                },
+                "englishName": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "country.Country": {
+            "type": "object",
+            "properties": {
+                "alpha2Code": {
+                    "type": "string"
+                },
+                "arabicName": {
+                    "type": "string"
+                },
+                "callingCode": {
+                    "type": "string"
+                },
+                "englishName": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "digitalRights.DigitalRights": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "digitalRights.DisplayStatus": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "genre.Genre": {
+            "type": "object",
+            "properties": {
+                "arabic_name": {
+                    "type": "string"
+                },
+                "english_name": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                }
+            }
+        },
+        "language.LanguageDialects": {
+            "type": "object",
+            "properties": {
+                "arabicName": {
+                    "type": "string"
+                },
+                "englishName": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "language.LanguageDubbing": {
+            "type": "object",
+            "properties": {
+                "arabicName": {
+                    "type": "string"
+                },
+                "code": {
+                    "type": "string"
+                },
+                "englishName": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "language.LanguageOriginTypes": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "language.LanguageOriginal": {
+            "type": "object",
+            "properties": {
+                "arabicName": {
+                    "type": "string"
+                },
+                "code": {
+                    "type": "string"
+                },
+                "englishName": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "language.LanguageSubtitle": {
+            "type": "object",
+            "properties": {
+                "arabicName": {
+                    "type": "string"
+                },
+                "code": {
+                    "type": "string"
+                },
+                "englishName": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                }
+            }
+        }
+    }
+}

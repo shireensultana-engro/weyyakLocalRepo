@@ -1,0 +1,1853 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "contact": {}
+    },
+    "paths": {
+        "/api/contenttypes/multitier": {
+            "get": {
+                "description": "get list of all multi tier's data",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Content Types"
+                ],
+                "summary": "Show a list of all multi tier's data",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/contentType.ContentMultitierTypes"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/contenttypes/onetier": {
+            "get": {
+                "description": "get list of all one tier's data",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Content Types"
+                ],
+                "summary": "Show a list of all one tier's data",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/contentType.ContentOnetierTypes"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/countries": {
+            "get": {
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "description": "Get All countries",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Country"
+                ],
+                "summary": "Show Get All countries",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/country.Country"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/pages": {
+            "get": {
+                "description": "Get all pages list and pages by search text",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Page"
+                ],
+                "summary": "Get all pages list and pages by search text",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Search Text",
+                        "name": "searchText",
+                        "in": "path"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Offset",
+                        "name": "offset",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Limit",
+                        "name": "limit",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Page",
+                        "name": "page",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/pages/ordered": {
+            "post": {
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "description": "post  Update page order details",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Page"
+                ],
+                "summary": "Update page order details",
+                "parameters": [
+                    {
+                        "description": "Raw JSON string",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/page.FinalResponse"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/pages/{id}": {
+            "get": {
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "description": "get page details by pageid",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Page"
+                ],
+                "summary": "Show page details by pageid",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "post  Create Or Update Page Details",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Page"
+                ],
+                "summary": "Create Or Update Page Details",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Raw JSON string",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/page.PageRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "description": "delete Delete Page",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Page"
+                ],
+                "summary": "Delete page",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/pages/{id}/available": {
+            "post": {
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "description": "post disable or enable page",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Page"
+                ],
+                "summary": "Show disable or enable page",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Raw JSON string",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/page.PageAvailability"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/playlist/sourceitems/types": {
+            "get": {
+                "description": "get list of all source item types",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "source"
+                ],
+                "summary": "Show a list of all source item types",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/publishingplatforms": {
+            "get": {
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "description": "get Publishing Platforms",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Frontend"
+                ],
+                "summary": "Show Publishing Platforms",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/ratings/filters": {
+            "get": {
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "description": "get rating filters",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Frontend"
+                ],
+                "summary": "Show rating filters",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/slider/previewlayouts": {
+            "get": {
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "description": "Get Slider Preview Layouts",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Slider"
+                ],
+                "summary": "Show Slider Preview Layouts",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/slider/types": {
+            "get": {
+                "description": "get list of all slider types",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Slider"
+                ],
+                "summary": "Show a list of all slidertypes",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/slider/{id}": {
+            "delete": {
+                "description": "delete Delete slider",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Slider"
+                ],
+                "summary": "Delete slider",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/sliders/notifications": {
+            "get": {
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "description": "Get Slider Notifications details",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Slider"
+                ],
+                "summary": "Get Slider Notifications",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/sliders/summary": {
+            "get": {
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "description": "Get Sliders based on search in page",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "slider"
+                ],
+                "summary": "Get Sliders based on search in page",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "SearchText",
+                        "name": "searchText",
+                        "in": "path"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Offset",
+                        "name": "offset",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Limit",
+                        "name": "limit",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Page",
+                        "name": "page",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/sliders/{id}": {
+            "get": {
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "description": "Get Slider details by slider id",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Slider"
+                ],
+                "summary": "Get  slider details",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Slider Id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "description": "Create and Update slider details",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Slider"
+                ],
+                "summary": "Create and Update slider details",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Id",
+                        "name": "id",
+                        "in": "path"
+                    },
+                    {
+                        "description": "Raw JSON string",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/slider.CreateUpdateSliderRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/sliders/{id}/available": {
+            "post": {
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "description": "post disable or enable slider",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Slider"
+                ],
+                "summary": "Show disable or enable slider",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Raw JSON string",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/slider.SliderUpdate"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/{langcode}/countries": {
+            "get": {
+                "description": "get list of all country's",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Country"
+                ],
+                "summary": "Show a list of all country's",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/country.Country"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/config": {
+            "get": {
+                "description": "get list of all country's",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Config"
+                ],
+                "summary": "Show a list of all country's",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/content/digitalrights/regions/all": {
+            "get": {
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "description": "Get digital rights regions",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Digital"
+                ],
+                "summary": "show list of digital rights regions",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/countries/{langcode}": {
+            "get": {
+                "description": "get list of countries Mobile calling Code",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Country"
+                ],
+                "summary": "Show all countries Mobile calling Code",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "langcode",
+                        "name": "langcode",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/languages/": {
+            "get": {
+                "description": "get list of all Languages available",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Language"
+                ],
+                "summary": "Show a list of all Languages available",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/language.LanguageAvailable"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/languages/ar/dialects": {
+            "get": {
+                "description": "get list of all Languages dialects",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Language"
+                ],
+                "summary": "Show a list of all Languages dialects",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/language.LanguageDialect"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/languages/dubbing": {
+            "get": {
+                "description": "get list of all Languages dubbing",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Language"
+                ],
+                "summary": "Show a list of all Languages dubbing",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/language.LanguageDubbing"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/languages/original": {
+            "get": {
+                "description": "get list of all Languages original",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Language"
+                ],
+                "summary": "Show a list of all Languages original",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/language.Language"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/languages/origintypes": {
+            "get": {
+                "description": "get list of all Languages  origin types",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Language"
+                ],
+                "summary": "Show a list of all Languages  origin types",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/language.LanguageOriginType"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/languages/subtitling": {
+            "get": {
+                "description": "get list of all Languages subtitle",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Language"
+                ],
+                "summary": "Show a list of all Languages subtitle",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/language.LanguageSubtitles"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/pages/ordered": {
+            "get": {
+                "description": "get page order details",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Frontend"
+                ],
+                "summary": "Show page order details",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/pages/summary/": {
+            "get": {
+                "description": "Get Pages List By Search Text",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Page"
+                ],
+                "summary": "Get Pages List By Search Text",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Search Text",
+                        "name": "searchText",
+                        "in": "path"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Offset",
+                        "name": "offset",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Limit",
+                        "name": "limit",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/playlist/sourceitems/": {
+            "get": {
+                "description": "Get Source items BySource Fields",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Playlist"
+                ],
+                "summary": "Get Source items BySource Fields",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Search Text",
+                        "name": "searchText",
+                        "in": "path"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "search Filter",
+                        "name": "searchFilter",
+                        "in": "path"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Offset",
+                        "name": "offset",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Limit",
+                        "name": "limit",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/playlist/sourceitems/searchfilters": {
+            "get": {
+                "description": "Get Search filters for playlists",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Playlist"
+                ],
+                "summary": "Get Search filters for playlists",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/playlist/{Id}": {
+            "delete": {
+                "description": "Delete playlist by playlist_id",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Playlist"
+                ],
+                "summary": "Delete playlist by playlist_id",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "playlist Id",
+                        "name": "Id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/playlists/": {
+            "get": {
+                "description": "Get all playlist and playlists by search text",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Playlist"
+                ],
+                "summary": "Get all playlist and playlists by search text",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Search Text",
+                        "name": "searchText",
+                        "in": "path"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Offset",
+                        "name": "offset",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Limit",
+                        "name": "limit",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Page",
+                        "name": "page",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/playlists/summary/": {
+            "get": {
+                "description": "Get Playlists Based On Search In Page",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Playlist"
+                ],
+                "summary": "Get Playlists Based On Search In Page",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Search Text",
+                        "name": "searchText",
+                        "in": "path"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Offset",
+                        "name": "offset",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Limit",
+                        "name": "limit",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Page",
+                        "name": "page",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/playlists/{Id}/available": {
+            "post": {
+                "description": "Disable Playlist By Playlist Id",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "Disable Playlist By Playlist Id",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "playlist Id",
+                        "name": "Id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Raw JSON string",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/playlist.PlaylistDisable"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/playlists/{playlist_id}": {
+            "get": {
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "description": "Get Playlist Details By Playlist Id",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Playlist"
+                ],
+                "summary": "Get Playlist Details By Playlist Id",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Limit",
+                        "name": "limit",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/sliders/": {
+            "get": {
+                "description": "Get Slider List",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "slider"
+                ],
+                "summary": "Get Slider List",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Search Text",
+                        "name": "searchText",
+                        "in": "path"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Offset",
+                        "name": "offset",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Limit",
+                        "name": "limit",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Page",
+                        "name": "page",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "contentType.ContentMultitierTypes": {
+            "type": "object",
+            "properties": {
+                "arabicName": {
+                    "type": "string"
+                },
+                "contentType": {
+                    "type": "string"
+                },
+                "englishName": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "contentType.ContentOnetierTypes": {
+            "type": "object",
+            "properties": {
+                "arabicName": {
+                    "type": "string"
+                },
+                "contentType": {
+                    "type": "string"
+                },
+                "englishName": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "country.Country": {
+            "type": "object",
+            "properties": {
+                "alpha2Code": {
+                    "type": "string"
+                },
+                "arabicName": {
+                    "type": "string"
+                },
+                "callingCode": {
+                    "type": "string"
+                },
+                "englishName": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "regionId": {
+                    "type": "string"
+                }
+            }
+        },
+        "language.Language": {
+            "type": "object",
+            "properties": {
+                "arabicName": {
+                    "type": "string"
+                },
+                "code": {
+                    "type": "string"
+                },
+                "englishName": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "language.LanguageAvailable": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "language.LanguageDialect": {
+            "type": "object",
+            "properties": {
+                "arabicName": {
+                    "type": "string"
+                },
+                "englishName": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "language.LanguageDubbing": {
+            "type": "object",
+            "properties": {
+                "arabicName": {
+                    "type": "string"
+                },
+                "code": {
+                    "type": "string"
+                },
+                "englishName": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "language.LanguageOriginType": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "language.LanguageSubtitles": {
+            "type": "object",
+            "properties": {
+                "arabicName": {
+                    "type": "string"
+                },
+                "code": {
+                    "type": "string"
+                },
+                "englishName": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "page.FinalResponse": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "publishingPlatformOrderedDetails": {
+                    "$ref": "#/definitions/page.Response"
+                }
+            }
+        },
+        "page.NonTextualData": {
+            "type": "object",
+            "properties": {
+                "menuPosterImage": {
+                    "type": "string"
+                },
+                "mobileMenu": {
+                    "type": "string"
+                },
+                "mobileMenuPosterImage": {
+                    "type": "string"
+                }
+            }
+        },
+        "page.PageAvailability": {
+            "type": "object",
+            "required": [
+                "isDisabled"
+            ],
+            "properties": {
+                "isDisabled": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "page.PageRequest": {
+            "type": "object",
+            "properties": {
+                "arabicMetaDescription": {
+                    "type": "string"
+                },
+                "arabicMetaTitle": {
+                    "type": "string"
+                },
+                "arabicPageFriendlyUrl": {
+                    "type": "string"
+                },
+                "arabicTitle": {
+                    "type": "string"
+                },
+                "defaultSliderId": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "englishMetaDescription": {
+                    "type": "string"
+                },
+                "englishMetaTitle": {
+                    "type": "string"
+                },
+                "englishPageFriendlyUrl": {
+                    "type": "string"
+                },
+                "englishTitle": {
+                    "type": "string"
+                },
+                "isHome": {
+                    "type": "boolean"
+                },
+                "nonTextualData": {
+                    "$ref": "#/definitions/page.NonTextualData"
+                },
+                "pageOrderNumber": {
+                    "type": "integer"
+                },
+                "playlistsIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "publishingPlatforms": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "regions": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "slidersIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "page.PageResponse": {
+            "type": "object",
+            "properties": {
+                "englishTitle": {
+                    "type": "string"
+                },
+                "isHome": {
+                    "type": "boolean"
+                },
+                "pageId": {
+                    "type": "string"
+                },
+                "pageOrderNumber": {
+                    "type": "integer"
+                }
+            }
+        },
+        "page.Response": {
+            "type": "object",
+            "properties": {
+                "0": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/page.PageResponse"
+                    }
+                },
+                "1": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/page.PageResponse"
+                    }
+                },
+                "10": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/page.PageResponse"
+                    }
+                },
+                "2": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/page.PageResponse"
+                    }
+                },
+                "3": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/page.PageResponse"
+                    }
+                },
+                "4": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/page.PageResponse"
+                    }
+                },
+                "5": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/page.PageResponse"
+                    }
+                },
+                "6": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/page.PageResponse"
+                    }
+                },
+                "7": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/page.PageResponse"
+                    }
+                },
+                "9": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/page.PageResponse"
+                    }
+                }
+            }
+        },
+        "playlist.PlaylistDisable": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "isDisabled": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "slider.CreateUpdateSliderRequest": {
+            "type": "object",
+            "properties": {
+                "blackAreaPlaylistId": {
+                    "type": "string"
+                },
+                "greenAreaPlaylistId": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "pagesIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "publishingPlatforms": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "redAreaPlaylistId": {
+                    "type": "string"
+                },
+                "regions": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "schedulingEndDate": {
+                    "type": "string"
+                },
+                "schedulingStartDate": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "integer"
+                }
+            }
+        },
+        "slider.SliderUpdate": {
+            "type": "object",
+            "required": [
+                "isDisabled"
+            ],
+            "properties": {
+                "isDisabled": {
+                    "type": "boolean"
+                }
+            }
+        }
+    }
+}

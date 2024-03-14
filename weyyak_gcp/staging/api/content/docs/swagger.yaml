@@ -1,0 +1,2201 @@
+definitions:
+  actor.Actor:
+    properties:
+      arabicName:
+        type: string
+      englishName:
+        type: string
+    type: object
+  agegroup.AgeGroup:
+    properties:
+      arabicName:
+        type: string
+      englishName:
+        type: string
+      id:
+        type: string
+    type: object
+  content.AboutTheContent:
+    properties:
+      acquisitionDepartment:
+        type: string
+      ageGroup:
+        type: integer
+      arabicSynopsis:
+        type: string
+      englishSynopsis:
+        type: string
+      introDuration:
+        type: string
+      introStart:
+        type: string
+      originalLanguage:
+        type: string
+      outroDuration:
+        type: string
+      outroStart:
+        type: string
+      productionCountries:
+        items:
+          type: integer
+        type: array
+      productionHouse:
+        type: string
+      productionYear:
+        type: integer
+      supplier:
+        type: string
+    type: object
+  content.AboutTheContentInfoRequest:
+    properties:
+      acquisitionDepartment:
+        type: string
+      ageGroup:
+        type: integer
+      arabicSynopsis:
+        type: string
+      englishSynopsis:
+        type: string
+      introDuration:
+        type: string
+      introStart:
+        type: string
+      originalLanguage:
+        type: string
+      outroDuration:
+        type: string
+      outroStart:
+        type: string
+      productionCountries:
+        items:
+          type: integer
+        type: array
+      productionHouse:
+        type: string
+      productionYear:
+        type: integer
+      supplier:
+        type: string
+    required:
+    - ageGroup
+    - arabicSynopsis
+    - englishSynopsis
+    - introDuration
+    - introStart
+    - originalLanguage
+    - outroDuration
+    - outroStart
+    - supplier
+    type: object
+  content.Cast:
+    properties:
+      actors:
+        items:
+          type: string
+        type: array
+      directors:
+        items:
+          type: string
+        type: array
+      mainActorId:
+        type: string
+      mainActressId:
+        type: string
+      writers:
+        items:
+          type: string
+        type: array
+    type: object
+  content.ContentGenres:
+    properties:
+      genreId:
+        type: string
+      id:
+        type: string
+      subgenresId:
+        items:
+          type: string
+        type: array
+    type: object
+  content.ContentTranslation:
+    properties:
+      dubbingDialectId:
+        type: integer
+      dubbingLanguage:
+        type: string
+      languageType:
+        type: string
+      subtitlingLanguage:
+        type: string
+    type: object
+  content.ContentVariances:
+    properties:
+      countryCheck:
+        type: boolean
+      createdBy:
+        type: string
+      digitalRightsEndDate:
+        type: string
+      digitalRightsRegions:
+        items:
+          type: integer
+        type: array
+      digitalRightsStartDate:
+        type: string
+      digitalRightsType:
+        type: integer
+      dubbingDialectId:
+        type: integer
+      dubbingLanguage:
+        type: string
+      dubbingScript:
+        type: string
+      id:
+        type: string
+      languageType:
+        type: string
+      overlayPosterImage:
+        type: string
+      products:
+        items:
+          type: integer
+        type: array
+      publishingPlatforms:
+        items:
+          type: integer
+        type: array
+      schedulingDateTime:
+        type: string
+      status:
+        type: integer
+      statusCanBeChanged:
+        type: boolean
+      subStatusName:
+        type: string
+      subscriptionPlans:
+        items:
+          type: integer
+        type: array
+      subtitlingLanguage:
+        type: string
+      subtitlingScript:
+        type: string
+      varianceTrailers:
+        items:
+          type: string
+        type: array
+      videoContentId:
+        type: string
+    type: object
+  content.CreateSeasonRequest:
+    properties:
+      Seasonid:
+        type: string
+      aboutTheContent:
+        $ref: '#/definitions/content.AboutTheContentInfoRequest'
+      cast:
+        $ref: '#/definitions/content.Cast'
+      contentGenres:
+        items:
+          $ref: '#/definitions/content.ContentGenres'
+        type: array
+      contentId:
+        type: string
+      countryCheck:
+        type: boolean
+      introStart:
+        type: string
+      music:
+        $ref: '#/definitions/content.Music'
+      nonTextualData:
+        $ref: '#/definitions/content.NonTextualData'
+      primaryInfo:
+        $ref: '#/definitions/content.PrimaryInfoRequest'
+      products:
+        items:
+          type: integer
+        type: array
+      rights:
+        $ref: '#/definitions/content.RightsRequest'
+      seoDetails:
+        $ref: '#/definitions/content.SeoDetails'
+      tagInfo:
+        $ref: '#/definitions/content.TagInfo'
+      translation:
+        $ref: '#/definitions/content.ContentTranslation'
+      varianceTrailers:
+        items: {}
+        type: array
+    type: object
+  content.CreateSeasonVarainceRequest:
+    properties:
+      Seasonid:
+        type: string
+      aboutTheContent:
+        $ref: '#/definitions/content.AboutTheContentInfoRequest'
+      cast:
+        $ref: '#/definitions/content.Cast'
+      contentGenres:
+        items:
+          $ref: '#/definitions/content.ContentGenres'
+        type: array
+      contentId:
+        type: string
+      introStart:
+        type: string
+      music:
+        $ref: '#/definitions/content.Music'
+      nonTextualData:
+        $ref: '#/definitions/content.NonTextualData'
+      primaryInfo:
+        $ref: '#/definitions/content.PrimaryInfoRequest'
+      products:
+        items:
+          type: integer
+        type: array
+      rights:
+        $ref: '#/definitions/content.RightsRequests'
+      seoDetails:
+        $ref: '#/definitions/content.SeoDetails'
+      tagInfo:
+        $ref: '#/definitions/content.TagInfo'
+      translation:
+        $ref: '#/definitions/content.ContentTranslation'
+      varianceTrailers:
+        items: {}
+        type: array
+    type: object
+  content.Music:
+    properties:
+      musicComposers:
+        items:
+          type: string
+        type: array
+      singers:
+        items:
+          type: string
+        type: array
+      songWriters:
+        items:
+          type: string
+        type: array
+    type: object
+  content.NonTextualData:
+    properties:
+      detailsBackground:
+        type: string
+      mobileDetailsBackground:
+        type: string
+      overlayPosterImage:
+        type: string
+      posterImage:
+        type: string
+    type: object
+  content.OnetierContentRequest:
+    properties:
+      nonTextualData:
+        $ref: '#/definitions/content.NonTextualData'
+      textualData:
+        $ref: '#/definitions/content.TextualData'
+    required:
+    - nonTextualData
+    - textualData
+    type: object
+  content.PrimaryInfo:
+    properties:
+      alternativeTitle:
+        type: string
+      arabicTitle:
+        type: string
+      contentType:
+        type: string
+      introStart:
+        type: string
+      notes:
+        type: string
+      number:
+        type: integer
+      originalTitle:
+        type: string
+      outroStart:
+        type: string
+      seasonNumber:
+        type: integer
+      synopsisArabic:
+        type: string
+      synopsisEnglish:
+        type: string
+      transliteratedTitle:
+        type: string
+      videoContentId:
+        type: string
+    type: object
+  content.PrimaryInfoRequest:
+    properties:
+      alternativeTitle:
+        type: string
+      arabicTitle:
+        type: string
+      notes:
+        type: string
+      originalTitle:
+        type: string
+      seasonNumber:
+        type: integer
+      transliteratedTitle:
+        type: string
+    type: object
+  content.RightsRequest:
+    properties:
+      digitalRightsRegions:
+        items:
+          type: integer
+        type: array
+      digitalRightsStartDate:
+        type: string
+      digitalRightsType:
+        type: integer
+      digitalRightsendDate:
+        type: string
+      subscriptionPlans:
+        items:
+          type: integer
+        type: array
+    type: object
+  content.RightsRequests:
+    properties:
+      digitalRightsRegions:
+        items:
+          type: string
+        type: array
+      digitalRightsStartDate:
+        type: string
+      digitalRightsType:
+        type: integer
+      digitalRightsendDate:
+        type: string
+      subscriptionPlans:
+        items:
+          type: integer
+        type: array
+    type: object
+  content.SeoDetails:
+    properties:
+      arabicMetaDescription:
+        type: string
+      arabicMetaTitle:
+        type: string
+      englishMetaDescription:
+        type: string
+      englishMetaTitle:
+        type: string
+    type: object
+  content.TagInfo:
+    properties:
+      tags:
+        items:
+          type: string
+        type: array
+    type: object
+  content.TextualData:
+    properties:
+      aboutTheContent:
+        $ref: '#/definitions/content.AboutTheContent'
+      cast:
+        $ref: '#/definitions/content.Cast'
+      contentGenres:
+        items:
+          $ref: '#/definitions/content.ContentGenres'
+        type: array
+      contentVariances:
+        items:
+          $ref: '#/definitions/content.ContentVariances'
+        type: array
+      music:
+        $ref: '#/definitions/content.Music'
+      primaryInfo:
+        $ref: '#/definitions/content.PrimaryInfo'
+      seoDetails:
+        $ref: '#/definitions/content.SeoDetails'
+      tagInfo:
+        $ref: '#/definitions/content.TagInfo'
+    required:
+    - aboutTheContent
+    - cast
+    - contentGenres
+    - contentVariances
+    - music
+    - primaryInfo
+    - seoDetails
+    - tagInfo
+    type: object
+  digitalRights.ContentRights:
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+    type: object
+  digitalRights.DisplayStatus:
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+    type: object
+  director.Director:
+    properties:
+      arabicName:
+        type: string
+      englishName:
+        type: string
+    type: object
+  episode.Cast:
+    properties:
+      actors:
+        items:
+          type: string
+        type: array
+      directors:
+        items:
+          type: string
+        type: array
+      mainActorId:
+        type: string
+      mainActressId:
+        type: string
+      writers:
+        items:
+          type: string
+        type: array
+    type: object
+  episode.Episodes:
+    properties:
+      cast:
+        $ref: '#/definitions/episode.Cast'
+      music:
+        $ref: '#/definitions/episode.Music'
+      nonTextualData:
+        $ref: '#/definitions/episode.NonTextualData'
+      primaryInfo:
+        $ref: '#/definitions/episode.PrimaryInfo'
+      publishingPlatforms:
+        items:
+          type: integer
+        type: array
+      rights:
+        $ref: '#/definitions/episode.Rights'
+      schedulingDateTime:
+        type: string
+      seasonId:
+        type: string
+      seoDetails:
+        $ref: '#/definitions/episode.SeoDetails'
+      tagInfo:
+        $ref: '#/definitions/episode.TagInfo'
+    type: object
+  episode.Music:
+    properties:
+      musicComposers:
+        items:
+          type: string
+        type: array
+      singers:
+        items:
+          type: string
+        type: array
+      songWriters:
+        items:
+          type: string
+        type: array
+    type: object
+  episode.NonTextualData:
+    properties:
+      detailsBackground:
+        type: string
+      dubbingScript:
+        type: string
+      mobileDetailsBackground:
+        type: string
+      overlayPosterImage:
+        type: string
+      posterImage:
+        type: string
+      subtitlingScript:
+        type: string
+    type: object
+  episode.PrimaryInfo:
+    properties:
+      alternativeTitle:
+        type: string
+      arabicTitle:
+        type: string
+      contentType:
+        type: string
+      id:
+        type: string
+      introStart:
+        type: string
+      notes:
+        type: string
+      number:
+        type: integer
+      originalTitle:
+        type: string
+      outroStart:
+        type: string
+      savedEpisodes:
+        items:
+          type: integer
+        type: array
+      savedEpisodesAndTitles:
+        items:
+          $ref: '#/definitions/episode.SavedEpisodesAndTitles'
+        type: array
+      seasonNumber:
+        type: integer
+      synopsisArabic:
+        type: string
+      synopsisEnglish:
+        type: string
+      transliteratedTitle:
+        type: string
+      videoContentId:
+        type: string
+    type: object
+  episode.Rights:
+    properties:
+      digitalRightsEndDate:
+        type: string
+      digitalRightsRegions:
+        items:
+          type: integer
+        type: array
+      digitalRightsStartDate:
+        type: string
+      digitalRightsType:
+        type: integer
+      id:
+        type: string
+      subscriptionPlans:
+        items:
+          type: integer
+        type: array
+    type: object
+  episode.SavedEpisodesAndTitles:
+    properties:
+      number:
+        type: integer
+      transliteratedTitle:
+        type: string
+    type: object
+  episode.SeoDetails:
+    properties:
+      arabicMetaDescription:
+        type: string
+      arabicMetaTitle:
+        type: string
+      englishMetaDescription:
+        type: string
+      englishMetaTitle:
+        type: string
+    type: object
+  episode.TagInfo:
+    properties:
+      tags:
+        items:
+          type: string
+        type: array
+    type: object
+  genre.Genre:
+    properties:
+      arabic_name:
+        type: string
+      english_name:
+        type: string
+      id:
+        type: string
+    type: object
+  multitiercontent.AboutTheContent:
+    properties:
+      acquisitionDepartment:
+        type: string
+      ageGroup:
+        type: integer
+      arabicSynopsis:
+        type: string
+      englishSynopsis:
+        type: string
+      introDuration:
+        type: string
+      introStart:
+        type: string
+      originalLanguage:
+        type: string
+      outroDuration:
+        type: string
+      outroStart:
+        type: string
+      productionCountries:
+        items:
+          type: integer
+        type: array
+      productionHouse:
+        type: string
+      productionYear:
+        type: integer
+      supplier:
+        type: string
+    type: object
+  multitiercontent.Actors:
+    properties:
+      arabicname:
+        type: string
+      englishname:
+        type: string
+    type: object
+  multitiercontent.Cast:
+    properties:
+      actors:
+        items:
+          $ref: '#/definitions/multitiercontent.Actors'
+        type: array
+      directors:
+        items:
+          $ref: '#/definitions/multitiercontent.Directors'
+        type: array
+      mainActorId:
+        type: string
+      mainActressId:
+        type: string
+      writers:
+        items:
+          $ref: '#/definitions/multitiercontent.Writers'
+        type: array
+    type: object
+  multitiercontent.ContentGenres:
+    properties:
+      genreId:
+        type: string
+      id:
+        type: string
+      subgenresId:
+        items:
+          type: string
+        type: array
+    type: object
+  multitiercontent.ContentGenresrequest:
+    properties:
+      genreId:
+        type: string
+      subgenresId:
+        items:
+          type: string
+        type: array
+    type: object
+  multitiercontent.ContentVariances:
+    properties:
+      countryCheck:
+        type: boolean
+      createdBy:
+        type: string
+      digitalRightsEndDate:
+        type: string
+      digitalRightsRegions:
+        items:
+          type: integer
+        type: array
+      digitalRightsStartDate:
+        type: string
+      digitalRightsType:
+        type: integer
+      dubbingDialectId:
+        type: integer
+      dubbingLanguage:
+        type: string
+      dubbingScript:
+        type: string
+      id:
+        type: string
+      introDuration:
+        type: string
+      introStart:
+        type: string
+      languageType:
+        type: string
+      overlayPosterImage:
+        type: string
+      products:
+        items:
+          type: integer
+        type: array
+      publishingPlatforms:
+        items:
+          type: integer
+        type: array
+      schedulingDateTime:
+        type: string
+      status:
+        description: ID                     string             `json:"id"`
+        type: integer
+      statusCanBeChanged:
+        type: boolean
+      subStatusName:
+        type: string
+      subscriptionPlans:
+        items:
+          type: integer
+        type: array
+      subtitlingLanguage:
+        type: string
+      subtitlingScript:
+        type: string
+      varianceTrailers:
+        items:
+          $ref: '#/definitions/multitiercontent.VarianceTrailers'
+        type: array
+      videoContentId:
+        type: string
+    type: object
+  multitiercontent.Directors:
+    properties:
+      arabicname:
+        type: string
+      englishname:
+        type: string
+    type: object
+  multitiercontent.MainResponse:
+    properties:
+      contentGenres:
+        items:
+          $ref: '#/definitions/multitiercontent.ContentGenres'
+        type: array
+      primaryInfo:
+        $ref: '#/definitions/multitiercontent.PrimaryInfo'
+      seoDetails:
+        $ref: '#/definitions/multitiercontent.SeoDetails'
+    type: object
+  multitiercontent.Multitier:
+    properties:
+      id:
+        type: string
+      transliteratedTitle:
+        type: string
+    type: object
+  multitiercontent.Music:
+    properties:
+      musicComposers:
+        items:
+          $ref: '#/definitions/multitiercontent.MusicComposers'
+        type: array
+      singers:
+        items:
+          $ref: '#/definitions/multitiercontent.Singers'
+        type: array
+      songWriters:
+        items:
+          $ref: '#/definitions/multitiercontent.SongWriters'
+        type: array
+    type: object
+  multitiercontent.MusicComposers:
+    properties:
+      arabicname:
+        type: string
+      englishname:
+        type: string
+    type: object
+  multitiercontent.NonTextualData:
+    properties:
+      detailsBackground:
+        type: string
+      mobileDetailsBackground:
+        type: string
+      posterImage:
+        type: string
+    type: object
+  multitiercontent.OnetierContentRequest:
+    properties:
+      nonTextualData:
+        $ref: '#/definitions/multitiercontent.NonTextualData'
+      textualData:
+        $ref: '#/definitions/multitiercontent.TextualData'
+    required:
+    - nonTextualData
+    - textualData
+    type: object
+  multitiercontent.PrimaryInfo:
+    properties:
+      alternativeTitle:
+        type: string
+      arabicTitle:
+        type: string
+      contentType:
+        type: string
+      id:
+        type: string
+      introStart:
+        type: string
+      notes:
+        type: string
+      originalTitle:
+        type: string
+      outroStart:
+        type: string
+      transliteratedTitle:
+        type: string
+    type: object
+  multitiercontent.PrimaryInforequest:
+    properties:
+      alternativeTitle:
+        type: string
+      arabicTitle:
+        type: string
+      contentType:
+        type: string
+      introStart:
+        type: string
+      notes:
+        type: string
+      originalTitle:
+        type: string
+      outroStart:
+        type: string
+      transliteratedTitle:
+        type: string
+    type: object
+  multitiercontent.SeoDetails:
+    properties:
+      arabicMetaDescription:
+        type: string
+      arabicMetaTitle:
+        type: string
+      englishMetaDescription:
+        type: string
+      englishMetaTitle:
+        type: string
+    type: object
+  multitiercontent.SeoDetailsrequest:
+    properties:
+      arabicMetaDescription:
+        type: string
+      arabicMetaTitle:
+        type: string
+      englishMetaDescription:
+        type: string
+      englishMetaTitle:
+        type: string
+    type: object
+  multitiercontent.Singers:
+    properties:
+      arabicname:
+        type: string
+      englishname:
+        type: string
+    type: object
+  multitiercontent.SongWriters:
+    properties:
+      arabicname:
+        type: string
+      englishname:
+        type: string
+    type: object
+  multitiercontent.TagInfo:
+    properties:
+      tags:
+        items:
+          type: string
+        type: array
+    type: object
+  multitiercontent.TextualData:
+    properties:
+      aboutTheContent:
+        $ref: '#/definitions/multitiercontent.AboutTheContent'
+      cast:
+        $ref: '#/definitions/multitiercontent.Cast'
+      contentGenres:
+        items:
+          $ref: '#/definitions/multitiercontent.ContentGenresrequest'
+        type: array
+      contentVariances:
+        items:
+          $ref: '#/definitions/multitiercontent.ContentVariances'
+        type: array
+      music:
+        $ref: '#/definitions/multitiercontent.Music'
+      primaryInfo:
+        $ref: '#/definitions/multitiercontent.PrimaryInforequest'
+      seoDetails:
+        $ref: '#/definitions/multitiercontent.SeoDetailsrequest'
+      tagInfo:
+        $ref: '#/definitions/multitiercontent.TagInfo'
+    required:
+    - aboutTheContent
+    - cast
+    - contentGenres
+    - contentVariances
+    - music
+    - primaryInfo
+    - seoDetails
+    - tagInfo
+    type: object
+  multitiercontent.VarianceTrailers:
+    properties:
+      Id:
+        type: string
+      arabicTitle:
+        type: string
+      duration:
+        type: integer
+      englishTitle:
+        type: string
+      hasTrailerPosterImage:
+        type: boolean
+      order:
+        type: integer
+      trailerposterImage:
+        type: string
+      videoTrailerId:
+        type: string
+    type: object
+  multitiercontent.Writers:
+    properties:
+      arabicname:
+        type: string
+      englishname:
+        type: string
+    type: object
+  musiccomposer.MusicComposer:
+    properties:
+      arabicName:
+        type: string
+      englishName:
+        type: string
+    type: object
+  productname.ProductName:
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+    type: object
+  singer.Singer:
+    properties:
+      arabicName:
+        type: string
+      englishName:
+        type: string
+    type: object
+  songwriter.SongWriter:
+    properties:
+      arabicName:
+        type: string
+      englishName:
+        type: string
+    type: object
+  tags.TextualDataTag:
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+    type: object
+  writer.Writer:
+    properties:
+      arabicName:
+        type: string
+      englishName:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /api/{value}/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete Season by season id
+      parameters:
+      - description: Id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      security:
+      - Authorization: []
+      summary: Delete Season by season id
+      tags:
+      - Season
+  /api/Actors:
+    get:
+      consumes:
+      - application/json
+      description: get list of all actor's
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/actor.Actor'
+            type: array
+      security:
+      - Authorization: []
+      summary: Show a list of all actor's
+      tags:
+      - Actors
+  /api/actors:
+    put:
+      consumes:
+      - application/json
+      description: Create New Actor
+      parameters:
+      - description: Raw JSON string
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/actor.Actor'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/actor.Actor'
+            type: array
+      security:
+      - Authorization: []
+      summary: Create New Actor
+      tags:
+      - Actors
+  /api/agegroups:
+    get:
+      consumes:
+      - application/json
+      description: get agegroups
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/agegroup.AgeGroup'
+            type: array
+      security:
+      - Authorization: []
+      summary: Show agegroups
+      tags:
+      - Agegroup
+  /api/content/digitalrights/types:
+    get:
+      consumes:
+      - application/json
+      description: get list of all digital types
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/digitalRights.ContentRights'
+            type: array
+      security:
+      - Authorization: []
+      summary: Show a list of all digital types
+      tags:
+      - Digital
+  /api/content/displaystatuses:
+    get:
+      consumes:
+      - application/json
+      description: get list of all display status
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/digitalRights.DisplayStatus'
+            type: array
+      security:
+      - Authorization: []
+      summary: Show a list of all display status
+      tags:
+      - Digital
+  /api/content/productnames:
+    get:
+      consumes:
+      - application/json
+      description: get product names
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/productname.ProductName'
+            type: array
+      security:
+      - Authorization: []
+      summary: Show ProductNames
+      tags:
+      - Product Name
+  /api/contents:
+    get:
+      consumes:
+      - application/json
+      description: Get all contents by filters
+      parameters:
+      - description: Limit
+        in: query
+        name: limit
+        type: string
+      - description: Offset
+        in: query
+        name: offset
+        type: string
+      - description: Content Type
+        in: query
+        name: contentType
+        type: string
+      - description: Search Text
+        in: query
+        name: searchText
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      security:
+      - Authorization: []
+      summary: Get all contents
+      tags:
+      - Content
+  /api/contents/{value}/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: delete Delete one tier or multitier details by one tier id or multitier
+        id
+      parameters:
+      - description: Id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      security:
+      - Authorization: []
+      summary: Delete one tier or multitier details by one tier id or multitier id
+      tags:
+      - onetier or multitier
+  /api/contents/multitier/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get multitier content details by content id
+      parameters:
+      - description: Content Id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      security:
+      - Authorization: []
+      summary: Get multitier content details
+      tags:
+      - Content
+  /api/contents/multitier/{result}/{id}:
+    post:
+      consumes:
+      - application/json
+      description: Create Or Update Draft Multitier Content Details
+      parameters:
+      - description: Id
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: published or draft
+        in: path
+        name: result
+        required: true
+        type: string
+      - description: Raw JSON string
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/multitiercontent.MainResponse'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      security:
+      - Authorization: []
+      summary: Create Or Update Draft Multitier Content Details
+      tags:
+      - multitier
+  /api/contents/multitier/published/{id}:
+    post:
+      consumes:
+      - application/json
+      description: Create Or Update published Multitier Content Detail
+      parameters:
+      - description: Id
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: published or draft
+        in: path
+        name: result
+        required: true
+        type: string
+      - description: Raw JSON string
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/multitiercontent.MainResponse'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      security:
+      - Authorization: []
+      summary: Create Or Update published Multitier Content Detail
+      tags:
+      - multitier
+  /api/contents/multitier/titles:
+    get:
+      consumes:
+      - application/json
+      description: get Multitier Content With Tittles
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/multitiercontent.Multitier'
+            type: array
+      security:
+      - Authorization: []
+      summary: Show Multitier Content With Tittles
+      tags:
+      - onetier or multitier
+  /api/contents/onetier/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get One Tier Content Details Based on Content ID
+      parameters:
+      - description: Id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      security:
+      - Authorization: []
+      summary: Get One Tier Content Details Based on Content ID
+      tags:
+      - Page
+  /api/contents/onetier/{id}/status/{status}:
+    post:
+      consumes:
+      - application/json
+      description: post Update onetier or multitier status
+      parameters:
+      - description: tier
+        in: path
+        name: tier
+        required: true
+        type: string
+      - description: Id
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: status
+        in: path
+        name: status
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      security:
+      - Authorization: []
+      summary: Show Update onetier or multitier status
+      tags:
+      - onetier or multitier
+  /api/contents/onetier/{result}/{id}:
+    post:
+      consumes:
+      - application/json
+      description: Create Or Update onetier Content Details
+      parameters:
+      - description: Id
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: published or draft
+        in: path
+        name: result
+        required: true
+        type: string
+      - description: Raw JSON string
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/multitiercontent.OnetierContentRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      security:
+      - Authorization: []
+      summary: Create Or Update onetier Content Details
+      tags:
+      - onetier or multitier
+  /api/contents/onetier/draft/{id}:
+    post:
+      consumes:
+      - application/json
+      description: Create Or Update onetier Content Details
+      parameters:
+      - description: Id
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: published or draft
+        in: path
+        name: result
+        required: true
+        type: string
+      - description: Raw JSON string
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/multitiercontent.OnetierContentRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      security:
+      - Authorization: []
+      summary: Create Or Update onetier Content Details
+      tags:
+      - onetier or multitier
+  /api/contents/onetier/published:
+    post:
+      consumes:
+      - application/json
+      description: Create onetier content details
+      parameters:
+      - description: Raw JSON string
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/content.OnetierContentRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      summary: Create onetier content details
+      tags:
+      - Content
+  /api/contentvariances/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete content variances details by contentvariance id
+      parameters:
+      - description: Id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      security:
+      - Authorization: []
+      summary: Delete content variances details by contentvariance id
+      tags:
+      - contentvariance
+  /api/contentvariances/{id}/status/{status}:
+    post:
+      consumes:
+      - application/json
+      description: post Update  contentvariance status
+      parameters:
+      - description: Id
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: status
+        in: path
+        name: status
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      security:
+      - Authorization: []
+      summary: Show contentvariance status
+      tags:
+      - contentvariance
+  /api/directors:
+    get:
+      consumes:
+      - application/json
+      description: get list of all Director's
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/director.Director'
+            type: array
+      security:
+      - Authorization: []
+      summary: Show a list of all Director's
+      tags:
+      - Directors
+    put:
+      consumes:
+      - application/json
+      description: Create New Director
+      parameters:
+      - description: Raw JSON string
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/director.Director'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/director.Director'
+            type: array
+      summary: Create New Director
+      tags:
+      - Directors
+  /api/episodes:
+    get:
+      consumes:
+      - application/json
+      description: Get Episodes Based on Season ID
+      parameters:
+      - description: seasonid
+        in: path
+        name: seasonid
+        type: string
+      - description: Offset
+        in: query
+        name: offset
+        type: string
+      - description: Limit
+        in: query
+        name: limit
+        type: string
+      - description: Page
+        in: query
+        name: page
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      security:
+      - Authorization: []
+      summary: Get Episodes Based on Season ID
+      tags:
+      - Episode
+  /api/episodes/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete episode details by episode id
+      parameters:
+      - description: Id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      security:
+      - Authorization: []
+      summary: Delete episode details by episode id
+      tags:
+      - episode
+  /api/episodes/{id}/status/{status}:
+    post:
+      consumes:
+      - application/json
+      description: post Update Episode status
+      parameters:
+      - description: Id
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: status
+        in: path
+        name: status
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      security:
+      - Authorization: []
+      summary: Show Update Episode status
+      tags:
+      - episode
+  /api/episodes/draft/{id}:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Id
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Raw JSON string
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/episode.Episodes'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      security:
+      - Authorization: []
+      summary: Create or Update draft episode
+      tags:
+      - Page
+  /api/episodes/published/{id}:
+    post:
+      consumes:
+      - application/json
+      description: Create or Update episodes
+      parameters:
+      - description: Id
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Raw JSON string
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/episode.Episodes'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      security:
+      - Authorization: []
+      summary: Create or Update episodes
+      tags:
+      - Page
+  /api/genre/{genre_id}:
+    get:
+      consumes:
+      - application/json
+      description: get list of all genre
+      parameters:
+      - description: Genre Id
+        in: path
+        name: castid
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/genre.Genre'
+            type: array
+      summary: Show a list of all genre
+      tags:
+      - Genre
+  /api/genres/{genre_id}/subgenres:
+    get:
+      consumes:
+      - application/json
+      description: get list of all Sub Genere Based on Genere ID
+      parameters:
+      - description: Genre Id
+        in: path
+        name: castid
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/genre.Genre'
+            type: array
+      security:
+      - Authorization: []
+      summary: Show a list of all Sub Genere Based on Genere ID
+      tags:
+      - Genre
+  /api/musiccomposers:
+    get:
+      consumes:
+      - application/json
+      description: get list of all MusicComposer's
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/musiccomposer.MusicComposer'
+            type: array
+      security:
+      - Authorization: []
+      summary: Show a list of all MusicComposer's
+      tags:
+      - MusicComposers
+    put:
+      consumes:
+      - application/json
+      description: Create New MusicComposer
+      parameters:
+      - description: Raw JSON string
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/musiccomposer.MusicComposer'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/musiccomposer.MusicComposer'
+            type: array
+      summary: Create New MusicComposer
+      tags:
+      - MusicComposers
+  /api/seasons:
+    get:
+      consumes:
+      - application/json
+      description: Get List of Seasons from content id
+      parameters:
+      - description: Content Id
+        in: path
+        name: ContentId
+        type: string
+      - description: Offset
+        in: query
+        name: offset
+        type: string
+      - description: Limit
+        in: query
+        name: limit
+        type: string
+      - description: Page
+        in: query
+        name: page
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      security:
+      - Authorization: []
+      summary: Get List of Seasons from content id
+      tags:
+      - Season
+  /api/seasons/{id}/status/{status}:
+    post:
+      consumes:
+      - application/json
+      description: post Update Season
+      parameters:
+      - description: Id
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: status
+        in: path
+        name: status
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      security:
+      - Authorization: []
+      summary: Show Update Season
+      tags:
+      - Season
+  /api/seasons/draft/{id}:
+    post:
+      consumes:
+      - application/json
+      description: Draft season details by content id
+      parameters:
+      - description: Raw JSON string
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/content.CreateSeasonRequest'
+      - description: Id
+        in: path
+        name: id
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      security:
+      - Authorization: []
+      summary: Draft season details
+      tags:
+      - Content
+  /api/seasons/published/{id}:
+    post:
+      consumes:
+      - application/json
+      description: Create seasonVarince
+      parameters:
+      - description: Raw JSON string
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/content.CreateSeasonVarainceRequest'
+      - description: Id
+        in: path
+        name: id
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      security:
+      - Authorization: []
+      summary: Create season details
+      tags:
+      - Content
+  /api/singers:
+    get:
+      consumes:
+      - application/json
+      description: get list of all Singer's
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/singer.Singer'
+            type: array
+      security:
+      - Authorization: []
+      summary: Show a list of all Singer's
+      tags:
+      - Singers
+    put:
+      consumes:
+      - application/json
+      description: Create New Singer
+      parameters:
+      - description: Raw JSON string
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/singer.Singer'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/singer.Singer'
+            type: array
+      summary: Create New Singer
+      tags:
+      - Singers
+  /api/songwriters:
+    get:
+      consumes:
+      - application/json
+      description: get list of all SongWriter's
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/songwriter.SongWriter'
+            type: array
+      security:
+      - Authorization: []
+      summary: Show a list of all SongWriter's
+      tags:
+      - SongWriters
+    put:
+      consumes:
+      - application/json
+      description: Create New SongWriter
+      parameters:
+      - description: Raw JSON string
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/songwriter.SongWriter'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/songwriter.SongWriter'
+            type: array
+      summary: Create New SongWriter
+      tags:
+      - SongWriters
+  /api/subscription/plan:
+    get:
+      consumes:
+      - application/json
+      description: get GetSubscriptionPlan
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      security:
+      - Authorization: []
+      summary: Show GetSubscriptionPlan
+      tags:
+      - SubscriptionPlan
+  /api/textualdatatags:
+    get:
+      consumes:
+      - application/json
+      description: get list of all Tags's
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/tags.TextualDataTag'
+            type: array
+      security:
+      - Authorization: []
+      summary: Show a list of all Tags's
+      tags:
+      - Tags
+    post:
+      consumes:
+      - application/json
+      description: Create New TextualDataTag
+      parameters:
+      - description: Raw JSON string
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/tags.TextualDataTag'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/tags.TextualDataTag'
+            type: array
+      security:
+      - Authorization: []
+      summary: Create New TextualDataTag
+      tags:
+      - Tags
+  /api/viewactivities/filters:
+    get:
+      consumes:
+      - application/json
+      description: get ViewActivitiesFilters
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      summary: Show ViewActivitiesFilters
+      tags:
+      - ViewActivities
+  /api/writers:
+    get:
+      consumes:
+      - application/json
+      description: get list of all Writer's
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/writer.Writer'
+            type: array
+      security:
+      - Authorization: []
+      summary: Show a list of all Writer's
+      tags:
+      - Writers
+    put:
+      consumes:
+      - application/json
+      description: Create New Writer
+      parameters:
+      - description: Raw JSON string
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/writer.Writer'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/writer.Writer'
+            type: array
+      summary: Create New Writer
+      tags:
+      - Writers
+  /content/digitalrights/regions/all:
+    get:
+      consumes:
+      - application/json
+      description: Get digital rights regions
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      security:
+      - Authorization: []
+      summary: show list of digital rights regions
+      tags:
+      - Digital
+  /genres:
+    get:
+      consumes:
+      - application/json
+      description: get all genres list
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      security:
+      - Authorization: []
+      summary: Get all genres list
+      tags:
+      - Genre
+swagger: "2.0"

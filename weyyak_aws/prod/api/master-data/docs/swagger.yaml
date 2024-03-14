@@ -1,0 +1,382 @@
+definitions:
+  ageRatings.AgeRatings:
+    properties:
+      code:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+    type: object
+  contentType.ContentMultiTier:
+    properties:
+      arabicName:
+        type: string
+      contentType:
+        type: string
+      englishName:
+        type: string
+      id:
+        type: integer
+    type: object
+  contentType.ContentOneTier:
+    properties:
+      arabicName:
+        type: string
+      contentType:
+        type: string
+      englishName:
+        type: string
+      id:
+        type: integer
+    type: object
+  country.Country:
+    properties:
+      alpha2Code:
+        type: string
+      arabicName:
+        type: string
+      callingCode:
+        type: string
+      englishName:
+        type: string
+      id:
+        type: integer
+    type: object
+  digitalRights.DigitalRights:
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+    type: object
+  digitalRights.DisplayStatus:
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+    type: object
+  genre.Genre:
+    properties:
+      arabic_name:
+        type: string
+      english_name:
+        type: string
+      id:
+        type: string
+    type: object
+  language.LanguageDialects:
+    properties:
+      arabicName:
+        type: string
+      englishName:
+        type: string
+      id:
+        type: integer
+    type: object
+  language.LanguageDubbing:
+    properties:
+      arabicName:
+        type: string
+      code:
+        type: string
+      englishName:
+        type: string
+      id:
+        type: integer
+    type: object
+  language.LanguageOriginTypes:
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+    type: object
+  language.LanguageOriginal:
+    properties:
+      arabicName:
+        type: string
+      code:
+        type: string
+      englishName:
+        type: string
+      id:
+        type: integer
+    type: object
+  language.LanguageSubtitle:
+    properties:
+      arabicName:
+        type: string
+      code:
+        type: string
+      englishName:
+        type: string
+      id:
+        type: integer
+    type: object
+info:
+  contact: {}
+paths:
+  /api/{langcode}/countries:
+    get:
+      consumes:
+      - application/json
+      description: get list of all country's
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/country.Country'
+            type: array
+      summary: Show a list of all country's
+      tags:
+      - Country
+  /api/age-ratings/{rating_id}:
+    get:
+      consumes:
+      - application/json
+      description: get list of all Age Ratings
+      parameters:
+      - description: AgeRating Id
+        in: path
+        name: castid
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/ageRatings.AgeRatings'
+            type: array
+      summary: Show a list of all Age Ratings
+      tags:
+      - Age Ratings
+  /api/content/digitalrights/types:
+    get:
+      consumes:
+      - application/json
+      description: get list of all digital types
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/digitalRights.DigitalRights'
+            type: array
+      summary: Show a list of all digital types
+      tags:
+      - Digital
+  /api/content/displaystatuses:
+    get:
+      consumes:
+      - application/json
+      description: get list of all display status
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/digitalRights.DisplayStatus'
+            type: array
+      summary: Show a list of all display status
+      tags:
+      - Digital
+  /api/contenttypes/multitier:
+    get:
+      consumes:
+      - application/json
+      description: get list of all multi tier's data
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/contentType.ContentMultiTier'
+            type: array
+      summary: Show a list of all multi tier's data
+      tags:
+      - Content Types
+  /api/contenttypes/onetier:
+    get:
+      consumes:
+      - application/json
+      description: get list of all one tier's data
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/contentType.ContentOneTier'
+            type: array
+      summary: Show a list of all one tier's data
+      tags:
+      - Content Types
+  /api/genre/{genre_id}:
+    get:
+      consumes:
+      - application/json
+      description: get list of all genre
+      parameters:
+      - description: Genre Id
+        in: path
+        name: castid
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/genre.Genre'
+            type: array
+      summary: Show a list of all genre
+      tags:
+      - Genre
+  /api/languages/ar/dialects:
+    get:
+      consumes:
+      - application/json
+      description: get list of all Languages dialects
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/language.LanguageDialects'
+            type: array
+      summary: Show a list of all Languages dialects
+      tags:
+      - Language
+  /api/languages/dubbing:
+    get:
+      consumes:
+      - application/json
+      description: get list of all Languages dubbing
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/language.LanguageDubbing'
+            type: array
+      summary: Show a list of all Languages dubbing
+      tags:
+      - Language
+  /api/languages/original:
+    get:
+      consumes:
+      - application/json
+      description: get list of all Languages original
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/language.LanguageOriginal'
+            type: array
+      summary: Show a list of all Languages original
+      tags:
+      - Language
+  /api/languages/origintypes:
+    get:
+      consumes:
+      - application/json
+      description: get list of all Languages  origin types
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/language.LanguageOriginTypes'
+            type: array
+      summary: Show a list of all Languages  origin types
+      tags:
+      - Language
+  /api/languages/subtitling:
+    get:
+      consumes:
+      - application/json
+      description: get list of all Languages subtitle
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/language.LanguageSubtitle'
+            type: array
+      summary: Show a list of all Languages subtitle
+      tags:
+      - Language
+  /config:
+    get:
+      consumes:
+      - application/json
+      description: Get application config details
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      summary: Get application config details
+      tags:
+      - OTT
+  /v1/{lang}/contenttype:
+    get:
+      consumes:
+      - application/json
+      description: Get topmenu details list
+      parameters:
+      - description: Language Code
+        in: path
+        name: lang
+        required: true
+        type: string
+      - description: Device
+        in: query
+        name: device
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      summary: Get topmenu details list
+      tags:
+      - OTT
+swagger: "2.0"

@@ -1,0 +1,43 @@
+version: "3.5"
+
+services:
+    app: 
+        build: ./
+        container_name: app
+        environment: 
+            - SERVICE_PORT=3004
+            - DB_SERVER=weyyak-ms-api-qa-postgresql.cklc9f36hm30.ap-south-1.rds.amazonaws.com
+            - DB_PORT=5432
+            - DB_USER=weyyakadmin
+            - DB_DATABASE=wk_site_management_temp
+            - DB_PASSWORD=3hb0kQwBr9mkwC
+            - DEFAULT_PAGE_SIZE=20
+            - API_BASE_PATH=http://192.168.10.10:3002/
+            - VIDEO_API=ttps://api-weyyak.akamaized.net/get_info/
+        ports:
+            - 3004:3004
+        volumes: 
+            - ./:/app
+        networks:
+            roachdbnet:
+                aliases:
+                    - app   
+        depends_on: 
+            - db
+    
+    db:
+        container_name: db
+        image: cockroachdb/cockroach:latest
+        volumes:
+            - ./data/node_1:/cockroach/cockroach-data
+        command: start-single-node --insecure
+        ports:
+            - "5432:5432"
+            - "8080:8080"
+        networks:
+            roachdbnet:
+                aliases:
+                    - db
+networks:
+    roachdbnet:
+        driver: bridge

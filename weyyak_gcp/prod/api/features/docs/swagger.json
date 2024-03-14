@@ -1,0 +1,95 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "contact": {}
+    },
+    "paths": {
+        "/api/v1/users": {
+            "post": {
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "description": "Create competition user details",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Competition Users"
+                ],
+                "summary": "Create competition user details",
+                "parameters": [
+                    {
+                        "description": "Raw JSON string",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/competition.CompetitionUsers"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "competition.CompetitionUsers": {
+            "type": "object",
+            "required": [
+                "Alpha2code",
+                "adultConsent",
+                "ageRating",
+                "countryOfResidence",
+                "email",
+                "gender",
+                "mobile",
+                "nationality",
+                "travelConsent"
+            ],
+            "properties": {
+                "Alpha2code": {
+                    "type": "string"
+                },
+                "adultConsent": {
+                    "type": "boolean"
+                },
+                "ageRating": {
+                    "type": "string"
+                },
+                "arabicFullName": {
+                    "type": "string"
+                },
+                "countryOfResidence": {
+                    "type": "integer"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "englishFullName": {
+                    "type": "string"
+                },
+                "gender": {
+                    "type": "string"
+                },
+                "mobile": {
+                    "type": "string"
+                },
+                "nationality": {
+                    "type": "integer"
+                },
+                "travelConsent": {
+                    "type": "boolean"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,996 @@
+definitions:
+  content.AddViewActivityRequest:
+    properties:
+      content:
+        $ref: '#/definitions/content.ViewActivityRequestContent'
+      lastWatchPosition:
+        type: integer
+      watchSessionId:
+        type: string
+    type: object
+  content.Addcontent:
+    properties:
+      content:
+        $ref: '#/definitions/content.ContentRequest'
+      rating:
+        type: integer
+    type: object
+  content.ContentRequest:
+    properties:
+      contentType:
+        type: string
+      duration:
+        type: integer
+      genres:
+        items:
+          type: string
+        type: array
+      id:
+        type: integer
+      title:
+        type: string
+    type: object
+  content.PlaylistedContentRequest:
+    properties:
+      contentType:
+        type: string
+      genres:
+        items: {}
+        type: array
+      id:
+        type: integer
+      title:
+        type: string
+    type: object
+  content.ViewActivityDetailRequest:
+    properties:
+      description:
+        type: string
+      isWithCommunication:
+        type: boolean
+      isWithSound:
+        type: boolean
+      isWithTranslation:
+        type: boolean
+      isWithVideo:
+        type: boolean
+      reportedAt:
+        type: string
+      viewActivityId:
+        type: string
+    type: object
+  content.ViewActivityRequestContent:
+    properties:
+      contentType:
+        type: string
+      duration:
+        type: integer
+      genres:
+        items:
+          type: string
+        type: array
+      id:
+        type: integer
+      title:
+        type: string
+    type: object
+  menu.MenuDetails:
+    properties:
+      device:
+        type: string
+      menuType:
+        type: string
+      order:
+        type: integer
+      sliderKey:
+        type: integer
+      title:
+        type: string
+      url:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /config:
+    get:
+      consumes:
+      - application/json
+      description: get list of all country's
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      summary: Show a list of all country's
+      tags:
+      - Config
+  /countries/{langcode}:
+    get:
+      consumes:
+      - application/json
+      description: get list of countries Mobile calling Code
+      parameters:
+      - description: langcode
+        in: path
+        name: langcode
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      summary: Show all countries Mobile calling Code
+      tags:
+      - Country
+  /v1/{lang}/contents/contentTrailer:
+    get:
+      consumes:
+      - application/json
+      description: Get content trailers based on content key
+      parameters:
+      - description: Country Code
+        in: query
+        name: Country
+        type: string
+      - description: Content Type
+        in: query
+        name: contenttype
+        required: true
+        type: string
+      - description: Content Key
+        in: query
+        name: contentkey
+        required: true
+        type: integer
+      - description: Language Code
+        in: path
+        name: lang
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      summary: Get content trailer details
+      tags:
+      - Content
+  /v1/{lang}/contents/contentType:
+    get:
+      consumes:
+      - application/json
+      description: Get contents details based on content type
+      parameters:
+      - description: Language Code
+        in: path
+        name: lang
+        required: true
+        type: string
+      - description: Country Code
+        in: query
+        name: Country
+        type: string
+      - description: Row Count Per Page
+        in: query
+        name: RowCountPerPage
+        type: string
+      - description: Page No
+        in: query
+        name: pageNo
+        type: string
+      - description: Is Paging
+        in: query
+        name: IsPaging
+        type: string
+      - description: Order By
+        in: query
+        name: OrderBy
+        type: string
+      - description: Content Type
+        in: query
+        name: contentType
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      summary: Get contents by type
+      tags:
+      - Content
+  /v1/{lang}/contents/moviedetails:
+    get:
+      consumes:
+      - application/json
+      description: Get movie details based on content key
+      parameters:
+      - description: Country Code
+        in: query
+        name: Country
+        type: string
+      - description: Content Key
+        in: query
+        name: contentkey
+        required: true
+        type: string
+      - description: Language Code
+        in: path
+        name: lang
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      summary: Get movie details by content
+      tags:
+      - Content
+  /v1/{lang}/contents/plans:
+    get:
+      consumes:
+      - application/json
+      description: Get contents based on subscripti on plan id
+      parameters:
+      - description: Language Code
+        in: path
+        name: lang
+        required: true
+        type: string
+      - description: Country Code
+        in: query
+        name: Country
+        type: string
+      - description: Limit
+        in: query
+        name: limit
+        type: string
+      - description: Offset
+        in: query
+        name: offset
+        type: string
+      - description: Plan Id
+        in: query
+        name: plan
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      summary: Get contents by plan
+      tags:
+      - Content
+  /v1/{lang}/contenttype:
+    get:
+      consumes:
+      - application/json
+      description: get list of all topmenu list
+      parameters:
+      - description: Language
+        in: query
+        name: lang
+        required: true
+        type: string
+      - description: Device
+        in: query
+        name: device
+        required: true
+        type: string
+      - description: Limit
+        in: query
+        name: limit
+        type: string
+      - description: Offset
+        in: query
+        name: offset
+        type: string
+      - description: Page
+        in: query
+        name: page
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/menu.MenuDetails'
+            type: array
+      summary: Show a list of topmenu's
+      tags:
+      - Menu
+  /v1/{lang}/episode/{episode_key}:
+    get:
+      consumes:
+      - application/json
+      description: Get episode details based on episode key
+      parameters:
+      - description: Episode Key
+        in: path
+        name: episode_key
+        required: true
+        type: string
+      - description: Country Code
+        in: query
+        name: country
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      summary: Get episode details based on episode key
+      tags:
+      - Content
+  /v1/{lang}/mediaobject/{ids}:
+    get:
+      consumes:
+      - application/json
+      description: Get content rating details based on content key
+      parameters:
+      - description: Language Code
+        in: path
+        name: lang
+        required: true
+        type: string
+      - description: Mediaobject Ids
+        in: path
+        name: ids
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      summary: Get content rating details
+      tags:
+      - Content
+  /v1/{lang}/menu:
+    get:
+      consumes:
+      - application/json
+      description: Get side menu pages details
+      parameters:
+      - description: Language Code
+        in: path
+        name: lang
+        required: true
+        type: string
+      - description: Limit
+        in: query
+        name: limit
+        type: string
+      - description: Offset
+        in: query
+        name: offset
+        type: string
+      - description: Device
+        in: query
+        name: device
+        required: true
+        type: string
+      - description: Country
+        in: query
+        name: country
+        type: string
+      - description: Cascade
+        in: query
+        name: cascade
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      summary: Get side menu pages details
+      tags:
+      - Menu
+  /v1/{lang}/menu/{pagekey}:
+    get:
+      consumes:
+      - application/json
+      description: Get Menu Details By Page Id
+      parameters:
+      - description: Page Key
+        in: path
+        name: pagekey
+        required: true
+        type: string
+      - description: Language Code
+        in: path
+        name: lang
+        required: true
+        type: string
+      - description: Country
+        in: query
+        name: country
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            type: object
+      summary: Get Menu Details By Page Id
+      tags:
+      - Menu
+  /v1/{lang}/playlist/{playlistkey}:
+    get:
+      consumes:
+      - application/json
+      description: Get Playlist Details By Playlist Id
+      parameters:
+      - description: Playlist Key
+        in: path
+        name: playlistkey
+        required: true
+        type: string
+      - description: Language Code
+        in: path
+        name: lang
+        required: true
+        type: string
+      - description: Country
+        in: query
+        name: country
+        type: string
+      - description: Cascade
+        in: query
+        name: cascade
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            type: object
+      summary: Get Playlist Details By Playlist Id
+      tags:
+      - Content
+  /v1/{lang}/related:
+    get:
+      consumes:
+      - application/json
+      description: Get related contents based on content key
+      parameters:
+      - description: Content Key
+        in: query
+        name: id
+        required: true
+        type: string
+      - description: Country Code
+        in: query
+        name: country
+        type: string
+      - description: Limit
+        in: query
+        name: size
+        type: string
+      - description: Query string
+        in: query
+        name: q
+        type: string
+      - description: Language Code
+        in: path
+        name: lang
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      summary: Get related contents
+      tags:
+      - Content
+  /v1/{lang}/search:
+    get:
+      consumes:
+      - application/json
+      description: Get movie details based on content key
+      parameters:
+      - description: Country Code
+        in: query
+        name: country
+        required: true
+        type: string
+      - description: Q string
+        in: query
+        name: q
+        required: true
+        type: string
+      - description: Language Code
+        in: path
+        name: lang
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      summary: Get movie details by content
+      tags:
+      - Content
+  /v1/{lang}/searchbyCast:
+    get:
+      consumes:
+      - application/json
+      description: Get movie details based on search by cast
+      parameters:
+      - description: Country Code
+        in: query
+        name: country
+        required: true
+        type: string
+      - description: q string
+        in: query
+        name: q
+        required: true
+        type: string
+      - description: Language Code
+        in: path
+        name: lang
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      summary: Get movie details by content
+      tags:
+      - Content
+  /v1/{lang}/searchbyGenre:
+    get:
+      consumes:
+      - application/json
+      description: Get content details based on by genre
+      parameters:
+      - description: Country Code
+        in: query
+        name: country
+        required: true
+        type: string
+      - description: q string
+        in: query
+        name: q
+        required: true
+        type: string
+      - description: Language Code
+        in: path
+        name: lang
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      summary: Get content details by genre
+      tags:
+      - Content
+  /v1/{lang}/series:
+    get:
+      consumes:
+      - application/json
+      description: Get seasons based on content key
+      parameters:
+      - description: Country Code
+        in: query
+        name: country
+        type: string
+      - description: Content Key
+        in: query
+        name: contentkey
+        required: true
+        type: string
+      - description: Language Code
+        in: path
+        name: lang
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      summary: Get seasons by content
+      tags:
+      - Content
+  /v1/contents/{ckeyctype}:
+    get:
+      consumes:
+      - application/json
+      description: Get content rating details based on content key
+      parameters:
+      - description: ContentKey,ContentType
+        in: path
+        name: ckeyctype
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      security:
+      - Authorization: []
+      summary: Get content rating details
+      tags:
+      - Content
+  /v1/contents/playlist:
+    get:
+      consumes:
+      - application/json
+      description: Get all user playlists by user id
+      parameters:
+      - description: Limit
+        in: query
+        name: limit
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      security:
+      - Authorization: []
+      summary: Get all user playlists
+      tags:
+      - User
+    post:
+      consumes:
+      - application/json
+      description: Add contents into user playlist
+      parameters:
+      - description: Raw JSON string
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/content.PlaylistedContentRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      security:
+      - Authorization: []
+      summary: Add contents into user playlist
+      tags:
+      - User
+  /v1/contents/playlist/{ckeyctype}:
+    delete:
+      consumes:
+      - application/json
+      description: Remove contents to user playlist
+      parameters:
+      - description: ContentKey,ContentType
+        in: path
+        name: ckeyctype
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      security:
+      - Authorization: []
+      summary: Remove contents to user playlist
+      tags:
+      - User
+  /v1/contents/rated:
+    get:
+      consumes:
+      - application/json
+      description: Get all user rated contents by user id
+      parameters:
+      - description: Limit
+        in: query
+        name: limit
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      security:
+      - Authorization: []
+      summary: Get all rated contents
+      tags:
+      - User
+    post:
+      consumes:
+      - application/json
+      description: Add Rating for content by user
+      parameters:
+      - description: Raw JSON string
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/content.Addcontent'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      security:
+      - Authorization: []
+      summary: Add Rating for content by user
+      tags:
+      - User
+  /v1/contents/rated/{ckeyctype}:
+    delete:
+      consumes:
+      - application/json
+      description: Remove Rating by user
+      parameters:
+      - description: ContentKey,ContentType
+        in: path
+        name: ckeyctype
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      security:
+      - Authorization: []
+      summary: Remove Rating by user
+      tags:
+      - User
+  /v1/contents/resumable:
+    get:
+      consumes:
+      - application/json
+      description: Get all continue watching contents by user id
+      parameters:
+      - description: Limit
+        in: query
+        name: limit
+        type: string
+      - description: Offset
+        in: query
+        name: offset
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      security:
+      - Authorization: []
+      summary: Get all resumble contents
+      tags:
+      - User
+  /v1/contents/watching:
+    get:
+      consumes:
+      - application/json
+      description: Get all watching contents by user id
+      parameters:
+      - description: Limit
+        in: query
+        name: limit
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      security:
+      - Authorization: []
+      summary: Get all watching contents
+      tags:
+      - User
+    post:
+      consumes:
+      - application/json
+      description: Add watching contents into history by user id
+      parameters:
+      - description: Raw JSON string
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/content.AddViewActivityRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      security:
+      - Authorization: []
+      summary: Add watching contents into history
+      tags:
+      - User
+  /v1/contents/watching/{ckeyctype}:
+    delete:
+      consumes:
+      - application/json
+      description: Remove watching contents to user watch history
+      parameters:
+      - description: ContentKey,ContentType
+        in: path
+        name: ckeyctype
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      security:
+      - Authorization: []
+      summary: Remove watching contents to user watch history
+      tags:
+      - User
+  /v1/contents/watching/{ckeyctype}/issues:
+    post:
+      consumes:
+      - application/json
+      description: Report content issue by user
+      parameters:
+      - description: ContentKey,ContentType
+        in: path
+        name: ckeyctype
+        required: true
+        type: string
+      - description: Raw JSON string
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/content.ViewActivityDetailRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      security:
+      - Authorization: []
+      summary: Report content issue by user
+      tags:
+      - User
+securityDefinitions:
+  Authorization:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"

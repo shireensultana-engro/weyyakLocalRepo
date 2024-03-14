@@ -1,0 +1,22 @@
+export LOG_FILE=./logs/server.log
+export GIN_MODE=debug
+export DB_LOG_MODE=true
+export SERVICE_PORT=3003
+export DB_SERVER=weyyak-ms-api-qa-postgresql.cklc9f36hm30.ap-south-1.rds.amazonaws.com
+export DB_PORT=5432
+export DB_USER=weyyakadmin 
+export DB_DATABASE=wk_frontend
+export CONTENT_DB_DATABASE=wyk_content
+export FRONTEND_CONFIG_DB_DATABASE=wyk_frontend_config
+export USER_DB_DATABASE=wk_user_management
+export DB_PASSWORD=3hb0kQwBr9mkwC
+export DEFAULT_PAGE_SIZE=20
+export API_BASE_PATH=http://192.168.10.10:3002/
+export CMS=https://apiqa.wyk.z5.com/v1/
+export UM=https://apiqa.wyk.z5.com/v1/
+export IMAGES=https://contents-uat.weyyak.z5.com/
+export GEO_LOCATION=https://geo.weyyak1.z5.com
+export VIDEO_API=https://api-weyyak.akamaized.net/get_info/
+export AD_TAG_URL=https://s3.ap-south-1.amazonaws.com/z5xml/mobile_apps_ads_ios.xml
+export BASE_URL=https://apiqa.wyk.z5.com/v1/
+go run *.go

@@ -1,0 +1,1192 @@
+definitions:
+  contentType.ContentMultitierTypes:
+    properties:
+      arabicName:
+        type: string
+      contentType:
+        type: string
+      englishName:
+        type: string
+      id:
+        type: integer
+    type: object
+  contentType.ContentOnetierTypes:
+    properties:
+      arabicName:
+        type: string
+      contentType:
+        type: string
+      englishName:
+        type: string
+      id:
+        type: integer
+    type: object
+  country.Country:
+    properties:
+      alpha2Code:
+        type: string
+      arabicName:
+        type: string
+      callingCode:
+        type: string
+      englishName:
+        type: string
+      id:
+        type: integer
+      regionId:
+        type: string
+    type: object
+  language.Language:
+    properties:
+      arabicName:
+        type: string
+      code:
+        type: string
+      englishName:
+        type: string
+      id:
+        type: integer
+    type: object
+  language.LanguageAvailable:
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+    type: object
+  language.LanguageDialect:
+    properties:
+      arabicName:
+        type: string
+      englishName:
+        type: string
+      id:
+        type: integer
+    type: object
+  language.LanguageDubbing:
+    properties:
+      arabicName:
+        type: string
+      code:
+        type: string
+      englishName:
+        type: string
+      id:
+        type: integer
+    type: object
+  language.LanguageOriginType:
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+    type: object
+  language.LanguageSubtitles:
+    properties:
+      arabicName:
+        type: string
+      code:
+        type: string
+      englishName:
+        type: string
+      id:
+        type: integer
+    type: object
+  page.FinalResponse:
+    properties:
+      id:
+        type: string
+      publishingPlatformOrderedDetails:
+        $ref: '#/definitions/page.Response'
+    type: object
+  page.NonTextualData:
+    properties:
+      menuPosterImage:
+        type: string
+      mobileMenu:
+        type: string
+      mobileMenuPosterImage:
+        type: string
+    type: object
+  page.PageAvailability:
+    properties:
+      isDisabled:
+        type: boolean
+    required:
+    - isDisabled
+    type: object
+  page.PageRequest:
+    properties:
+      arabicMetaDescription:
+        type: string
+      arabicMetaTitle:
+        type: string
+      arabicPageFriendlyUrl:
+        type: string
+      arabicTitle:
+        type: string
+      defaultSliderId:
+        items:
+          type: string
+        type: array
+      englishMetaDescription:
+        type: string
+      englishMetaTitle:
+        type: string
+      englishPageFriendlyUrl:
+        type: string
+      englishTitle:
+        type: string
+      isHome:
+        type: boolean
+      nonTextualData:
+        $ref: '#/definitions/page.NonTextualData'
+      pageOrderNumber:
+        type: integer
+      playlistsIds:
+        items:
+          type: string
+        type: array
+      publishingPlatforms:
+        items:
+          type: integer
+        type: array
+      regions:
+        items:
+          type: integer
+        type: array
+      slidersIds:
+        items:
+          type: string
+        type: array
+    type: object
+  page.PageResponse:
+    properties:
+      englishTitle:
+        type: string
+      isHome:
+        type: boolean
+      pageId:
+        type: string
+      pageOrderNumber:
+        type: integer
+    type: object
+  page.Response:
+    properties:
+      "0":
+        items:
+          $ref: '#/definitions/page.PageResponse'
+        type: array
+      "1":
+        items:
+          $ref: '#/definitions/page.PageResponse'
+        type: array
+      "2":
+        items:
+          $ref: '#/definitions/page.PageResponse'
+        type: array
+      "3":
+        items:
+          $ref: '#/definitions/page.PageResponse'
+        type: array
+      "4":
+        items:
+          $ref: '#/definitions/page.PageResponse'
+        type: array
+      "5":
+        items:
+          $ref: '#/definitions/page.PageResponse'
+        type: array
+      "6":
+        items:
+          $ref: '#/definitions/page.PageResponse'
+        type: array
+      "7":
+        items:
+          $ref: '#/definitions/page.PageResponse'
+        type: array
+      "9":
+        items:
+          $ref: '#/definitions/page.PageResponse'
+        type: array
+      "10":
+        items:
+          $ref: '#/definitions/page.PageResponse'
+        type: array
+    type: object
+  playlist.PlaylistDisable:
+    properties:
+      id:
+        type: string
+      isDisabled:
+        type: boolean
+    type: object
+  slider.CreateUpdateSliderRequest:
+    properties:
+      blackAreaPlaylistId:
+        type: string
+      greenAreaPlaylistId:
+        type: string
+      name:
+        type: string
+      pagesIds:
+        items:
+          type: string
+        type: array
+      publishingPlatforms:
+        items:
+          type: integer
+        type: array
+      redAreaPlaylistId:
+        type: string
+      regions:
+        items:
+          type: integer
+        type: array
+      schedulingEndDate:
+        type: string
+      schedulingStartDate:
+        type: string
+      type:
+        type: integer
+    type: object
+  slider.SliderUpdate:
+    properties:
+      isDisabled:
+        type: boolean
+    required:
+    - isDisabled
+    type: object
+info:
+  contact: {}
+paths:
+  /api/{langcode}/countries:
+    get:
+      consumes:
+      - application/json
+      description: get list of all country's
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/country.Country'
+            type: array
+      summary: Show a list of all country's
+      tags:
+      - Country
+  /api/contenttypes/multitier:
+    get:
+      consumes:
+      - application/json
+      description: get list of all multi tier's data
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/contentType.ContentMultitierTypes'
+            type: array
+      summary: Show a list of all multi tier's data
+      tags:
+      - Content Types
+  /api/contenttypes/onetier:
+    get:
+      consumes:
+      - application/json
+      description: get list of all one tier's data
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/contentType.ContentOnetierTypes'
+            type: array
+      summary: Show a list of all one tier's data
+      tags:
+      - Content Types
+  /api/countries:
+    get:
+      consumes:
+      - application/json
+      description: Get All countries
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/country.Country'
+            type: array
+      security:
+      - Authorization: []
+      summary: Show Get All countries
+      tags:
+      - Country
+  /api/pages:
+    get:
+      consumes:
+      - application/json
+      description: Get all pages list and pages by search text
+      parameters:
+      - description: Search Text
+        in: path
+        name: searchText
+        type: string
+      - description: Offset
+        in: query
+        name: offset
+        type: string
+      - description: Limit
+        in: query
+        name: limit
+        type: string
+      - description: Page
+        in: query
+        name: page
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      summary: Get all pages list and pages by search text
+      tags:
+      - Page
+  /api/pages/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: delete Delete Page
+      parameters:
+      - description: Id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      security:
+      - Authorization: []
+      summary: Delete page
+      tags:
+      - Page
+    get:
+      consumes:
+      - application/json
+      description: get page details by pageid
+      parameters:
+      - description: Id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      security:
+      - Authorization: []
+      summary: Show page details by pageid
+      tags:
+      - Page
+    post:
+      consumes:
+      - application/json
+      description: post  Create Or Update Page Details
+      parameters:
+      - description: Id
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Raw JSON string
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/page.PageRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      summary: Create Or Update Page Details
+      tags:
+      - Page
+  /api/pages/{id}/available:
+    post:
+      consumes:
+      - application/json
+      description: post disable or enable page
+      parameters:
+      - description: Id
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Raw JSON string
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/page.PageAvailability'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      security:
+      - Authorization: []
+      summary: Show disable or enable page
+      tags:
+      - Page
+  /api/pages/ordered:
+    post:
+      consumes:
+      - application/json
+      description: post  Update page order details
+      parameters:
+      - description: Raw JSON string
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/page.FinalResponse'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      security:
+      - Authorization: []
+      summary: Update page order details
+      tags:
+      - Page
+  /api/playlist/sourceitems/types:
+    get:
+      consumes:
+      - application/json
+      description: get list of all source item types
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      summary: Show a list of all source item types
+      tags:
+      - source
+  /api/publishingplatforms:
+    get:
+      consumes:
+      - application/json
+      description: get Publishing Platforms
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      security:
+      - Authorization: []
+      summary: Show Publishing Platforms
+      tags:
+      - Frontend
+  /api/ratings/filters:
+    get:
+      consumes:
+      - application/json
+      description: get rating filters
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      security:
+      - Authorization: []
+      summary: Show rating filters
+      tags:
+      - Frontend
+  /api/slider/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: delete Delete slider
+      parameters:
+      - description: Id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      summary: Delete slider
+      tags:
+      - Slider
+  /api/slider/previewlayouts:
+    get:
+      consumes:
+      - application/json
+      description: Get Slider Preview Layouts
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      security:
+      - Authorization: []
+      summary: Show Slider Preview Layouts
+      tags:
+      - Slider
+  /api/slider/types:
+    get:
+      consumes:
+      - application/json
+      description: get list of all slider types
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      summary: Show a list of all slidertypes
+      tags:
+      - Slider
+  /api/sliders/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get Slider details by slider id
+      parameters:
+      - description: Slider Id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      security:
+      - Authorization: []
+      summary: Get  slider details
+      tags:
+      - Slider
+    post:
+      consumes:
+      - application/json
+      description: Create and Update slider details
+      parameters:
+      - description: Id
+        in: path
+        name: id
+        type: string
+      - description: Raw JSON string
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/slider.CreateUpdateSliderRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      security:
+      - Authorization: []
+      summary: Create and Update slider details
+      tags:
+      - Slider
+  /api/sliders/{id}/available:
+    post:
+      consumes:
+      - application/json
+      description: post disable or enable slider
+      parameters:
+      - description: Id
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Raw JSON string
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/slider.SliderUpdate'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      security:
+      - Authorization: []
+      summary: Show disable or enable slider
+      tags:
+      - Slider
+  /api/sliders/notifications:
+    get:
+      consumes:
+      - application/json
+      description: Get Slider Notifications details
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      security:
+      - Authorization: []
+      summary: Get Slider Notifications
+      tags:
+      - Slider
+  /api/sliders/summary:
+    get:
+      consumes:
+      - application/json
+      description: Get Sliders based on search in page
+      parameters:
+      - description: SearchText
+        in: path
+        name: searchText
+        type: string
+      - description: Offset
+        in: query
+        name: offset
+        type: string
+      - description: Limit
+        in: query
+        name: limit
+        type: string
+      - description: Page
+        in: query
+        name: page
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      security:
+      - Authorization: []
+      summary: Get Sliders based on search in page
+      tags:
+      - slider
+  /config:
+    get:
+      consumes:
+      - application/json
+      description: get list of all country's
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      summary: Show a list of all country's
+      tags:
+      - Config
+  /content/digitalrights/regions/all:
+    get:
+      consumes:
+      - application/json
+      description: Get digital rights regions
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      security:
+      - Authorization: []
+      summary: show list of digital rights regions
+      tags:
+      - Digital
+  /countries/{langcode}:
+    get:
+      consumes:
+      - application/json
+      description: get list of countries Mobile calling Code
+      parameters:
+      - description: langcode
+        in: path
+        name: langcode
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      summary: Show all countries Mobile calling Code
+      tags:
+      - Country
+  /languages/:
+    get:
+      consumes:
+      - application/json
+      description: get list of all Languages available
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/language.LanguageAvailable'
+            type: array
+      summary: Show a list of all Languages available
+      tags:
+      - Language
+  /languages/ar/dialects:
+    get:
+      consumes:
+      - application/json
+      description: get list of all Languages dialects
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/language.LanguageDialect'
+            type: array
+      summary: Show a list of all Languages dialects
+      tags:
+      - Language
+  /languages/dubbing:
+    get:
+      consumes:
+      - application/json
+      description: get list of all Languages dubbing
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/language.LanguageDubbing'
+            type: array
+      summary: Show a list of all Languages dubbing
+      tags:
+      - Language
+  /languages/original:
+    get:
+      consumes:
+      - application/json
+      description: get list of all Languages original
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/language.Language'
+            type: array
+      summary: Show a list of all Languages original
+      tags:
+      - Language
+  /languages/origintypes:
+    get:
+      consumes:
+      - application/json
+      description: get list of all Languages  origin types
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/language.LanguageOriginType'
+            type: array
+      summary: Show a list of all Languages  origin types
+      tags:
+      - Language
+  /languages/subtitling:
+    get:
+      consumes:
+      - application/json
+      description: get list of all Languages subtitle
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/language.LanguageSubtitles'
+            type: array
+      summary: Show a list of all Languages subtitle
+      tags:
+      - Language
+  /pages/ordered:
+    get:
+      consumes:
+      - application/json
+      description: get page order details
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      summary: Show page order details
+      tags:
+      - Frontend
+  /pages/summary/:
+    get:
+      consumes:
+      - application/json
+      description: Get Pages List By Search Text
+      parameters:
+      - description: Search Text
+        in: path
+        name: searchText
+        type: string
+      - description: Offset
+        in: query
+        name: offset
+        type: string
+      - description: Limit
+        in: query
+        name: limit
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      summary: Get Pages List By Search Text
+      tags:
+      - Page
+  /playlist/{Id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete playlist by playlist_id
+      parameters:
+      - description: playlist Id
+        in: path
+        name: Id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      summary: Delete playlist by playlist_id
+      tags:
+      - Playlist
+  /playlist/sourceitems/:
+    get:
+      consumes:
+      - application/json
+      description: Get Source items BySource Fields
+      parameters:
+      - description: Search Text
+        in: path
+        name: searchText
+        type: string
+      - description: search Filter
+        in: path
+        name: searchFilter
+        type: integer
+      - description: Offset
+        in: query
+        name: offset
+        type: string
+      - description: Limit
+        in: query
+        name: limit
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      summary: Get Source items BySource Fields
+      tags:
+      - Playlist
+  /playlist/sourceitems/searchfilters:
+    get:
+      consumes:
+      - application/json
+      description: Get Search filters for playlists
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      summary: Get Search filters for playlists
+      tags:
+      - Playlist
+  /playlists/:
+    get:
+      consumes:
+      - application/json
+      description: Get all playlist and playlists by search text
+      parameters:
+      - description: Search Text
+        in: path
+        name: searchText
+        type: string
+      - description: Offset
+        in: query
+        name: offset
+        type: string
+      - description: Limit
+        in: query
+        name: limit
+        type: string
+      - description: Page
+        in: query
+        name: page
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      summary: Get all playlist and playlists by search text
+      tags:
+      - Playlist
+  /playlists/{Id}/available:
+    post:
+      consumes:
+      - application/json
+      description: Disable Playlist By Playlist Id
+      parameters:
+      - description: playlist Id
+        in: path
+        name: Id
+        required: true
+        type: string
+      - description: Raw JSON string
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/playlist.PlaylistDisable'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      summary: Disable Playlist By Playlist Id
+      tags:
+      - User
+  /playlists/{playlist_id}:
+    get:
+      consumes:
+      - application/json
+      description: Get Playlist Details By Playlist Id
+      parameters:
+      - description: Limit
+        in: query
+        name: limit
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      security:
+      - Authorization: []
+      summary: Get Playlist Details By Playlist Id
+      tags:
+      - Playlist
+  /playlists/summary/:
+    get:
+      consumes:
+      - application/json
+      description: Get Playlists Based On Search In Page
+      parameters:
+      - description: Search Text
+        in: path
+        name: searchText
+        type: string
+      - description: Offset
+        in: query
+        name: offset
+        type: string
+      - description: Limit
+        in: query
+        name: limit
+        type: string
+      - description: Page
+        in: query
+        name: page
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      summary: Get Playlists Based On Search In Page
+      tags:
+      - Playlist
+  /sliders/:
+    get:
+      consumes:
+      - application/json
+      description: Get Slider List
+      parameters:
+      - description: Search Text
+        in: path
+        name: searchText
+        type: string
+      - description: Offset
+        in: query
+        name: offset
+        type: string
+      - description: Limit
+        in: query
+        name: limit
+        type: string
+      - description: Page
+        in: query
+        name: page
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: object
+            type: array
+      summary: Get Slider List
+      tags:
+      - slider
+swagger: "2.0"

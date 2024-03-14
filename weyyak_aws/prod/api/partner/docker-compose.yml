@@ -1,0 +1,41 @@
+version: "3.5"
+
+services:
+    app: 
+        build: ./
+        container_name: app
+        environment: 
+            - SERVICE_PORT=3001
+            - DB_SERVER=13.126.220.134
+            - DB_PORT=26257
+            - DB_USER=api_testing
+            - DB_DATABASE=wk_read_only
+            - DB_PASSWORD=strongpassword
+            - DEFAULT_PAGE_SIZE=20
+        ports:
+            - 3001:3001
+        volumes: 
+            - ./:/app
+        networks:
+            roachdbnet:
+                aliases:
+                    - app   
+        # depends_on: 
+        #     - db
+    
+    db:
+        container_name: db
+        image: cockroachdb/cockroach:latest
+        volumes:
+            - ./data/node_1:/cockroach/cockroach-data
+        command: start-single-node --insecure
+        ports:
+            - "26257:26257"
+            - "8080:8080"
+        networks:
+            roachdbnet:
+                aliases:
+                    - db
+networks:
+    roachdbnet:
+        driver: bridge

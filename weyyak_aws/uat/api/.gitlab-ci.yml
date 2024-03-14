@@ -1,0 +1,17 @@
+stages:
+  - scan
+  - cleanup
+
+scan:
+  stage: scan
+  environment:
+    name: scan
+  script:
+    - /home/gitlabtest/sonar-scanner-4.5.0.2216-linux/bin/sonar-scanner -Dsonar.verbose=false -Dsonar.projectKey=weyyak-ms-go-api-uat -Dsonar.host.url=http://10.33.83.42:9000 -Dsonar.login=$SONAR_USERNAME -Dsonar.password=$SONAR_PASSWORD
+    - sleep 20
+cleanup:
+  stage: cleanup
+  script:
+    - echo "Cleaning up"
+    - rm -rf "%CACHE_PATH%/%CI_PIPELINE_ID%"
+  when: always

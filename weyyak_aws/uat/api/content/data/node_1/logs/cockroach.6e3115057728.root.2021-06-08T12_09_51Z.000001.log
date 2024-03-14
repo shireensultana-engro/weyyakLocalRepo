@@ -1,0 +1,446 @@
+I210608 12:09:51.918562 1 util/log/file_sync_buffer.go:238 ⋮ [config]   file created at: 2021/06/08 12:09:51
+I210608 12:09:51.918578 1 util/log/file_sync_buffer.go:238 ⋮ [config]   running on machine: ‹6e3115057728›
+I210608 12:09:51.918588 1 util/log/file_sync_buffer.go:238 ⋮ [config]   binary: CockroachDB CCL v21.1.1 (x86_64-unknown-linux-gnu, built 2021/05/24 14:56:43, go1.15.11)
+I210608 12:09:51.918598 1 util/log/file_sync_buffer.go:238 ⋮ [config]   arguments: ‹[/cockroach/cockroach start-single-node --insecure]›
+I210608 12:09:51.918610 1 util/log/file_sync_buffer.go:238 ⋮ [config]   line format: [IWEF]yymmdd hh:mm:ss.uuuuuu goid file:line msg utf8=✓
+W210608 12:09:51.918420 1 1@cli/start.go:992 ⋮ [-] 1  ALL SECURITY CONTROLS HAVE BEEN DISABLED!
+W210608 12:09:51.918420 1 1@cli/start.go:992 ⋮ [-] 1 +
+W210608 12:09:51.918420 1 1@cli/start.go:992 ⋮ [-] 1 +This mode is intended for non-production testing only.
+W210608 12:09:51.918420 1 1@cli/start.go:992 ⋮ [-] 1 +
+W210608 12:09:51.918420 1 1@cli/start.go:992 ⋮ [-] 1 +In this mode:
+W210608 12:09:51.918420 1 1@cli/start.go:992 ⋮ [-] 1 +- Your cluster is open to any client that can access ‹any of your IP addresses›.
+W210608 12:09:51.918420 1 1@cli/start.go:992 ⋮ [-] 1 +- Intruders with access to your machine or network can observe client-server traffic.
+W210608 12:09:51.918420 1 1@cli/start.go:992 ⋮ [-] 1 +- Intruders can log in without password and read or write any data in the cluster.
+W210608 12:09:51.918420 1 1@cli/start.go:992 ⋮ [-] 1 +- Intruders can consume all your server's resources and cause unavailability.
+I210608 12:09:51.918677 1 1@cli/start.go:1002 ⋮ [-] 2  To start a secure server without mandating TLS for clients,
+I210608 12:09:51.918677 1 1@cli/start.go:1002 ⋮ [-] 2 +consider --accept-sql-without-tls instead. For other options, see:
+I210608 12:09:51.918677 1 1@cli/start.go:1002 ⋮ [-] 2 +
+I210608 12:09:51.918677 1 1@cli/start.go:1002 ⋮ [-] 2 +- ‹https://go.crdb.dev/issue-v/53404/v21.1›
+I210608 12:09:51.918677 1 1@cli/start.go:1002 ⋮ [-] 2 +- https://www.cockroachlabs.com/docs/v21.1/secure-a-cluster.html
+I210608 12:09:51.919240 1 server/status/recorder.go:628 ⋮ [-] 3  ‹available memory from cgroups (8.0 EiB) is unsupported, using system memory 15 GiB instead:›
+W210608 12:09:51.921569 1 1@cli/start.go:958 ⋮ [-] 4  ‹Using the default setting for --cache (128 MiB).›
+W210608 12:09:51.921569 1 1@cli/start.go:958 ⋮ [-] 4 +‹  A significantly larger value is usually needed for good performance.›
+W210608 12:09:51.921569 1 1@cli/start.go:958 ⋮ [-] 4 +‹  If you have a dedicated server a reasonable setting is --cache=.25 (3.9 GiB).›
+I210608 12:09:51.924403 1 server/status/recorder.go:628 ⋮ [-] 5  ‹available memory from cgroups (8.0 EiB) is unsupported, using system memory 15 GiB instead:›
+I210608 12:09:51.924414 1 1@cli/start.go:1031 ⋮ [-] 6  ‹CockroachDB CCL v21.1.1 (x86_64-unknown-linux-gnu, built 2021/05/24 14:56:43, go1.15.11)›
+I210608 12:09:51.924924 1 server/status/recorder.go:628 ⋮ [-] 7  ‹available memory from cgroups (8.0 EiB) is unsupported, using system memory 15 GiB instead:›
+I210608 12:09:51.924935 1 server/config.go:431 ⋮ [-] 8  system total memory: ‹15 GiB›
+I210608 12:09:51.924947 1 server/config.go:433 ⋮ [-] 9  server configuration:
+I210608 12:09:51.924947 1 server/config.go:433 ⋮ [-] 9 +‹max offset             500000000›
+I210608 12:09:51.924947 1 server/config.go:433 ⋮ [-] 9 +‹cache size             128 MiB›
+I210608 12:09:51.924947 1 server/config.go:433 ⋮ [-] 9 +‹SQL memory pool size   3.9 GiB›
+I210608 12:09:51.924947 1 server/config.go:433 ⋮ [-] 9 +‹scan interval          10m0s›
+I210608 12:09:51.924947 1 server/config.go:433 ⋮ [-] 9 +‹scan min idle time     10ms›
+I210608 12:09:51.924947 1 server/config.go:433 ⋮ [-] 9 +‹scan max idle time     1s›
+I210608 12:09:51.924947 1 server/config.go:433 ⋮ [-] 9 +‹event log enabled      true›
+I210608 12:09:51.924983 1 1@cli/start.go:936 ⋮ [-] 10  using local environment variables: ‹COCKROACH_CHANNEL=official-docker›
+I210608 12:09:51.924993 1 1@cli/start.go:943 ⋮ [-] 11  process identity: ‹uid 0 euid 0 gid 0 egid 0›
+I210608 12:09:51.928447 1 1@cli/start.go:1111 ⋮ [-] 12  GEOS loaded from directory ‹/usr/local/lib/cockroach›
+I210608 12:09:51.928485 1 1@cli/start.go:510 ⋮ [-] 13  starting cockroach node
+W210608 12:09:51.929864 26 server/config_unix.go:112 ⋮ [-] 14  soft open file descriptor limit 4096 is under the recommended limit 15000; this may decrease performance
+W210608 12:09:51.929864 26 server/config_unix.go:112 ⋮ [-] 14 +‹please see https://www.cockroachlabs.com/docs/v21.1/recommended-production-settings.html for more details›
+I210608 12:09:51.999273 26 server/config.go:568 ⋮ [n?] 15  1 storage engine‹› initialized
+I210608 12:09:51.999352 26 server/config.go:571 ⋮ [n?] 16  ‹Pebble cache size: 128 MiB›
+I210608 12:09:51.999404 26 server/config.go:571 ⋮ [n?] 17  ‹store 0: RocksDB, max size 0 B, max open file limit 3840›
+I210608 12:09:52.069518 26 1@server/server.go:913 ⋮ [n?] 18  monitoring forward clock jumps based on server.clock.forward_jump_check_enabled
+I210608 12:09:52.080680 59 1@server/server.go:1552 ⋮ [n?] 19  connecting to gossip network to verify cluster ID ‹"a78d35cb-b840-43ae-ba0e-bf1b443ec0f4"›
+W210608 12:09:52.080680 26 1@cli/start.go:911 ⋮ [-] 20  neither --listen-addr nor --advertise-addr was specified.
+W210608 12:09:52.080680 26 1@cli/start.go:911 ⋮ [-] 20 +The server will advertise ‹"6e3115057728"› to other nodes, is this routable?
+W210608 12:09:52.080680 26 1@cli/start.go:911 ⋮ [-] 20 +
+W210608 12:09:52.080680 26 1@cli/start.go:911 ⋮ [-] 20 +Consider using:
+W210608 12:09:52.080680 26 1@cli/start.go:911 ⋮ [-] 20 +- for local-only servers:  --listen-addr=localhost
+W210608 12:09:52.080680 26 1@cli/start.go:911 ⋮ [-] 20 +- for multi-node clusters: --advertise-addr=<host/IP addr>
+I210608 12:09:52.103683 26 gossip/gossip.go:402 ⋮ [n1] 21  NodeDescriptor set to ‹node_id:1 address:<network_field:"tcp" address_field:"6e3115057728:26257" > attrs:<> locality:<> ServerVersion:<major_val:21 minor_val:1 patch:0 internal:0 > build_tag:"v21.1.1" started_at:1623154192103672742 cluster_name:"" sql_address:<network_field:"tcp" address_field:"6e3115057728:26257" >›
+I210608 12:09:52.104048 63 kv/kvserver/closedts/provider/provider.go:135 ⋮ [ct-closer] 22  disabling legacy closed-timestamp mechanism; the new one is enabled
+I210608 12:09:52.114272 26 server/node.go:388 ⋮ [n1] 23  initialized store s1
+I210608 12:09:52.114382 59 1@server/server.go:1555 ⋮ [n1] 24  node connected via gossip
+I210608 12:09:52.114331 26 kv/kvserver/stores.go:250 ⋮ [n1] 26  read 0 node addresses from persistent storage
+W210608 12:09:52.114312 233 kv/kvserver/replica_range_lease.go:611 ⋮ [n1,s1,r6/1:‹/Table/{SystemCon…-11}›] 25  can't determine lease status of (n1,s1):1 due to node liveness error: liveness record not found in cache
+W210608 12:09:52.114312 233 kv/kvserver/replica_range_lease.go:611 ⋮ [n1,s1,r6/1:‹/Table/{SystemCon…-11}›] 25 +(1) attached stack trace
+W210608 12:09:52.114312 233 kv/kvserver/replica_range_lease.go:611 ⋮ [n1,s1,r6/1:‹/Table/{SystemCon…-11}›] 25 +  -- stack trace:
+W210608 12:09:52.114312 233 kv/kvserver/replica_range_lease.go:611 ⋮ [n1,s1,r6/1:‹/Table/{SystemCon…-11}›] 25 +  | github.com/cockroachdb/cockroach/pkg/kv/kvserver/liveness.init
+W210608 12:09:52.114312 233 kv/kvserver/replica_range_lease.go:611 ⋮ [n1,s1,r6/1:‹/Table/{SystemCon…-11}›] 25 +  | 	/go/src/github.com/cockroachdb/cockroach/pkg/kv/kvserver/liveness/liveness.go:52
+W210608 12:09:52.114312 233 kv/kvserver/replica_range_lease.go:611 ⋮ [n1,s1,r6/1:‹/Table/{SystemCon…-11}›] 25 +  | runtime.doInit
+W210608 12:09:52.114312 233 kv/kvserver/replica_range_lease.go:611 ⋮ [n1,s1,r6/1:‹/Table/{SystemCon…-11}›] 25 +  | 	/usr/local/go/src/runtime/proc.go:5652
+W210608 12:09:52.114312 233 kv/kvserver/replica_range_lease.go:611 ⋮ [n1,s1,r6/1:‹/Table/{SystemCon…-11}›] 25 +  | runtime.doInit
+W210608 12:09:52.114312 233 kv/kvserver/replica_range_lease.go:611 ⋮ [n1,s1,r6/1:‹/Table/{SystemCon…-11}›] 25 +  | 	/usr/local/go/src/runtime/proc.go:5647
+W210608 12:09:52.114312 233 kv/kvserver/replica_range_lease.go:611 ⋮ [n1,s1,r6/1:‹/Table/{SystemCon…-11}›] 25 +  | runtime.doInit
+W210608 12:09:52.114312 233 kv/kvserver/replica_range_lease.go:611 ⋮ [n1,s1,r6/1:‹/Table/{SystemCon…-11}›] 25 +  | 	/usr/local/go/src/runtime/proc.go:5647
+W210608 12:09:52.114312 233 kv/kvserver/replica_range_lease.go:611 ⋮ [n1,s1,r6/1:‹/Table/{SystemCon…-11}›] 25 +  | runtime.doInit
+W210608 12:09:52.114312 233 kv/kvserver/replica_range_lease.go:611 ⋮ [n1,s1,r6/1:‹/Table/{SystemCon…-11}›] 25 +  | 	/usr/local/go/src/runtime/proc.go:5647
+W210608 12:09:52.114312 233 kv/kvserver/replica_range_lease.go:611 ⋮ [n1,s1,r6/1:‹/Table/{SystemCon…-11}›] 25 +  | runtime.doInit
+W210608 12:09:52.114312 233 kv/kvserver/replica_range_lease.go:611 ⋮ [n1,s1,r6/1:‹/Table/{SystemCon…-11}›] 25 +  | 	/usr/local/go/src/runtime/proc.go:5647
+W210608 12:09:52.114312 233 kv/kvserver/replica_range_lease.go:611 ⋮ [n1,s1,r6/1:‹/Table/{SystemCon…-11}›] 25 +  | runtime.doInit
+W210608 12:09:52.114312 233 kv/kvserver/replica_range_lease.go:611 ⋮ [n1,s1,r6/1:‹/Table/{SystemCon…-11}›] 25 +  | 	/usr/local/go/src/runtime/proc.go:5647
+W210608 12:09:52.114312 233 kv/kvserver/replica_range_lease.go:611 ⋮ [n1,s1,r6/1:‹/Table/{SystemCon…-11}›] 25 +  | runtime.main
+W210608 12:09:52.114312 233 kv/kvserver/replica_range_lease.go:611 ⋮ [n1,s1,r6/1:‹/Table/{SystemCon…-11}›] 25 +  | 	/usr/local/go/src/runtime/proc.go:191
+W210608 12:09:52.114312 233 kv/kvserver/replica_range_lease.go:611 ⋮ [n1,s1,r6/1:‹/Table/{SystemCon…-11}›] 25 +  | runtime.goexit
+W210608 12:09:52.114312 233 kv/kvserver/replica_range_lease.go:611 ⋮ [n1,s1,r6/1:‹/Table/{SystemCon…-11}›] 25 +  | 	/usr/local/go/src/runtime/asm_amd64.s:1374
+W210608 12:09:52.114312 233 kv/kvserver/replica_range_lease.go:611 ⋮ [n1,s1,r6/1:‹/Table/{SystemCon…-11}›] 25 +Wraps: (2) liveness record not found in cache
+W210608 12:09:52.114312 233 kv/kvserver/replica_range_lease.go:611 ⋮ [n1,s1,r6/1:‹/Table/{SystemCon…-11}›] 25 +Error types: (1) *withstack.withStack (2) *errutil.leafError
+W210608 12:09:52.114562 233 kv/kvserver/store.go:1689 ⋮ [n1,s1,r6/1:‹/Table/{SystemCon…-11}›] 27  could not gossip system config: ‹[NotLeaseHolderError] lease state couldn't be determined; r6: replica (n1,s1):1 not lease holder; lease holder unknown›
+W210608 12:09:52.114562 233 kv/kvserver/store.go:1689 ⋮ [n1,s1,r6/1:‹/Table/{SystemCon…-11}›] 27 +(1) ‹[NotLeaseHolderError] lease state couldn't be determined; r6: replica (n1,s1):1 not lease holder; lease holder unknown›
+W210608 12:09:52.114562 233 kv/kvserver/store.go:1689 ⋮ [n1,s1,r6/1:‹/Table/{SystemCon…-11}›] 27 +Error types: (1) *roachpb.NotLeaseHolderError
+I210608 12:09:52.119980 26 server/node.go:465 ⋮ [n1] 28  started with engine type ‹2›
+I210608 12:09:52.120036 26 server/node.go:467 ⋮ [n1] 29  started with attributes ‹[]›
+I210608 12:09:52.120087 26 server/goroutinedumper/goroutinedumper.go:120 ⋮ [n1] 30  writing goroutine dumps to ‹/cockroach/cockroach-data/logs/goroutine_dump›
+I210608 12:09:52.120109 26 server/heapprofiler/heapprofiler.go:49 ⋮ [n1] 31  writing go heap profiles to ‹/cockroach/cockroach-data/logs/heap_profiler› at least every 1h0m0s
+I210608 12:09:52.120126 26 server/heapprofiler/cgoprofiler.go:53 ⋮ [n1] 32  to enable jmalloc profiling: "export MALLOC_CONF=prof:true" or "ln -s prof:true /etc/malloc.conf"
+I210608 12:09:52.120146 26 server/heapprofiler/statsprofiler.go:54 ⋮ [n1] 33  writing memory stats to ‹/cockroach/cockroach-data/logs/heap_profiler› at last every 1h0m0s
+I210608 12:09:52.120172 26 1@server/server.go:1682 ⋮ [n1] 34  starting http server at ‹[::]:8080› (use: ‹6e3115057728:8080›)
+I210608 12:09:52.120208 26 1@server/server.go:1689 ⋮ [n1] 35  starting grpc/postgres server at ‹[::]:26257›
+I210608 12:09:52.120231 26 1@server/server.go:1690 ⋮ [n1] 36  advertising CockroachDB node at ‹6e3115057728:26257›
+I210608 12:09:52.193606 264 kv/kvserver/liveness/liveness.go:713 ⋮ [n1,liveness-hb] 37  heartbeat failed on epoch increment; retrying
+I210608 12:09:52.229101 26 1@util/log/event_log.go:32 ⋮ [n1] 38 ={"Timestamp":1623154192229099932,"EventType":"node_restart","NodeID":1,"StartedAt":1623154192103672742,"LastUp":1623154169620238364}
+I210608 12:09:52.231355 26 sql/sqlliveness/slinstance/slinstance.go:252 ⋮ [n1] 39  starting SQL liveness instance
+I210608 12:09:52.231431 533 sql/temporary_schema.go:492 ⋮ [n1] 40  running temporary object cleanup background job
+I210608 12:09:52.231764 26 server/server_sql.go:843 ⋮ [n1] 41  done ensuring all necessary startup migrations have run
+I210608 12:09:52.231849 26 1@server/server.go:2083 ⋮ [n1] 42  serving sql connections
+I210608 12:09:52.231930 26 1@cli/start.go:676 ⋮ [config] 43  clusterID: ‹a78d35cb-b840-43ae-ba0e-bf1b443ec0f4›
+I210608 12:09:52.231946 26 1@cli/start.go:676 ⋮ [config] 44  nodeID: n1
+I210608 12:09:52.231973 26 1@cli/start.go:686 ⋮ [-] 45  node startup completed:
+I210608 12:09:52.231973 26 1@cli/start.go:686 ⋮ [-] 45 +CockroachDB node starting at 2021-06-08 12:09:52.231868085 +0000 UTC (took 0.3s)
+I210608 12:09:52.231973 26 1@cli/start.go:686 ⋮ [-] 45 +build:               CCL v21.1.1 @ 2021/05/24 14:56:43 (go1.15.11)
+I210608 12:09:52.231973 26 1@cli/start.go:686 ⋮ [-] 45 +webui:               ‹http://6e3115057728:8080›
+I210608 12:09:52.231973 26 1@cli/start.go:686 ⋮ [-] 45 +sql:                 ‹postgresql://root@6e3115057728:26257?sslmode=disable›
+I210608 12:09:52.231973 26 1@cli/start.go:686 ⋮ [-] 45 +RPC client flags:    ‹/cockroach/cockroach <client cmd> --host=6e3115057728:26257 --insecure›
+I210608 12:09:52.231973 26 1@cli/start.go:686 ⋮ [-] 45 +logs:                ‹/cockroach/cockroach-data/logs›
+I210608 12:09:52.231973 26 1@cli/start.go:686 ⋮ [-] 45 +temp dir:            ‹/cockroach/cockroach-data/cockroach-temp291569496›
+I210608 12:09:52.231973 26 1@cli/start.go:686 ⋮ [-] 45 +external I/O path:   ‹/cockroach/cockroach-data/extern›
+I210608 12:09:52.231973 26 1@cli/start.go:686 ⋮ [-] 45 +store[0]:            ‹path=/cockroach/cockroach-data›
+I210608 12:09:52.231973 26 1@cli/start.go:686 ⋮ [-] 45 +storage engine:      pebble
+I210608 12:09:52.231973 26 1@cli/start.go:686 ⋮ [-] 45 +status:              restarted pre-existing node
+I210608 12:09:52.231973 26 1@cli/start.go:686 ⋮ [-] 45 +clusterID:           ‹a78d35cb-b840-43ae-ba0e-bf1b443ec0f4›
+I210608 12:09:52.231973 26 1@cli/start.go:686 ⋮ [-] 45 +nodeID:              1
+I210608 12:09:52.233190 549 jobs/job_scheduler.go:360 ⋮ [n1] 46  waiting 2m0s before scheduled jobs daemon start
+I210608 12:09:52.247053 551 server/auto_upgrade.go:52 ⋮ [n1] 47  failed attempt to upgrade cluster version, error: no live nodes found
+I210608 12:09:52.265526 533 sql/temporary_schema.go:527 ⋮ [n1] 48  found 0 temporary schemas
+I210608 12:09:52.265564 533 sql/temporary_schema.go:530 ⋮ [n1] 49  early exiting temporary schema cleaner as no temporary schemas were found
+I210608 12:09:52.265580 533 sql/temporary_schema.go:531 ⋮ [n1] 50  completed temporary object cleanup job
+I210608 12:09:52.265593 533 sql/temporary_schema.go:610 ⋮ [n1] 51  temporary object cleaner next scheduled to run at 2021-06-08 12:39:52.231330973 +0000 UTC
+I210608 12:09:52.286499 544 sql/sqlliveness/slstorage/slstorage.go:352 ⋮ [n1] 52  inserted sqlliveness session ‹7671342d3a6c4fcb92ead15819a744ad›
+I210608 12:09:52.286580 544 sql/sqlliveness/slinstance/slinstance.go:144 ⋮ [n1] 53  created new SQL liveness session ‹7671342d3a6c4fcb92ead15819a744ad›
+I210608 12:09:52.293263 531 1@util/log/event_log.go:32 ⋮ [n1] 54 ={"Timestamp":1623154192229099932,"EventType":"node_restart","NodeID":1,"StartedAt":1623154192103672742,"LastUp":1623154169620238364}
+I210608 12:09:53.422792 551 server/auto_upgrade.go:55 ⋮ [n1] 55  no need to upgrade, cluster already at the newest version
+I210608 12:09:54.030202 62 1@gossip/gossip.go:1505 ⋮ [n1] 56  node has connected to cluster via gossip
+I210608 12:09:54.036242 62 kv/kvserver/stores.go:269 ⋮ [n1] 57  wrote 0 node addresses to persistent storage
+I210608 12:10:02.121597 262 2@server/status/runtime.go:569 ⋮ [n1] 58  runtime stats: 143 MiB RSS, 208 goroutines (stacks: 3.1 MiB), 39 MiB/57 MiB Go alloc/total (heap fragmentation: 4.5 MiB, heap reserved: 544 KiB, heap released: 17 MiB), 12 MiB/20 MiB CGO alloc/total (0.0 CGO/sec), 0.0/0.0 %(u/s)time, 0.0 %gc (0x), 46 KiB/64 KiB (r/w)net
+I210608 12:10:12.121283 258 kv/kvserver/store.go:2662 ⋮ [n1,s1] 59  
+I210608 12:10:12.121283 258 kv/kvserver/store.go:2662 ⋮ [n1,s1] 59 +__level_____count____size___score______in__ingest(sz_cnt)____move(sz_cnt)___write(sz_cnt)____read___r-amp___w-amp
+I210608 12:10:12.121283 258 kv/kvserver/store.go:2662 ⋮ [n1,s1] 59 +    WAL         2   578 K       -   576 K       -       -       -       -   578 K       -       -       -     1.0
+I210608 12:10:12.121283 258 kv/kvserver/store.go:2662 ⋮ [n1,s1] 59 +      0         0     0 B    0.00     0 B     0 B       0     0 B       0     0 B       0     0 B       0     0.0
+I210608 12:10:12.121283 258 kv/kvserver/store.go:2662 ⋮ [n1,s1] 59 +      1         0     0 B    0.00     0 B     0 B       0     0 B       0     0 B       0     0 B       0     0.0
+I210608 12:10:12.121283 258 kv/kvserver/store.go:2662 ⋮ [n1,s1] 59 +      2         0     0 B    0.00     0 B     0 B       0     0 B       0     0 B       0     0 B       0     0.0
+I210608 12:10:12.121283 258 kv/kvserver/store.go:2662 ⋮ [n1,s1] 59 +      3         0     0 B    0.00     0 B     0 B       0     0 B       0     0 B       0     0 B       0     0.0
+I210608 12:10:12.121283 258 kv/kvserver/store.go:2662 ⋮ [n1,s1] 59 +      4         0     0 B    0.00     0 B     0 B       0     0 B       0     0 B       0     0 B       0     0.0
+I210608 12:10:12.121283 258 kv/kvserver/store.go:2662 ⋮ [n1,s1] 59 +      5         0     0 B    0.00     0 B     0 B       0     0 B       0     0 B       0     0 B       0     0.0
+I210608 12:10:12.121283 258 kv/kvserver/store.go:2662 ⋮ [n1,s1] 59 +      6         1   1.5 M       -   136 K     0 B       0     0 B       0   1.5 M       1   1.6 M       1    11.2
+I210608 12:10:12.121283 258 kv/kvserver/store.go:2662 ⋮ [n1,s1] 59 +  total         1   1.5 M       -   578 K     0 B       0     0 B       0   2.0 M       1   1.6 M       1     3.6
+I210608 12:10:12.121283 258 kv/kvserver/store.go:2662 ⋮ [n1,s1] 59 +  flush         0
+I210608 12:10:12.121283 258 kv/kvserver/store.go:2662 ⋮ [n1,s1] 59 +compact         1     0 B           136 K  (size == estimated-debt, in = in-progress-bytes)
+I210608 12:10:12.121283 258 kv/kvserver/store.go:2662 ⋮ [n1,s1] 59 + memtbl         2   4.3 M
+I210608 12:10:12.121283 258 kv/kvserver/store.go:2662 ⋮ [n1,s1] 59 +zmemtbl         0     0 B
+I210608 12:10:12.121283 258 kv/kvserver/store.go:2662 ⋮ [n1,s1] 59 +   ztbl         0     0 B
+I210608 12:10:12.121283 258 kv/kvserver/store.go:2662 ⋮ [n1,s1] 59 + bcache        70   2.2 M   92.1%  (score == hit-rate)
+I210608 12:10:12.121283 258 kv/kvserver/store.go:2662 ⋮ [n1,s1] 59 + tcache         1   616 B   99.8%  (score == hit-rate)
+I210608 12:10:12.121283 258 kv/kvserver/store.go:2662 ⋮ [n1,s1] 59 + titers         0
+I210608 12:10:12.121283 258 kv/kvserver/store.go:2662 ⋮ [n1,s1] 59 + filter         -       -   83.3%  (score == utility)
+I210608 12:10:12.121431 262 2@server/status/runtime.go:569 ⋮ [n1] 60  runtime stats: 147 MiB RSS, 208 goroutines (stacks: 3.1 MiB), 40 MiB/61 MiB Go alloc/total (heap fragmentation: 5.8 MiB, heap reserved: 3.3 MiB, heap released: 12 MiB), 12 MiB/20 MiB CGO alloc/total (0.1 CGO/sec), 10.1/2.3 %(u/s)time, 0.0 %gc (0x), 10 KiB/6.8 KiB (r/w)net
+I210608 12:10:22.121472 262 2@server/status/runtime.go:569 ⋮ [n1] 61  runtime stats: 152 MiB RSS, 207 goroutines (stacks: 3.1 MiB), 33 MiB/66 MiB Go alloc/total (heap fragmentation: 5.7 MiB, heap reserved: 15 MiB, heap released: 7.0 MiB), 12 MiB/20 MiB CGO alloc/total (0.1 CGO/sec), 7.8/2.6 %(u/s)time, 0.0 %gc (0x), 12 KiB/9.0 KiB (r/w)net
+I210608 12:10:22.236356 547 jobs/adopt.go:65 ⋮ [-] 62  claimed 10 jobs
+I210608 12:10:22.270705 1129 jobs/adopt.go:152 ⋮ [-] 65  job ‹665448247412326401›: resuming execution
+I210608 12:10:22.270713 1126 jobs/adopt.go:152 ⋮ [-] 64  job ‹665448247089725441›: resuming execution
+I210608 12:10:22.270728 1125 jobs/adopt.go:152 ⋮ [-] 66  job ‹665448246727933953›: resuming execution
+I210608 12:10:22.270739 1127 jobs/adopt.go:152 ⋮ [-] 67  job ‹665448247273062401›: resuming execution
+I210608 12:10:22.270755 1130 jobs/adopt.go:152 ⋮ [-] 68  job ‹665448246848913409›: resuming execution
+I210608 12:10:22.270753 1128 jobs/adopt.go:152 ⋮ [-] 69  job ‹665448247340302337›: resuming execution
+I210608 12:10:22.270765 1132 jobs/adopt.go:152 ⋮ [-] 70  job ‹665448246908878849›: resuming execution
+I210608 12:10:22.271270 1133 jobs/adopt.go:152 ⋮ [-] 71  job ‹665448247059873793›: resuming execution
+I210608 12:10:22.271516 1131 jobs/adopt.go:152 ⋮ [-] 72  job ‹665448246877945857›: resuming execution
+I210608 12:10:22.270689 1134 jobs/adopt.go:152 ⋮ [-] 63  job ‹665448247149658113›: resuming execution
+I210608 12:10:22.274379 1150 jobs/registry.go:1175 ⋮ [n1] 75  SCHEMA CHANGE GC job ‹665448246877945857›: stepping through state running with error: <nil>
+I210608 12:10:22.274379 1241 jobs/registry.go:1175 ⋮ [n1] 74  SCHEMA CHANGE GC job ‹665448246908878849›: stepping through state running with error: <nil>
+I210608 12:10:22.274397 1137 jobs/registry.go:1175 ⋮ [n1] 73  SCHEMA CHANGE GC job ‹665448247273062401›: stepping through state running with error: <nil>
+I210608 12:10:22.274433 1185 jobs/registry.go:1175 ⋮ [n1] 76  SCHEMA CHANGE GC job ‹665448246848913409›: stepping through state running with error: <nil>
+I210608 12:10:22.274484 1197 jobs/registry.go:1175 ⋮ [n1] 77  SCHEMA CHANGE GC job ‹665448247340302337›: stepping through state running with error: <nil>
+I210608 12:10:22.274656 1268 jobs/registry.go:1175 ⋮ [n1] 78  SCHEMA CHANGE GC job ‹665448247149658113›: stepping through state running with error: <nil>
+I210608 12:10:22.274720 1167 jobs/registry.go:1175 ⋮ [n1] 79  SCHEMA CHANGE GC job ‹665448247412326401›: stepping through state running with error: <nil>
+I210608 12:10:22.274380 1166 jobs/registry.go:1175 ⋮ [n1] 80  SCHEMA CHANGE GC job ‹665448246727933953›: stepping through state running with error: <nil>
+I210608 12:10:22.276949 1199 jobs/registry.go:1175 ⋮ [n1] 81  SCHEMA CHANGE GC job ‹665448247089725441›: stepping through state running with error: <nil>
+I210608 12:10:22.274381 1184 jobs/registry.go:1175 ⋮ [n1] 82  SCHEMA CHANGE GC job ‹665448247059873793›: stepping through state running with error: <nil>
+I210608 12:10:32.121516 262 2@server/status/runtime.go:569 ⋮ [n1] 83  runtime stats: 158 MiB RSS, 218 goroutines (stacks: 3.3 MiB), 31 MiB/66 MiB Go alloc/total (heap fragmentation: 8.7 MiB, heap reserved: 14 MiB, heap released: 7.0 MiB), 12 MiB/20 MiB CGO alloc/total (0.5 CGO/sec), 7.7/4.6 %(u/s)time, 0.0 %gc (0x), 11 KiB/7.8 KiB (r/w)net
+I210608 12:10:42.121706 262 2@server/status/runtime.go:569 ⋮ [n1] 84  runtime stats: 159 MiB RSS, 226 goroutines (stacks: 3.6 MiB), 43 MiB/68 MiB Go alloc/total (heap fragmentation: 6.1 MiB, heap reserved: 5.9 MiB, heap released: 5.7 MiB), 12 MiB/20 MiB CGO alloc/total (0.1 CGO/sec), 6.1/3.9 %(u/s)time, 0.0 %gc (0x), 9.8 KiB/6.3 KiB (r/w)net
+I210608 12:10:52.121190 259 2@gossip/gossip.go:567 ⋮ [n1] 85  gossip status (ok, 1 node‹›)
+I210608 12:10:52.121190 259 2@gossip/gossip.go:567 ⋮ [n1] 85 +gossip client (0/3 cur/max conns)
+I210608 12:10:52.121190 259 2@gossip/gossip.go:567 ⋮ [n1] 85 +gossip server (0/3 cur/max conns, infos 0/0 sent/received, bytes 0B/0B sent/received)
+I210608 12:10:52.121190 259 2@gossip/gossip.go:567 ⋮ [n1] 85 +gossip connectivity
+I210608 12:10:52.121190 259 2@gossip/gossip.go:567 ⋮ [n1] 85 +  n1 [sentinel];
+I210608 12:10:52.124193 262 2@server/status/runtime.go:569 ⋮ [n1] 86  runtime stats: 162 MiB RSS, 219 goroutines (stacks: 3.4 MiB), 34 MiB/70 MiB Go alloc/total (heap fragmentation: 7.2 MiB, heap reserved: 16 MiB, heap released: 3.0 MiB), 12 MiB/20 MiB CGO alloc/total (0.1 CGO/sec), 7.4/2.8 %(u/s)time, 0.0 %gc (0x), 10 KiB/7.4 KiB (r/w)net
+I210608 12:10:52.281191 547 jobs/adopt.go:65 ⋮ [-] 87  claimed 10 jobs
+I210608 12:10:52.311061 1878 jobs/adopt.go:152 ⋮ [-] 89  job ‹665447983113568257›: resuming execution
+I210608 12:10:52.311045 1881 jobs/adopt.go:152 ⋮ [-] 90  job ‹665447982988820481›: resuming execution
+I210608 12:10:52.311083 1883 jobs/adopt.go:152 ⋮ [-] 91  job ‹665447983209709569›: resuming execution
+I210608 12:10:52.311109 1885 jobs/adopt.go:152 ⋮ [-] 92  job ‹665448246699196417›: resuming execution
+I210608 12:10:52.311103 1884 jobs/adopt.go:152 ⋮ [-] 93  job ‹665447983364702209›: resuming execution
+I210608 12:10:52.311133 1877 jobs/adopt.go:152 ⋮ [-] 94  job ‹665447983269249025›: resuming execution
+I210608 12:10:52.311146 1882 jobs/adopt.go:152 ⋮ [-] 95  job ‹665448246699261953›: resuming execution
+I210608 12:10:52.311514 1879 jobs/adopt.go:152 ⋮ [-] 96  job ‹665447983209676801›: resuming execution
+I210608 12:10:52.311039 1886 jobs/adopt.go:152 ⋮ [-] 88  job ‹665447983060156417›: resuming execution
+I210608 12:10:52.313142 1880 jobs/adopt.go:152 ⋮ [-] 97  job ‹665447983427977217›: resuming execution
+I210608 12:10:52.313759 1872 jobs/registry.go:1175 ⋮ [n1] 98  SCHEMA CHANGE GC job ‹665447983060156417›: stepping through state running with error: <nil>
+I210608 12:10:52.313792 1891 jobs/registry.go:1175 ⋮ [n1] 100  SCHEMA CHANGE GC job ‹665447983113568257›: stepping through state running with error: <nil>
+I210608 12:10:52.313959 1888 jobs/registry.go:1175 ⋮ [n1] 101  SCHEMA CHANGE GC job ‹665447983209676801›: stepping through state running with error: <nil>
+I210608 12:10:52.314083 1740 jobs/registry.go:1175 ⋮ [n1] 102  SCHEMA CHANGE GC job ‹665448246699196417›: stepping through state running with error: <nil>
+I210608 12:10:52.314509 1742 jobs/registry.go:1175 ⋮ [n1] 103  SCHEMA CHANGE GC job ‹665448246699261953›: stepping through state running with error: <nil>
+I210608 12:10:52.315011 1907 jobs/registry.go:1175 ⋮ [n1] 104  SCHEMA CHANGE GC job ‹665447982988820481›: stepping through state running with error: <nil>
+I210608 12:10:52.315286 1848 jobs/registry.go:1175 ⋮ [n1] 105  SCHEMA CHANGE GC job ‹665447983427977217›: stepping through state running with error: <nil>
+I210608 12:10:52.315631 1830 jobs/registry.go:1175 ⋮ [n1] 106  SCHEMA CHANGE GC job ‹665447983209709569›: stepping through state running with error: <nil>
+I210608 12:10:52.313784 1829 jobs/registry.go:1175 ⋮ [n1] 99  SCHEMA CHANGE GC job ‹665447983269249025›: stepping through state running with error: <nil>
+I210608 12:10:52.316242 1893 jobs/registry.go:1175 ⋮ [n1] 107  SCHEMA CHANGE GC job ‹665447983364702209›: stepping through state running with error: <nil>
+I210608 12:11:02.121733 262 2@server/status/runtime.go:569 ⋮ [n1] 108  runtime stats: 166 MiB RSS, 227 goroutines (stacks: 3.5 MiB), 44 MiB/76 MiB Go alloc/total (heap fragmentation: 5.3 MiB, heap reserved: 12 MiB, heap released: 63 MiB), 12 MiB/20 MiB CGO alloc/total (0.9 CGO/sec), 11.8/1.0 %(u/s)time, 0.0 %gc (0x), 9.3 KiB/6.9 KiB (r/w)net
+I210608 12:11:12.122082 262 2@server/status/runtime.go:569 ⋮ [n1] 109  runtime stats: 167 MiB RSS, 228 goroutines (stacks: 3.5 MiB), 36 MiB/77 MiB Go alloc/total (heap fragmentation: 7.9 MiB, heap reserved: 18 MiB, heap released: 63 MiB), 12 MiB/20 MiB CGO alloc/total (0.1 CGO/sec), 7.1/4.1 %(u/s)time, 0.0 %gc (0x), 9.5 KiB/7.0 KiB (r/w)net
+I210608 12:11:22.122064 262 2@server/status/runtime.go:569 ⋮ [n1] 110  runtime stats: 169 MiB RSS, 227 goroutines (stacks: 3.5 MiB), 49 MiB/77 MiB Go alloc/total (heap fragmentation: 5.6 MiB, heap reserved: 7.2 MiB, heap released: 63 MiB), 12 MiB/20 MiB CGO alloc/total (0.1 CGO/sec), 7.0/4.4 %(u/s)time, 0.0 %gc (0x), 10 KiB/8.4 KiB (r/w)net
+I210608 12:11:22.319557 547 jobs/adopt.go:65 ⋮ [-] 111  claimed 10 jobs
+I210608 12:11:22.335828 2525 jobs/adopt.go:152 ⋮ [-] 112  job ‹665447778396635137›: resuming execution
+I210608 12:11:22.335870 2522 jobs/adopt.go:152 ⋮ [-] 114  job ‹665447778911125505›: resuming execution
+I210608 12:11:22.335862 2520 jobs/adopt.go:152 ⋮ [-] 113  job ‹665447778909913089›: resuming execution
+I210608 12:11:22.335881 2521 jobs/adopt.go:152 ⋮ [-] 115  job ‹665447778463678465›: resuming execution
+I210608 12:11:22.335898 2517 jobs/adopt.go:152 ⋮ [-] 116  job ‹665447779009626113›: resuming execution
+I210608 12:11:22.335935 2516 jobs/adopt.go:152 ⋮ [-] 117  job ‹665447778816917505›: resuming execution
+I210608 12:11:22.335944 2523 jobs/adopt.go:152 ⋮ [-] 118  job ‹665447778935504897›: resuming execution
+I210608 12:11:22.335949 2524 jobs/adopt.go:152 ⋮ [-] 119  job ‹665447778526003201›: resuming execution
+I210608 12:11:22.336439 2518 jobs/adopt.go:152 ⋮ [-] 120  job ‹665447778463449089›: resuming execution
+I210608 12:11:22.337212 2519 jobs/adopt.go:152 ⋮ [-] 121  job ‹665447778591309825›: resuming execution
+I210608 12:11:22.338676 2462 jobs/registry.go:1175 ⋮ [n1] 123  SCHEMA CHANGE GC job ‹665447778816917505›: stepping through state running with error: <nil>
+I210608 12:11:22.338706 2497 jobs/registry.go:1175 ⋮ [n1] 124  SCHEMA CHANGE GC job ‹665447778591309825›: stepping through state running with error: <nil>
+I210608 12:11:22.338797 2330 jobs/registry.go:1175 ⋮ [n1] 126  SCHEMA CHANGE GC job ‹665447778911125505›: stepping through state running with error: <nil>
+I210608 12:11:22.338797 2502 jobs/registry.go:1175 ⋮ [n1] 125  SCHEMA CHANGE GC job ‹665447779009626113›: stepping through state running with error: <nil>
+I210608 12:11:22.338819 2431 jobs/registry.go:1175 ⋮ [n1] 127  SCHEMA CHANGE GC job ‹665447778526003201›: stepping through state running with error: <nil>
+I210608 12:11:22.338941 2532 jobs/registry.go:1175 ⋮ [n1] 128  SCHEMA CHANGE GC job ‹665447778935504897›: stepping through state running with error: <nil>
+I210608 12:11:22.339973 2528 jobs/registry.go:1175 ⋮ [n1] 129  SCHEMA CHANGE GC job ‹665447778463449089›: stepping through state running with error: <nil>
+I210608 12:11:22.340017 2504 jobs/registry.go:1175 ⋮ [n1] 130  SCHEMA CHANGE GC job ‹665447778463678465›: stepping through state running with error: <nil>
+I210608 12:11:22.338674 2531 jobs/registry.go:1175 ⋮ [n1] 122  SCHEMA CHANGE GC job ‹665447778909913089›: stepping through state running with error: <nil>
+I210608 12:11:22.340613 2547 jobs/registry.go:1175 ⋮ [n1] 131  SCHEMA CHANGE GC job ‹665447778396635137›: stepping through state running with error: <nil>
+I210608 12:11:32.122048 262 2@server/status/runtime.go:569 ⋮ [n1] 132  runtime stats: 169 MiB RSS, 238 goroutines (stacks: 4.0 MiB), 44 MiB/78 MiB Go alloc/total (heap fragmentation: 5.1 MiB, heap reserved: 13 MiB, heap released: 62 MiB), 12 MiB/20 MiB CGO alloc/total (0.1 CGO/sec), 9.9/2.6 %(u/s)time, 0.0 %gc (0x), 12 KiB/9.0 KiB (r/w)net
+I210608 12:11:42.122059 262 2@server/status/runtime.go:569 ⋮ [n1] 133  runtime stats: 170 MiB RSS, 238 goroutines (stacks: 3.5 MiB), 33 MiB/73 MiB Go alloc/total (heap fragmentation: 9.7 MiB, heap reserved: 16 MiB, heap released: 66 MiB), 12 MiB/20 MiB CGO alloc/total (0.1 CGO/sec), 8.4/3.6 %(u/s)time, 0.0 %gc (0x), 8.4 KiB/5.7 KiB (r/w)net
+I210608 12:11:52.121201 259 2@gossip/gossip.go:567 ⋮ [n1] 134  gossip status (ok, 1 node‹›)
+I210608 12:11:52.121201 259 2@gossip/gossip.go:567 ⋮ [n1] 134 +gossip client (0/3 cur/max conns)
+I210608 12:11:52.121201 259 2@gossip/gossip.go:567 ⋮ [n1] 134 +gossip server (0/3 cur/max conns, infos 0/0 sent/received, bytes 0B/0B sent/received)
+I210608 12:11:52.122697 262 2@server/status/runtime.go:569 ⋮ [n1] 135  runtime stats: 171 MiB RSS, 239 goroutines (stacks: 3.9 MiB), 46 MiB/74 MiB Go alloc/total (heap fragmentation: 6.6 MiB, heap reserved: 6.4 MiB, heap released: 65 MiB), 12 MiB/20 MiB CGO alloc/total (0.1 CGO/sec), 8.6/5.3 %(u/s)time, 0.0 %gc (0x), 9.1 KiB/5.9 KiB (r/w)net
+I210608 12:11:52.346274 547 jobs/adopt.go:65 ⋮ [-] 136  claimed 10 jobs
+I210608 12:11:52.363884 3006 jobs/adopt.go:152 ⋮ [-] 139  job ‹665447588849516545›: resuming execution
+I210608 12:11:52.363949 3000 jobs/adopt.go:152 ⋮ [-] 140  job ‹665447778208251905›: resuming execution
+I210608 12:11:52.363950 3007 jobs/adopt.go:152 ⋮ [-] 141  job ‹665447588564041729›: resuming execution
+I210608 12:11:52.363937 3005 jobs/adopt.go:152 ⋮ [-] 142  job ‹665447588596449281›: resuming execution
+I210608 12:11:52.363959 3002 jobs/adopt.go:152 ⋮ [-] 143  job ‹665447778144518145›: resuming execution
+I210608 12:11:52.363975 3008 jobs/adopt.go:152 ⋮ [-] 144  job ‹665447589040291841›: resuming execution
+I210608 12:11:52.364000 3001 jobs/adopt.go:152 ⋮ [-] 145  job ‹665447588974297089›: resuming execution
+I210608 12:11:52.363845 3009 jobs/adopt.go:152 ⋮ [-] 137  job ‹665447588977672193›: resuming execution
+I210608 12:11:52.364380 3003 jobs/adopt.go:152 ⋮ [-] 146  job ‹665447778239184897›: resuming execution
+I210608 12:11:52.363862 3004 jobs/adopt.go:152 ⋮ [-] 138  job ‹665447588754718721›: resuming execution
+I210608 12:11:52.367896 3138 jobs/registry.go:1175 ⋮ [n1] 148  SCHEMA CHANGE GC job ‹665447588977672193›: stepping through state running with error: <nil>
+I210608 12:11:52.367840 3041 jobs/registry.go:1175 ⋮ [n1] 149  SCHEMA CHANGE GC job ‹665447778239184897›: stepping through state running with error: <nil>
+I210608 12:11:52.368227 3095 jobs/registry.go:1175 ⋮ [n1] 150  SCHEMA CHANGE GC job ‹665447778144518145›: stepping through state running with error: <nil>
+I210608 12:11:52.368407 3046 jobs/registry.go:1175 ⋮ [n1] 151  SCHEMA CHANGE GC job ‹665447778208251905›: stepping through state running with error: <nil>
+I210608 12:11:52.368594 3107 jobs/registry.go:1175 ⋮ [n1] 152  SCHEMA CHANGE GC job ‹665447588596449281›: stepping through state running with error: <nil>
+I210608 12:11:52.368668 3021 jobs/registry.go:1175 ⋮ [n1] 153  SCHEMA CHANGE GC job ‹665447588754718721›: stepping through state running with error: <nil>
+I210608 12:11:52.369784 3078 jobs/registry.go:1175 ⋮ [n1] 154  SCHEMA CHANGE GC job ‹665447588564041729›: stepping through state running with error: <nil>
+I210608 12:11:52.367840 3122 jobs/registry.go:1175 ⋮ [n1] 147  SCHEMA CHANGE GC job ‹665447588849516545›: stepping through state running with error: <nil>
+I210608 12:11:52.370842 3109 jobs/registry.go:1175 ⋮ [n1] 155  SCHEMA CHANGE GC job ‹665447589040291841›: stepping through state running with error: <nil>
+I210608 12:11:52.375072 3154 jobs/registry.go:1175 ⋮ [n1] 156  SCHEMA CHANGE GC job ‹665447588974297089›: stepping through state running with error: <nil>
+I210608 12:12:02.122499 262 2@server/status/runtime.go:569 ⋮ [n1] 157  runtime stats: 172 MiB RSS, 249 goroutines (stacks: 4.4 MiB), 49 MiB/75 MiB Go alloc/total (heap fragmentation: 4.8 MiB, heap reserved: 5.4 MiB, heap released: 64 MiB), 12 MiB/20 MiB CGO alloc/total (0.1 CGO/sec), 10.0/3.6 %(u/s)time, 0.0 %gc (0x), 14 KiB/11 KiB (r/w)net
+I210608 12:12:12.122660 262 2@server/status/runtime.go:569 ⋮ [n1] 158  runtime stats: 174 MiB RSS, 249 goroutines (stacks: 3.9 MiB), 38 MiB/75 MiB Go alloc/total (heap fragmentation: 8.4 MiB, heap reserved: 13 MiB, heap released: 64 MiB), 20 MiB/28 MiB CGO alloc/total (0.2 CGO/sec), 11.3/2.5 %(u/s)time, 0.0 %gc (0x), 11 KiB/8.0 KiB (r/w)net
+I210608 12:12:22.122506 262 2@server/status/runtime.go:569 ⋮ [n1] 159  runtime stats: 174 MiB RSS, 249 goroutines (stacks: 3.2 MiB), 30 MiB/76 MiB Go alloc/total (heap fragmentation: 11 MiB, heap reserved: 21 MiB, heap released: 63 MiB), 20 MiB/28 MiB CGO alloc/total (0.1 CGO/sec), 7.8/3.7 %(u/s)time, 0.0 %gc (0x), 8.8 KiB/6.1 KiB (r/w)net
+I210608 12:12:22.379314 547 jobs/adopt.go:65 ⋮ [-] 160  claimed 10 jobs
+I210608 12:12:22.397480 3669 jobs/adopt.go:152 ⋮ [-] 161  job ‹665447587784622081›: resuming execution
+I210608 12:12:22.397516 3600 jobs/adopt.go:152 ⋮ [-] 162  job ‹665447587744481281›: resuming execution
+I210608 12:12:22.397521 3597 jobs/adopt.go:152 ⋮ [-] 163  job ‹665447588432707585›: resuming execution
+I210608 12:12:22.397564 3666 jobs/adopt.go:152 ⋮ [-] 164  job ‹665447587986669569›: resuming execution
+I210608 12:12:22.397574 3667 jobs/adopt.go:152 ⋮ [-] 165  job ‹665447588433428481›: resuming execution
+I210608 12:12:22.397584 3596 jobs/adopt.go:152 ⋮ [-] 166  job ‹665447588401250305›: resuming execution
+I210608 12:12:22.397595 3598 jobs/adopt.go:152 ⋮ [-] 167  job ‹665447588235706369›: resuming execution
+I210608 12:12:22.397601 3599 jobs/adopt.go:152 ⋮ [-] 168  job ‹665447588432740353›: resuming execution
+I210608 12:12:22.397916 3668 jobs/adopt.go:152 ⋮ [-] 169  job ‹665447588533698561›: resuming execution
+I210608 12:12:22.398437 3601 jobs/adopt.go:152 ⋮ [-] 170  job ‹665447587948724225›: resuming execution
+I210608 12:12:22.400369 3616 jobs/registry.go:1175 ⋮ [n1] 171  SCHEMA CHANGE GC job ‹665447587784622081›: stepping through state running with error: <nil>
+I210608 12:12:22.400369 3487 jobs/registry.go:1175 ⋮ [n1] 172  SCHEMA CHANGE GC job ‹665447588433428481›: stepping through state running with error: <nil>
+I210608 12:12:22.400397 3658 jobs/registry.go:1175 ⋮ [n1] 173  SCHEMA CHANGE GC job ‹665447588432707585›: stepping through state running with error: <nil>
+I210608 12:12:22.400410 3672 jobs/registry.go:1175 ⋮ [n1] 174  SCHEMA CHANGE GC job ‹665447587744481281›: stepping through state running with error: <nil>
+I210608 12:12:22.400423 3627 jobs/registry.go:1175 ⋮ [n1] 175  SCHEMA CHANGE GC job ‹665447587948724225›: stepping through state running with error: <nil>
+I210608 12:12:22.400530 3636 jobs/registry.go:1175 ⋮ [n1] 176  SCHEMA CHANGE GC job ‹665447588533698561›: stepping through state running with error: <nil>
+I210608 12:12:22.400538 3497 jobs/registry.go:1175 ⋮ [n1] 177  SCHEMA CHANGE GC job ‹665447588432740353›: stepping through state running with error: <nil>
+I210608 12:12:22.400545 3683 jobs/registry.go:1175 ⋮ [n1] 178  SCHEMA CHANGE GC job ‹665447588235706369›: stepping through state running with error: <nil>
+I210608 12:12:22.401044 3629 jobs/registry.go:1175 ⋮ [n1] 179  SCHEMA CHANGE GC job ‹665447587986669569›: stepping through state running with error: <nil>
+I210608 12:12:22.401604 3660 jobs/registry.go:1175 ⋮ [n1] 180  SCHEMA CHANGE GC job ‹665447588401250305›: stepping through state running with error: <nil>
+I210608 12:12:32.122495 262 2@server/status/runtime.go:569 ⋮ [n1] 181  runtime stats: 175 MiB RSS, 260 goroutines (stacks: 4.3 MiB), 48 MiB/76 MiB Go alloc/total (heap fragmentation: 4.5 MiB, heap reserved: 7.5 MiB, heap released: 63 MiB), 20 MiB/28 MiB CGO alloc/total (0.1 CGO/sec), 8.0/4.2 %(u/s)time, 0.0 %gc (0x), 14 KiB/11 KiB (r/w)net
+I210608 12:12:42.122312 262 2@server/status/runtime.go:569 ⋮ [n1] 182  runtime stats: 175 MiB RSS, 260 goroutines (stacks: 3.8 MiB), 36 MiB/77 MiB Go alloc/total (heap fragmentation: 9.0 MiB, heap reserved: 16 MiB, heap released: 63 MiB), 20 MiB/28 MiB CGO alloc/total (0.1 CGO/sec), 9.0/4.1 %(u/s)time, 0.0 %gc (0x), 10 KiB/7.1 KiB (r/w)net
+I210608 12:12:52.120209 259 2@gossip/gossip.go:567 ⋮ [n1] 183  gossip status (ok, 1 node‹›)
+I210608 12:12:52.120209 259 2@gossip/gossip.go:567 ⋮ [n1] 183 +gossip client (0/3 cur/max conns)
+I210608 12:12:52.120209 259 2@gossip/gossip.go:567 ⋮ [n1] 183 +gossip server (0/3 cur/max conns, infos 0/0 sent/received, bytes 0B/0B sent/received)
+I210608 12:12:52.122272 262 2@server/status/runtime.go:569 ⋮ [n1] 184  runtime stats: 175 MiB RSS, 260 goroutines (stacks: 4.1 MiB), 49 MiB/77 MiB Go alloc/total (heap fragmentation: 6.0 MiB, heap reserved: 6.4 MiB, heap released: 63 MiB), 20 MiB/28 MiB CGO alloc/total (0.1 CGO/sec), 9.0/4.2 %(u/s)time, 0.0 %gc (0x), 8.8 KiB/5.9 KiB (r/w)net
+I210608 12:12:52.405262 547 jobs/adopt.go:65 ⋮ [-] 185  claimed 10 jobs
+I210608 12:12:52.422211 4204 jobs/adopt.go:152 ⋮ [-] 187  job ‹665447587713155073›: resuming execution
+I210608 12:12:52.422221 4201 jobs/adopt.go:152 ⋮ [-] 188  job ‹665447587528441857›: resuming execution
+I210608 12:12:52.422242 4207 jobs/adopt.go:152 ⋮ [-] 190  job ‹665447354301087745›: resuming execution
+I210608 12:12:52.422232 4202 jobs/adopt.go:152 ⋮ [-] 189  job ‹665447354300792833›: resuming execution
+I210608 12:12:52.422245 4206 jobs/adopt.go:152 ⋮ [-] 191  job ‹665447354724155393›: resuming execution
+I210608 12:12:52.422257 4203 jobs/adopt.go:152 ⋮ [-] 192  job ‹665447587497213953›: resuming execution
+I210608 12:12:52.422270 4208 jobs/adopt.go:152 ⋮ [-] 193  job ‹665447354138820609›: resuming execution
+I210608 12:12:52.422277 4200 jobs/adopt.go:152 ⋮ [-] 194  job ‹665447353951223809›: resuming execution
+I210608 12:12:52.422200 4209 jobs/adopt.go:152 ⋮ [-] 186  job ‹665447354269499393›: resuming execution
+I210608 12:12:52.423839 4205 jobs/adopt.go:152 ⋮ [-] 195  job ‹665447354044514305›: resuming execution
+I210608 12:12:52.424438 4243 jobs/registry.go:1175 ⋮ [n1] 197  SCHEMA CHANGE GC job ‹665447353951223809›: stepping through state running with error: <nil>
+I210608 12:12:52.424426 4092 jobs/registry.go:1175 ⋮ [n1] 196  SCHEMA CHANGE GC job ‹665447587713155073›: stepping through state running with error: <nil>
+I210608 12:12:52.424480 4227 jobs/registry.go:1175 ⋮ [n1] 198  SCHEMA CHANGE GC job ‹665447354138820609›: stepping through state running with error: <nil>
+I210608 12:12:52.424596 4214 jobs/registry.go:1175 ⋮ [n1] 199  SCHEMA CHANGE GC job ‹665447587497213953›: stepping through state running with error: <nil>
+I210608 12:12:52.424621 4135 jobs/registry.go:1175 ⋮ [n1] 200  SCHEMA CHANGE GC job ‹665447354300792833›: stepping through state running with error: <nil>
+I210608 12:12:52.424740 4119 jobs/registry.go:1175 ⋮ [n1] 201  SCHEMA CHANGE GC job ‹665447354724155393›: stepping through state running with error: <nil>
+I210608 12:12:52.424897 4174 jobs/registry.go:1175 ⋮ [n1] 202  SCHEMA CHANGE GC job ‹665447354269499393›: stepping through state running with error: <nil>
+I210608 12:12:52.425512 3967 jobs/registry.go:1175 ⋮ [n1] 203  SCHEMA CHANGE GC job ‹665447354044514305›: stepping through state running with error: <nil>
+I210608 12:12:52.425756 4216 jobs/registry.go:1175 ⋮ [n1] 204  SCHEMA CHANGE GC job ‹665447587528441857›: stepping through state running with error: <nil>
+I210608 12:12:52.426083 4094 jobs/registry.go:1175 ⋮ [n1] 205  SCHEMA CHANGE GC job ‹665447354301087745›: stepping through state running with error: <nil>
+I210608 12:13:02.122419 262 2@server/status/runtime.go:569 ⋮ [n1] 206  runtime stats: 176 MiB RSS, 269 goroutines (stacks: 4.6 MiB), 47 MiB/77 MiB Go alloc/total (heap fragmentation: 4.7 MiB, heap reserved: 9.0 MiB, heap released: 63 MiB), 20 MiB/28 MiB CGO alloc/total (0.1 CGO/sec), 9.5/3.9 %(u/s)time, 0.0 %gc (0x), 12 KiB/8.9 KiB (r/w)net
+I210608 12:13:12.122390 262 2@server/status/runtime.go:569 ⋮ [n1] 207  runtime stats: 177 MiB RSS, 269 goroutines (stacks: 4.1 MiB), 34 MiB/73 MiB Go alloc/total (heap fragmentation: 9.6 MiB, heap reserved: 14 MiB, heap released: 67 MiB), 20 MiB/28 MiB CGO alloc/total (0.1 CGO/sec), 9.5/2.3 %(u/s)time, 0.0 %gc (0x), 8.7 KiB/6.7 KiB (r/w)net
+I210608 12:13:22.123592 262 2@server/status/runtime.go:569 ⋮ [n1] 208  runtime stats: 177 MiB RSS, 269 goroutines (stacks: 4.4 MiB), 46 MiB/74 MiB Go alloc/total (heap fragmentation: 6.8 MiB, heap reserved: 4.5 MiB, heap released: 66 MiB), 20 MiB/28 MiB CGO alloc/total (0.1 CGO/sec), 7.3/4.5 %(u/s)time, 0.0 %gc (0x), 7.1 KiB/5.0 KiB (r/w)net
+I210608 12:13:22.430373 547 jobs/adopt.go:65 ⋮ [-] 209  claimed 10 jobs
+I210608 12:13:22.457506 4734 jobs/adopt.go:152 ⋮ [-] 210  job ‹665447353950470145›: resuming execution
+I210608 12:13:22.457542 4729 jobs/adopt.go:152 ⋮ [-] 211  job ‹665447353828769793›: resuming execution
+I210608 12:13:22.457553 4731 jobs/adopt.go:152 ⋮ [-] 212  job ‹665447353828671489›: resuming execution
+I210608 12:13:22.457563 4730 jobs/adopt.go:152 ⋮ [-] 213  job ‹665447353828835329›: resuming execution
+I210608 12:13:22.457575 4732 jobs/adopt.go:152 ⋮ [-] 214  job ‹665447353828737025›: resuming execution
+I210608 12:13:22.457584 4726 jobs/adopt.go:152 ⋮ [-] 215  job ‹665447353397149697›: resuming execution
+I210608 12:13:22.457875 4733 jobs/adopt.go:152 ⋮ [-] 216  job ‹665447353828704257›: resuming execution
+I210608 12:13:22.458032 4725 jobs/adopt.go:152 ⋮ [-] 217  job ‹665447353396953089›: resuming execution
+I210608 12:13:22.459091 4727 jobs/adopt.go:152 ⋮ [-] 218  job ‹665447353890209793›: resuming execution
+I210608 12:13:22.459148 4728 jobs/adopt.go:152 ⋮ [-] 219  job ‹665447353705529345›: resuming execution
+I210608 12:13:22.460775 4589 jobs/registry.go:1175 ⋮ [n1] 220  SCHEMA CHANGE GC job ‹665447353828737025›: stepping through state running with error: <nil>
+I210608 12:13:22.460967 4754 jobs/registry.go:1175 ⋮ [n1] 222  SCHEMA CHANGE GC job ‹665447353950470145›: stepping through state running with error: <nil>
+I210608 12:13:22.461101 4669 jobs/registry.go:1175 ⋮ [n1] 223  SCHEMA CHANGE GC job ‹665447353705529345›: stepping through state running with error: <nil>
+I210608 12:13:22.461198 4635 jobs/registry.go:1175 ⋮ [n1] 224  SCHEMA CHANGE GC job ‹665447353828835329›: stepping through state running with error: <nil>
+I210608 12:13:22.462197 4671 jobs/registry.go:1175 ⋮ [n1] 225  SCHEMA CHANGE GC job ‹665447353828769793›: stepping through state running with error: <nil>
+I210608 12:13:22.462304 4591 jobs/registry.go:1175 ⋮ [n1] 226  SCHEMA CHANGE GC job ‹665447353828671489›: stepping through state running with error: <nil>
+I210608 12:13:22.462670 4637 jobs/registry.go:1175 ⋮ [n1] 227  SCHEMA CHANGE GC job ‹665447353828704257›: stepping through state running with error: <nil>
+I210608 12:13:22.462785 4756 jobs/registry.go:1175 ⋮ [n1] 228  SCHEMA CHANGE GC job ‹665447353890209793›: stepping through state running with error: <nil>
+I210608 12:13:22.460775 4668 jobs/registry.go:1175 ⋮ [n1] 229  SCHEMA CHANGE GC job ‹665447353396953089›: stepping through state running with error: <nil>
+I210608 12:13:22.460792 4634 jobs/registry.go:1175 ⋮ [n1] 221  SCHEMA CHANGE GC job ‹665447353397149697›: stepping through state running with error: <nil>
+I210608 12:13:32.122512 262 2@server/status/runtime.go:569 ⋮ [n1] 230  runtime stats: 177 MiB RSS, 280 goroutines (stacks: 4.5 MiB), 46 MiB/76 MiB Go alloc/total (heap fragmentation: 5.2 MiB, heap reserved: 8.7 MiB, heap released: 63 MiB), 20 MiB/28 MiB CGO alloc/total (0.1 CGO/sec), 7.6/3.7 %(u/s)time, 0.0 %gc (0x), 14 KiB/11 KiB (r/w)net
+I210608 12:13:42.122839 262 2@server/status/runtime.go:569 ⋮ [n1] 231  runtime stats: 178 MiB RSS, 280 goroutines (stacks: 4.0 MiB), 35 MiB/76 MiB Go alloc/total (heap fragmentation: 9.5 MiB, heap reserved: 16 MiB, heap released: 63 MiB), 20 MiB/28 MiB CGO alloc/total (0.1 CGO/sec), 8.1/3.8 %(u/s)time, 0.0 %gc (0x), 12 KiB/9.7 KiB (r/w)net
+I210608 12:13:52.120384 259 2@gossip/gossip.go:567 ⋮ [n1] 232  gossip status (ok, 1 node‹›)
+I210608 12:13:52.120384 259 2@gossip/gossip.go:567 ⋮ [n1] 232 +gossip client (0/3 cur/max conns)
+I210608 12:13:52.120384 259 2@gossip/gossip.go:567 ⋮ [n1] 232 +gossip server (0/3 cur/max conns, infos 0/0 sent/received, bytes 0B/0B sent/received)
+I210608 12:13:52.122435 262 2@server/status/runtime.go:569 ⋮ [n1] 233  runtime stats: 179 MiB RSS, 281 goroutines (stacks: 4.5 MiB), 50 MiB/78 MiB Go alloc/total (heap fragmentation: 6.3 MiB, heap reserved: 5.7 MiB, heap released: 62 MiB), 20 MiB/28 MiB CGO alloc/total (0.1 CGO/sec), 9.8/3.0 %(u/s)time, 0.0 %gc (0x), 10 KiB/6.5 KiB (r/w)net
+I210608 12:13:52.466155 547 jobs/adopt.go:65 ⋮ [-] 234  claimed 1 jobs
+I210608 12:13:52.483807 5255 jobs/adopt.go:152 ⋮ [-] 235  job ‹665447353337937921›: resuming execution
+I210608 12:13:52.485495 5257 jobs/registry.go:1175 ⋮ [n1] 236  SCHEMA CHANGE GC job ‹665447353337937921›: stepping through state running with error: <nil>
+I210608 12:14:02.122639 262 2@server/status/runtime.go:569 ⋮ [n1] 237  runtime stats: 179 MiB RSS, 280 goroutines (stacks: 4.2 MiB), 45 MiB/79 MiB Go alloc/total (heap fragmentation: 5.7 MiB, heap reserved: 12 MiB, heap released: 61 MiB), 20 MiB/28 MiB CGO alloc/total (0.1 CGO/sec), 9.2/2.7 %(u/s)time, 0.0 %gc (0x), 12 KiB/8.6 KiB (r/w)net
+I210608 12:14:12.123038 262 2@server/status/runtime.go:569 ⋮ [n1] 238  runtime stats: 180 MiB RSS, 280 goroutines (stacks: 3.0 MiB), 30 MiB/79 MiB Go alloc/total (heap fragmentation: 12 MiB, heap reserved: 23 MiB, heap released: 60 MiB), 20 MiB/28 MiB CGO alloc/total (0.1 CGO/sec), 8.9/2.6 %(u/s)time, 0.0 %gc (0x), 12 KiB/8.1 KiB (r/w)net
+I210608 12:14:22.124063 262 2@server/status/runtime.go:569 ⋮ [n1] 239  runtime stats: 180 MiB RSS, 281 goroutines (stacks: 4.2 MiB), 44 MiB/79 MiB Go alloc/total (heap fragmentation: 7.9 MiB, heap reserved: 12 MiB, heap released: 60 MiB), 20 MiB/28 MiB CGO alloc/total (0.1 CGO/sec), 9.0/4.6 %(u/s)time, 0.0 %gc (0x), 7.7 KiB/5.3 KiB (r/w)net
+I210608 12:14:32.123576 262 2@server/status/runtime.go:569 ⋮ [n1] 240  runtime stats: 180 MiB RSS, 281 goroutines (stacks: 3.6 MiB), 33 MiB/80 MiB Go alloc/total (heap fragmentation: 10 MiB, heap reserved: 21 MiB, heap released: 60 MiB), 20 MiB/28 MiB CGO alloc/total (0.1 CGO/sec), 7.5/4.5 %(u/s)time, 0.0 %gc (0x), 13 KiB/9.4 KiB (r/w)net
+I210608 12:14:42.123531 262 2@server/status/runtime.go:569 ⋮ [n1] 241  runtime stats: 180 MiB RSS, 281 goroutines (stacks: 4.1 MiB), 47 MiB/80 MiB Go alloc/total (heap fragmentation: 6.1 MiB, heap reserved: 11 MiB, heap released: 60 MiB), 20 MiB/28 MiB CGO alloc/total (0.1 CGO/sec), 6.3/4.6 %(u/s)time, 0.0 %gc (0x), 12 KiB/9.5 KiB (r/w)net
+I210608 12:14:52.120147 259 2@gossip/gossip.go:567 ⋮ [n1] 242  gossip status (ok, 1 node‹›)
+I210608 12:14:52.120147 259 2@gossip/gossip.go:567 ⋮ [n1] 242 +gossip client (0/3 cur/max conns)
+I210608 12:14:52.120147 259 2@gossip/gossip.go:567 ⋮ [n1] 242 +gossip server (0/3 cur/max conns, infos 0/0 sent/received, bytes 0B/0B sent/received)
+I210608 12:14:52.123420 262 2@server/status/runtime.go:569 ⋮ [n1] 243  runtime stats: 181 MiB RSS, 281 goroutines (stacks: 3.7 MiB), 37 MiB/80 MiB Go alloc/total (heap fragmentation: 8.6 MiB, heap reserved: 18 MiB, heap released: 60 MiB), 20 MiB/28 MiB CGO alloc/total (0.1 CGO/sec), 9.2/3.3 %(u/s)time, 0.0 %gc (0x), 10 KiB/7.1 KiB (r/w)net
+I210608 12:15:02.123602 262 2@server/status/runtime.go:569 ⋮ [n1] 244  runtime stats: 182 MiB RSS, 280 goroutines (stacks: 4.5 MiB), 54 MiB/80 MiB Go alloc/total (heap fragmentation: 4.2 MiB, heap reserved: 5.2 MiB, heap released: 60 MiB), 20 MiB/28 MiB CGO alloc/total (0.1 CGO/sec), 9.4/2.4 %(u/s)time, 0.0 %gc (0x), 8.8 KiB/6.3 KiB (r/w)net
+I210608 12:15:12.123778 262 2@server/status/runtime.go:569 ⋮ [n1] 245  runtime stats: 183 MiB RSS, 280 goroutines (stacks: 4.3 MiB), 48 MiB/80 MiB Go alloc/total (heap fragmentation: 7.3 MiB, heap reserved: 9.5 MiB, heap released: 59 MiB), 20 MiB/28 MiB CGO alloc/total (0.1 CGO/sec), 7.5/4.2 %(u/s)time, 0.0 %gc (0x), 13 KiB/9.7 KiB (r/w)net
+I210608 12:15:22.124080 262 2@server/status/runtime.go:569 ⋮ [n1] 246  runtime stats: 184 MiB RSS, 280 goroutines (stacks: 4.3 MiB), 60 MiB/82 MiB Go alloc/total (heap fragmentation: 5.1 MiB, heap reserved: 936 KiB, heap released: 58 MiB), 20 MiB/28 MiB CGO alloc/total (0.1 CGO/sec), 8.1/4.1 %(u/s)time, 0.0 %gc (0x), 8.1 KiB/5.8 KiB (r/w)net
+I210608 12:15:32.123928 262 2@server/status/runtime.go:569 ⋮ [n1] 247  runtime stats: 187 MiB RSS, 281 goroutines (stacks: 4.7 MiB), 47 MiB/85 MiB Go alloc/total (heap fragmentation: 6.5 MiB, heap reserved: 15 MiB, heap released: 55 MiB), 20 MiB/28 MiB CGO alloc/total (0.1 CGO/sec), 10.6/2.8 %(u/s)time, 0.0 %gc (0x), 13 KiB/9.5 KiB (r/w)net
+I210608 12:15:42.123967 262 2@server/status/runtime.go:569 ⋮ [n1] 248  runtime stats: 187 MiB RSS, 281 goroutines (stacks: 4.8 MiB), 59 MiB/85 MiB Go alloc/total (heap fragmentation: 4.6 MiB, heap reserved: 4.7 MiB, heap released: 55 MiB), 20 MiB/28 MiB CGO alloc/total (0.1 CGO/sec), 6.9/4.6 %(u/s)time, 0.0 %gc (0x), 8.6 KiB/6.6 KiB (r/w)net
+I210608 12:15:52.120611 259 2@gossip/gossip.go:567 ⋮ [n1] 249  gossip status (ok, 1 node‹›)
+I210608 12:15:52.120611 259 2@gossip/gossip.go:567 ⋮ [n1] 249 +gossip client (0/3 cur/max conns)
+I210608 12:15:52.120611 259 2@gossip/gossip.go:567 ⋮ [n1] 249 +gossip server (0/3 cur/max conns, infos 0/0 sent/received, bytes 0B/0B sent/received)
+I210608 12:15:52.124659 262 2@server/status/runtime.go:569 ⋮ [n1] 250  runtime stats: 187 MiB RSS, 283 goroutines (stacks: 4.2 MiB), 40 MiB/85 MiB Go alloc/total (heap fragmentation: 8.0 MiB, heap reserved: 20 MiB, heap released: 55 MiB), 20 MiB/28 MiB CGO alloc/total (0.1 CGO/sec), 10.7/4.5 %(u/s)time, 0.0 %gc (0x), 9.7 KiB/7.3 KiB (r/w)net
+I210608 12:16:02.124894 262 2@server/status/runtime.go:569 ⋮ [n1] 251  runtime stats: 188 MiB RSS, 280 goroutines (stacks: 3.4 MiB), 30 MiB/82 MiB Go alloc/total (heap fragmentation: 12 MiB, heap reserved: 24 MiB, heap released: 58 MiB), 20 MiB/28 MiB CGO alloc/total (0.1 CGO/sec), 8.6/2.7 %(u/s)time, 0.0 %gc (0x), 12 KiB/8.4 KiB (r/w)net
+I210608 12:16:12.125080 262 2@server/status/runtime.go:569 ⋮ [n1] 252  runtime stats: 188 MiB RSS, 280 goroutines (stacks: 4.4 MiB), 43 MiB/82 MiB Go alloc/total (heap fragmentation: 7.5 MiB, heap reserved: 15 MiB, heap released: 58 MiB), 20 MiB/28 MiB CGO alloc/total (0.1 CGO/sec), 7.6/2.9 %(u/s)time, 0.0 %gc (0x), 13 KiB/9.3 KiB (r/w)net
+I210608 12:16:22.125002 262 2@server/status/runtime.go:569 ⋮ [n1] 253  runtime stats: 188 MiB RSS, 280 goroutines (stacks: 4.5 MiB), 56 MiB/82 MiB Go alloc/total (heap fragmentation: 5.5 MiB, heap reserved: 4.3 MiB, heap released: 58 MiB), 20 MiB/28 MiB CGO alloc/total (0.1 CGO/sec), 6.0/4.7 %(u/s)time, 0.0 %gc (0x), 7.6 KiB/4.5 KiB (r/w)net
+I210608 12:16:32.125356 262 2@server/status/runtime.go:569 ⋮ [n1] 254  runtime stats: 188 MiB RSS, 281 goroutines (stacks: 4.5 MiB), 44 MiB/82 MiB Go alloc/total (heap fragmentation: 6.6 MiB, heap reserved: 16 MiB, heap released: 58 MiB), 36 MiB/44 MiB CGO alloc/total (0.2 CGO/sec), 6.7/4.7 %(u/s)time, 0.0 %gc (0x), 10 KiB/7.6 KiB (r/w)net
+I210608 12:16:42.125469 262 2@server/status/runtime.go:569 ⋮ [n1] 255  runtime stats: 189 MiB RSS, 281 goroutines (stacks: 4.8 MiB), 57 MiB/82 MiB Go alloc/total (heap fragmentation: 4.5 MiB, heap reserved: 4.0 MiB, heap released: 58 MiB), 36 MiB/44 MiB CGO alloc/total (0.1 CGO/sec), 7.1/3.7 %(u/s)time, 0.0 %gc (0x), 9.6 KiB/7.1 KiB (r/w)net
+I210608 12:16:52.120237 259 2@gossip/gossip.go:567 ⋮ [n1] 256  gossip status (ok, 1 node‹›)
+I210608 12:16:52.120237 259 2@gossip/gossip.go:567 ⋮ [n1] 256 +gossip client (0/3 cur/max conns)
+I210608 12:16:52.120237 259 2@gossip/gossip.go:567 ⋮ [n1] 256 +gossip server (0/3 cur/max conns, infos 0/0 sent/received, bytes 0B/0B sent/received)
+I210608 12:16:52.125281 262 2@server/status/runtime.go:569 ⋮ [n1] 257  runtime stats: 190 MiB RSS, 281 goroutines (stacks: 4.2 MiB), 40 MiB/83 MiB Go alloc/total (heap fragmentation: 8.7 MiB, heap reserved: 18 MiB, heap released: 57 MiB), 36 MiB/44 MiB CGO alloc/total (0.1 CGO/sec), 7.1/4.3 %(u/s)time, 0.0 %gc (0x), 7.6 KiB/6.2 KiB (r/w)net
+I210608 12:17:02.125395 262 2@server/status/runtime.go:569 ⋮ [n1] 258  runtime stats: 190 MiB RSS, 281 goroutines (stacks: 5.2 MiB), 57 MiB/83 MiB Go alloc/total (heap fragmentation: 4.2 MiB, heap reserved: 5.0 MiB, heap released: 57 MiB), 36 MiB/44 MiB CGO alloc/total (0.1 CGO/sec), 9.5/2.4 %(u/s)time, 0.0 %gc (0x), 14 KiB/11 KiB (r/w)net
+I210608 12:17:12.125744 262 2@server/status/runtime.go:569 ⋮ [n1] 259  runtime stats: 191 MiB RSS, 280 goroutines (stacks: 4.3 MiB), 41 MiB/83 MiB Go alloc/total (heap fragmentation: 8.7 MiB, heap reserved: 17 MiB, heap released: 57 MiB), 36 MiB/44 MiB CGO alloc/total (0.1 CGO/sec), 8.5/3.4 %(u/s)time, 0.0 %gc (0x), 10 KiB/7.1 KiB (r/w)net
+I210608 12:17:22.125958 262 2@server/status/runtime.go:569 ⋮ [n1] 260  runtime stats: 191 MiB RSS, 281 goroutines (stacks: 4.5 MiB), 55 MiB/83 MiB Go alloc/total (heap fragmentation: 4.7 MiB, heap reserved: 7.1 MiB, heap released: 57 MiB), 36 MiB/44 MiB CGO alloc/total (0.1 CGO/sec), 8.3/4.1 %(u/s)time, 0.0 %gc (0x), 9.2 KiB/5.9 KiB (r/w)net
+I210608 12:17:32.125832 262 2@server/status/runtime.go:569 ⋮ [n1] 261  runtime stats: 191 MiB RSS, 281 goroutines (stacks: 4.6 MiB), 40 MiB/83 MiB Go alloc/total (heap fragmentation: 7.7 MiB, heap reserved: 19 MiB, heap released: 57 MiB), 36 MiB/44 MiB CGO alloc/total (0.1 CGO/sec), 8.3/3.4 %(u/s)time, 0.0 %gc (0x), 11 KiB/8.0 KiB (r/w)net
+I210608 12:17:42.125762 262 2@server/status/runtime.go:569 ⋮ [n1] 262  runtime stats: 192 MiB RSS, 281 goroutines (stacks: 4.8 MiB), 52 MiB/83 MiB Go alloc/total (heap fragmentation: 5.1 MiB, heap reserved: 9.6 MiB, heap released: 57 MiB), 36 MiB/44 MiB CGO alloc/total (0.1 CGO/sec), 8.3/3.7 %(u/s)time, 0.0 %gc (0x), 9.3 KiB/6.8 KiB (r/w)net
+I210608 12:17:52.120195 259 2@gossip/gossip.go:567 ⋮ [n1] 263  gossip status (ok, 1 node‹›)
+I210608 12:17:52.120195 259 2@gossip/gossip.go:567 ⋮ [n1] 263 +gossip client (0/3 cur/max conns)
+I210608 12:17:52.120195 259 2@gossip/gossip.go:567 ⋮ [n1] 263 +gossip server (0/3 cur/max conns, infos 0/0 sent/received, bytes 0B/0B sent/received)
+I210608 12:17:52.125867 262 2@server/status/runtime.go:569 ⋮ [n1] 264  runtime stats: 192 MiB RSS, 281 goroutines (stacks: 4.1 MiB), 37 MiB/83 MiB Go alloc/total (heap fragmentation: 9.2 MiB, heap reserved: 21 MiB, heap released: 57 MiB), 36 MiB/44 MiB CGO alloc/total (0.1 CGO/sec), 9.8/3.0 %(u/s)time, 0.0 %gc (0x), 8.4 KiB/5.6 KiB (r/w)net
+I210608 12:18:02.127341 262 2@server/status/runtime.go:569 ⋮ [n1] 265  runtime stats: 192 MiB RSS, 280 goroutines (stacks: 4.9 MiB), 56 MiB/83 MiB Go alloc/total (heap fragmentation: 4.1 MiB, heap reserved: 6.7 MiB, heap released: 57 MiB), 36 MiB/44 MiB CGO alloc/total (0.1 CGO/sec), 7.6/4.2 %(u/s)time, 0.0 %gc (0x), 14 KiB/11 KiB (r/w)net
+I210608 12:18:12.126475 262 2@server/status/runtime.go:569 ⋮ [n1] 266  runtime stats: 193 MiB RSS, 280 goroutines (stacks: 4.2 MiB), 40 MiB/83 MiB Go alloc/total (heap fragmentation: 8.6 MiB, heap reserved: 19 MiB, heap released: 57 MiB), 36 MiB/44 MiB CGO alloc/total (0.1 CGO/sec), 8.9/2.5 %(u/s)time, 0.0 %gc (0x), 13 KiB/9.1 KiB (r/w)net
+I210608 12:18:22.126268 262 2@server/status/runtime.go:569 ⋮ [n1] 267  runtime stats: 193 MiB RSS, 280 goroutines (stacks: 4.4 MiB), 53 MiB/83 MiB Go alloc/total (heap fragmentation: 5.7 MiB, heap reserved: 8.6 MiB, heap released: 57 MiB), 36 MiB/44 MiB CGO alloc/total (0.1 CGO/sec), 6.8/3.5 %(u/s)time, 0.0 %gc (0x), 7.6 KiB/5.1 KiB (r/w)net
+I210608 12:18:32.126266 262 2@server/status/runtime.go:569 ⋮ [n1] 268  runtime stats: 193 MiB RSS, 281 goroutines (stacks: 4.3 MiB), 41 MiB/83 MiB Go alloc/total (heap fragmentation: 8.2 MiB, heap reserved: 18 MiB, heap released: 57 MiB), 36 MiB/44 MiB CGO alloc/total (0.1 CGO/sec), 8.0/4.6 %(u/s)time, 0.0 %gc (0x), 11 KiB/7.0 KiB (r/w)net
+I210608 12:18:42.126248 262 2@server/status/runtime.go:569 ⋮ [n1] 269  runtime stats: 194 MiB RSS, 281 goroutines (stacks: 4.6 MiB), 53 MiB/83 MiB Go alloc/total (heap fragmentation: 5.2 MiB, heap reserved: 8.1 MiB, heap released: 57 MiB), 36 MiB/44 MiB CGO alloc/total (0.1 CGO/sec), 6.6/5.1 %(u/s)time, 0.0 %gc (0x), 11 KiB/8.5 KiB (r/w)net
+I210608 12:18:52.120202 259 2@gossip/gossip.go:567 ⋮ [n1] 270  gossip status (ok, 1 node‹›)
+I210608 12:18:52.120202 259 2@gossip/gossip.go:567 ⋮ [n1] 270 +gossip client (0/3 cur/max conns)
+I210608 12:18:52.120202 259 2@gossip/gossip.go:567 ⋮ [n1] 270 +gossip server (0/3 cur/max conns, infos 0/0 sent/received, bytes 0B/0B sent/received)
+I210608 12:18:52.126584 262 2@server/status/runtime.go:569 ⋮ [n1] 271  runtime stats: 194 MiB RSS, 281 goroutines (stacks: 4.0 MiB), 36 MiB/83 MiB Go alloc/total (heap fragmentation: 9.0 MiB, heap reserved: 22 MiB, heap released: 57 MiB), 36 MiB/44 MiB CGO alloc/total (0.1 CGO/sec), 10.4/2.2 %(u/s)time, 0.0 %gc (0x), 8.3 KiB/5.4 KiB (r/w)net
+I210608 12:19:02.126411 262 2@server/status/runtime.go:569 ⋮ [n1] 272  runtime stats: 194 MiB RSS, 280 goroutines (stacks: 4.4 MiB), 52 MiB/83 MiB Go alloc/total (heap fragmentation: 4.5 MiB, heap reserved: 10 MiB, heap released: 57 MiB), 36 MiB/44 MiB CGO alloc/total (0.1 CGO/sec), 8.9/3.8 %(u/s)time, 0.0 %gc (0x), 12 KiB/9.5 KiB (r/w)net
+I210608 12:19:12.126667 262 2@server/status/runtime.go:569 ⋮ [n1] 273  runtime stats: 194 MiB RSS, 280 goroutines (stacks: 4.1 MiB), 37 MiB/81 MiB Go alloc/total (heap fragmentation: 9.0 MiB, heap reserved: 19 MiB, heap released: 59 MiB), 36 MiB/44 MiB CGO alloc/total (0.1 CGO/sec), 8.1/4.2 %(u/s)time, 0.0 %gc (0x), 14 KiB/11 KiB (r/w)net
+I210608 12:19:22.126734 262 2@server/status/runtime.go:569 ⋮ [n1] 274  runtime stats: 195 MiB RSS, 280 goroutines (stacks: 4.3 MiB), 49 MiB/81 MiB Go alloc/total (heap fragmentation: 6.0 MiB, heap reserved: 9.7 MiB, heap released: 59 MiB), 36 MiB/44 MiB CGO alloc/total (0.1 CGO/sec), 6.4/4.6 %(u/s)time, 0.0 %gc (0x), 7.7 KiB/5.3 KiB (r/w)net
+I210608 12:19:32.126701 262 2@server/status/runtime.go:569 ⋮ [n1] 275  runtime stats: 195 MiB RSS, 281 goroutines (stacks: 3.9 MiB), 37 MiB/81 MiB Go alloc/total (heap fragmentation: 9.4 MiB, heap reserved: 19 MiB, heap released: 59 MiB), 36 MiB/44 MiB CGO alloc/total (0.1 CGO/sec), 9.1/3.4 %(u/s)time, 0.0 %gc (0x), 9.7 KiB/6.6 KiB (r/w)net
+I210608 12:19:42.126894 262 2@server/status/runtime.go:569 ⋮ [n1] 276  runtime stats: 196 MiB RSS, 282 goroutines (stacks: 4.2 MiB), 48 MiB/81 MiB Go alloc/total (heap fragmentation: 6.2 MiB, heap reserved: 9.9 MiB, heap released: 59 MiB), 36 MiB/44 MiB CGO alloc/total (0.1 CGO/sec), 8.7/3.9 %(u/s)time, 0.0 %gc (0x), 10 KiB/7.5 KiB (r/w)net
+I210608 12:19:52.120238 259 2@gossip/gossip.go:567 ⋮ [n1] 277  gossip status (ok, 1 node‹›)
+I210608 12:19:52.120238 259 2@gossip/gossip.go:567 ⋮ [n1] 277 +gossip client (0/3 cur/max conns)
+I210608 12:19:52.120238 259 2@gossip/gossip.go:567 ⋮ [n1] 277 +gossip server (0/3 cur/max conns, infos 0/0 sent/received, bytes 0B/0B sent/received)
+I210608 12:19:52.126909 262 2@server/status/runtime.go:569 ⋮ [n1] 278  runtime stats: 196 MiB RSS, 281 goroutines (stacks: 3.8 MiB), 37 MiB/81 MiB Go alloc/total (heap fragmentation: 8.5 MiB, heap reserved: 20 MiB, heap released: 59 MiB), 36 MiB/44 MiB CGO alloc/total (0.1 CGO/sec), 12.3/1.9 %(u/s)time, 0.0 %gc (0x), 9.6 KiB/7.0 KiB (r/w)net
+I210608 12:20:02.126840 262 2@server/status/runtime.go:569 ⋮ [n1] 279  runtime stats: 196 MiB RSS, 282 goroutines (stacks: 3.1 MiB), 34 MiB/81 MiB Go alloc/total (heap fragmentation: 13 MiB, heap reserved: 19 MiB, heap released: 59 MiB), 36 MiB/44 MiB CGO alloc/total (0.1 CGO/sec), 10.3/3.2 %(u/s)time, 0.0 %gc (0x), 24 KiB/38 KiB (r/w)net
+I210608 12:20:12.121661 258 kv/kvserver/store.go:2662 ⋮ [n1,s1] 280  
+I210608 12:20:12.121661 258 kv/kvserver/store.go:2662 ⋮ [n1,s1] 280 +__level_____count____size___score______in__ingest(sz_cnt)____move(sz_cnt)___write(sz_cnt)____read___r-amp___w-amp
+I210608 12:20:12.121661 258 kv/kvserver/store.go:2662 ⋮ [n1,s1] 280 +    WAL         4    17 M       -    17 M       -       -       -       -    17 M       -       -       -     1.0
+I210608 12:20:12.121661 258 kv/kvserver/store.go:2662 ⋮ [n1,s1] 280 +      0         0     0 B    0.00     0 B     0 B       0     0 B       0     0 B       0     0 B       0     0.0
+I210608 12:20:12.121661 258 kv/kvserver/store.go:2662 ⋮ [n1,s1] 280 +      1         0     0 B    0.00     0 B     0 B       0     0 B       0     0 B       0     0 B       0     0.0
+I210608 12:20:12.121661 258 kv/kvserver/store.go:2662 ⋮ [n1,s1] 280 +      2         0     0 B    0.00     0 B     0 B       0     0 B       0     0 B       0     0 B       0     0.0
+I210608 12:20:12.121661 258 kv/kvserver/store.go:2662 ⋮ [n1,s1] 280 +      3         0     0 B    0.00     0 B     0 B       0     0 B       0     0 B       0     0 B       0     0.0
+I210608 12:20:12.121661 258 kv/kvserver/store.go:2662 ⋮ [n1,s1] 280 +      4         0     0 B    0.00     0 B     0 B       0     0 B       0     0 B       0     0 B       0     0.0
+I210608 12:20:12.121661 258 kv/kvserver/store.go:2662 ⋮ [n1,s1] 280 +      5         0     0 B    0.00     0 B     0 B       0     0 B       0     0 B       0     0 B       0     0.0
+I210608 12:20:12.121661 258 kv/kvserver/store.go:2662 ⋮ [n1,s1] 280 +      6         1   1.5 M       -   136 K     0 B       0     0 B       0   1.5 M       1   1.6 M       1    11.2
+I210608 12:20:12.121661 258 kv/kvserver/store.go:2662 ⋮ [n1,s1] 280 +  total         1   1.5 M       -    17 M     0 B       0     0 B       0    18 M       1   1.6 M       1     1.1
+I210608 12:20:12.121661 258 kv/kvserver/store.go:2662 ⋮ [n1,s1] 280 +  flush         0
+I210608 12:20:12.121661 258 kv/kvserver/store.go:2662 ⋮ [n1,s1] 280 +compact         1     0 B           136 K  (size == estimated-debt, in = in-progress-bytes)
+I210608 12:20:12.121661 258 kv/kvserver/store.go:2662 ⋮ [n1,s1] 280 + memtbl         4    28 M
+I210608 12:20:12.121661 258 kv/kvserver/store.go:2662 ⋮ [n1,s1] 280 +zmemtbl         0     0 B
+I210608 12:20:12.121661 258 kv/kvserver/store.go:2662 ⋮ [n1,s1] 280 +   ztbl         0     0 B
+I210608 12:20:12.121661 258 kv/kvserver/store.go:2662 ⋮ [n1,s1] 280 + bcache        73   2.3 M   99.1%  (score == hit-rate)
+I210608 12:20:12.121661 258 kv/kvserver/store.go:2662 ⋮ [n1,s1] 280 + tcache         1   616 B  100.0%  (score == hit-rate)
+I210608 12:20:12.121661 258 kv/kvserver/store.go:2662 ⋮ [n1,s1] 280 + titers         0
+I210608 12:20:12.121661 258 kv/kvserver/store.go:2662 ⋮ [n1,s1] 280 + filter         -       -   83.3%  (score == utility)
+I210608 12:20:12.127164 262 2@server/status/runtime.go:569 ⋮ [n1] 281  runtime stats: 197 MiB RSS, 284 goroutines (stacks: 4.3 MiB), 50 MiB/82 MiB Go alloc/total (heap fragmentation: 7.3 MiB, heap reserved: 8.4 MiB, heap released: 58 MiB), 36 MiB/44 MiB CGO alloc/total (0.1 CGO/sec), 5.6/5.6 %(u/s)time, 0.0 %gc (0x), 14 KiB/12 KiB (r/w)net
+I210608 12:20:22.128003 262 2@server/status/runtime.go:569 ⋮ [n1] 282  runtime stats: 198 MiB RSS, 285 goroutines (stacks: 3.1 MiB), 27 MiB/75 MiB Go alloc/total (heap fragmentation: 13 MiB, heap reserved: 20 MiB, heap released: 65 MiB), 36 MiB/44 MiB CGO alloc/total (0.1 CGO/sec), 10.5/2.5 %(u/s)time, 0.0 %gc (0x), 12 KiB/26 KiB (r/w)net
+I210608 12:20:32.128147 262 2@server/status/runtime.go:569 ⋮ [n1] 283  runtime stats: 200 MiB RSS, 285 goroutines (stacks: 4.0 MiB), 34 MiB/72 MiB Go alloc/total (heap fragmentation: 11 MiB, heap reserved: 11 MiB, heap released: 68 MiB), 36 MiB/44 MiB CGO alloc/total (0.1 CGO/sec), 12.2/1.7 %(u/s)time, 0.0 %gc (0x), 14 KiB/13 KiB (r/w)net
+I210608 12:20:42.128012 262 2@server/status/runtime.go:569 ⋮ [n1] 284  runtime stats: 200 MiB RSS, 285 goroutines (stacks: 3.9 MiB), 34 MiB/74 MiB Go alloc/total (heap fragmentation: 11 MiB, heap reserved: 13 MiB, heap released: 66 MiB), 36 MiB/44 MiB CGO alloc/total (0.1 CGO/sec), 9.9/3.5 %(u/s)time, 0.0 %gc (0x), 11 KiB/7.6 KiB (r/w)net
+I210608 12:20:52.120209 259 2@gossip/gossip.go:567 ⋮ [n1] 285  gossip status (ok, 1 node‹›)
+I210608 12:20:52.120209 259 2@gossip/gossip.go:567 ⋮ [n1] 285 +gossip client (0/3 cur/max conns)
+I210608 12:20:52.120209 259 2@gossip/gossip.go:567 ⋮ [n1] 285 +gossip server (0/3 cur/max conns, infos 0/0 sent/received, bytes 0B/0B sent/received)
+I210608 12:20:52.128209 262 2@server/status/runtime.go:569 ⋮ [n1] 286  runtime stats: 200 MiB RSS, 285 goroutines (stacks: 4.2 MiB), 47 MiB/75 MiB Go alloc/total (heap fragmentation: 7.5 MiB, heap reserved: 4.4 MiB, heap released: 65 MiB), 36 MiB/44 MiB CGO alloc/total (0.1 CGO/sec), 8.0/4.0 %(u/s)time, 0.0 %gc (0x), 11 KiB/7.4 KiB (r/w)net
+I210608 12:21:02.128327 262 2@server/status/runtime.go:569 ⋮ [n1] 287  runtime stats: 201 MiB RSS, 284 goroutines (stacks: 4.3 MiB), 40 MiB/81 MiB Go alloc/total (heap fragmentation: 9.2 MiB, heap reserved: 15 MiB, heap released: 59 MiB), 36 MiB/44 MiB CGO alloc/total (0.1 CGO/sec), 9.6/3.9 %(u/s)time, 0.0 %gc (0x), 7.6 KiB/5.6 KiB (r/w)net
+I210608 12:21:12.128400 262 2@server/status/runtime.go:569 ⋮ [n1] 288  runtime stats: 202 MiB RSS, 284 goroutines (stacks: 4.6 MiB), 53 MiB/82 MiB Go alloc/total (heap fragmentation: 6.0 MiB, heap reserved: 6.1 MiB, heap released: 58 MiB), 36 MiB/44 MiB CGO alloc/total (0.1 CGO/sec), 8.2/4.4 %(u/s)time, 0.0 %gc (0x), 11 KiB/8.7 KiB (r/w)net
+I210608 12:21:22.130152 262 2@server/status/runtime.go:569 ⋮ [n1] 289  runtime stats: 202 MiB RSS, 284 goroutines (stacks: 3.8 MiB), 37 MiB/82 MiB Go alloc/total (heap fragmentation: 11 MiB, heap reserved: 19 MiB, heap released: 58 MiB), 36 MiB/44 MiB CGO alloc/total (0.1 CGO/sec), 9.6/3.9 %(u/s)time, 0.0 %gc (0x), 11 KiB/8.7 KiB (r/w)net
+I210608 12:21:32.128859 262 2@server/status/runtime.go:569 ⋮ [n1] 290  runtime stats: 202 MiB RSS, 285 goroutines (stacks: 4.8 MiB), 51 MiB/82 MiB Go alloc/total (heap fragmentation: 6.1 MiB, heap reserved: 8.2 MiB, heap released: 58 MiB), 36 MiB/44 MiB CGO alloc/total (0.1 CGO/sec), 7.6/5.2 %(u/s)time, 0.0 %gc (0x), 11 KiB/7.8 KiB (r/w)net
+I210608 12:21:42.128732 262 2@server/status/runtime.go:569 ⋮ [n1] 291  runtime stats: 203 MiB RSS, 285 goroutines (stacks: 4.2 MiB), 37 MiB/83 MiB Go alloc/total (heap fragmentation: 11 MiB, heap reserved: 19 MiB, heap released: 57 MiB), 36 MiB/44 MiB CGO alloc/total (0.1 CGO/sec), 10.1/2.7 %(u/s)time, 0.0 %gc (0x), 7.5 KiB/5.1 KiB (r/w)net
+I210608 12:21:52.120164 259 2@gossip/gossip.go:567 ⋮ [n1] 292  gossip status (ok, 1 node‹›)
+I210608 12:21:52.120164 259 2@gossip/gossip.go:567 ⋮ [n1] 292 +gossip client (0/3 cur/max conns)
+I210608 12:21:52.120164 259 2@gossip/gossip.go:567 ⋮ [n1] 292 +gossip server (0/3 cur/max conns, infos 0/0 sent/received, bytes 0B/0B sent/received)
+I210608 12:21:52.128818 262 2@server/status/runtime.go:569 ⋮ [n1] 293  runtime stats: 203 MiB RSS, 285 goroutines (stacks: 4.6 MiB), 50 MiB/83 MiB Go alloc/total (heap fragmentation: 7.3 MiB, heap reserved: 9.0 MiB, heap released: 57 MiB), 36 MiB/44 MiB CGO alloc/total (0.1 CGO/sec), 7.7/4.4 %(u/s)time, 0.0 %gc (0x), 9.3 KiB/6.8 KiB (r/w)net
+I210608 12:22:02.128940 262 2@server/status/runtime.go:569 ⋮ [n1] 294  runtime stats: 204 MiB RSS, 284 goroutines (stacks: 4.3 MiB), 38 MiB/84 MiB Go alloc/total (heap fragmentation: 10 MiB, heap reserved: 20 MiB, heap released: 56 MiB), 36 MiB/44 MiB CGO alloc/total (0.1 CGO/sec), 8.4/5.8 %(u/s)time, 0.0 %gc (0x), 12 KiB/9.3 KiB (r/w)net
+I210608 12:22:12.129068 262 2@server/status/runtime.go:569 ⋮ [n1] 295  runtime stats: 204 MiB RSS, 284 goroutines (stacks: 4.6 MiB), 50 MiB/84 MiB Go alloc/total (heap fragmentation: 6.9 MiB, heap reserved: 12 MiB, heap released: 56 MiB), 36 MiB/44 MiB CGO alloc/total (0.1 CGO/sec), 8.0/6.0 %(u/s)time, 0.0 %gc (0x), 11 KiB/7.2 KiB (r/w)net
+I210608 12:22:22.129256 262 2@server/status/runtime.go:569 ⋮ [n1] 296  runtime stats: 204 MiB RSS, 284 goroutines (stacks: 4.0 MiB), 35 MiB/84 MiB Go alloc/total (heap fragmentation: 12 MiB, heap reserved: 21 MiB, heap released: 56 MiB), 36 MiB/44 MiB CGO alloc/total (0.1 CGO/sec), 12.1/3.7 %(u/s)time, 0.0 %gc (0x), 11 KiB/8.5 KiB (r/w)net
+I210608 12:22:32.129398 262 2@server/status/runtime.go:569 ⋮ [n1] 297  runtime stats: 204 MiB RSS, 285 goroutines (stacks: 4.9 MiB), 49 MiB/84 MiB Go alloc/total (heap fragmentation: 7.4 MiB, heap reserved: 11 MiB, heap released: 56 MiB), 36 MiB/44 MiB CGO alloc/total (0.1 CGO/sec), 8.6/4.6 %(u/s)time, 0.0 %gc (0x), 9.5 KiB/6.4 KiB (r/w)net
+I210608 12:22:42.129719 262 2@server/status/runtime.go:569 ⋮ [n1] 298  runtime stats: 205 MiB RSS, 285 goroutines (stacks: 3.8 MiB), 34 MiB/84 MiB Go alloc/total (heap fragmentation: 13 MiB, heap reserved: 22 MiB, heap released: 56 MiB), 36 MiB/44 MiB CGO alloc/total (0.1 CGO/sec), 9.7/2.8 %(u/s)time, 0.0 %gc (0x), 12 KiB/8.9 KiB (r/w)net
+I210608 12:22:52.120144 259 2@gossip/gossip.go:567 ⋮ [n1] 299  gossip status (ok, 1 node‹›)
+I210608 12:22:52.120144 259 2@gossip/gossip.go:567 ⋮ [n1] 299 +gossip client (0/3 cur/max conns)
+I210608 12:22:52.120144 259 2@gossip/gossip.go:567 ⋮ [n1] 299 +gossip server (0/3 cur/max conns, infos 0/0 sent/received, bytes 0B/0B sent/received)
+I210608 12:22:52.129677 262 2@server/status/runtime.go:569 ⋮ [n1] 300  runtime stats: 205 MiB RSS, 285 goroutines (stacks: 4.3 MiB), 46 MiB/84 MiB Go alloc/total (heap fragmentation: 8.7 MiB, heap reserved: 14 MiB, heap released: 56 MiB), 36 MiB/44 MiB CGO alloc/total (0.1 CGO/sec), 7.6/5.0 %(u/s)time, 0.0 %gc (0x), 10 KiB/7.5 KiB (r/w)net
+I210608 12:23:02.129444 262 2@server/status/runtime.go:569 ⋮ [n1] 301  runtime stats: 205 MiB RSS, 284 goroutines (stacks: 3.9 MiB), 36 MiB/84 MiB Go alloc/total (heap fragmentation: 12 MiB, heap reserved: 20 MiB, heap released: 56 MiB), 36 MiB/44 MiB CGO alloc/total (0.1 CGO/sec), 11.4/3.0 %(u/s)time, 0.0 %gc (0x), 9.6 KiB/7.5 KiB (r/w)net
+I210608 12:23:12.129832 262 2@server/status/runtime.go:569 ⋮ [n1] 302  runtime stats: 206 MiB RSS, 285 goroutines (stacks: 4.6 MiB), 48 MiB/85 MiB Go alloc/total (heap fragmentation: 8.4 MiB, heap reserved: 12 MiB, heap released: 55 MiB), 36 MiB/44 MiB CGO alloc/total (0.1 CGO/sec), 6.7/4.4 %(u/s)time, 0.0 %gc (0x), 11 KiB/7.7 KiB (r/w)net
+I210608 12:23:22.129801 262 2@server/status/runtime.go:569 ⋮ [n1] 303  runtime stats: 206 MiB RSS, 285 goroutines (stacks: 4.7 MiB), 60 MiB/85 MiB Go alloc/total (heap fragmentation: 6.1 MiB, heap reserved: 2.5 MiB, heap released: 55 MiB), 36 MiB/44 MiB CGO alloc/total (0.1 CGO/sec), 6.8/4.9 %(u/s)time, 0.0 %gc (0x), 9.4 KiB/6.9 KiB (r/w)net
+I210608 12:23:23.765972 1 1@cli/start.go:737 ⋮ [-] 304  received signal 'terminated'
+I210608 12:23:23.766054 1 1@cli/start.go:821 ⋮ [-] 305  initiating graceful shutdown of server
+I210608 12:23:25.698968 14675 1@server/drain.go:157 ⋮ [server drain process] 306  drain remaining: 15
+I210608 12:23:25.699117 14675 1@server/drain.go:159 ⋮ [server drain process] 307  drain details: SQL clients: 3, descriptor leases: 11, liveness record: 1
+I210608 12:23:25.920037 14675 1@server/drain.go:157 ⋮ [server drain process] 308  drain remaining: 0
+W210608 12:23:25.920176 544 sql/sqlliveness/slinstance/slinstance.go:183 ⋮ [n1] 309  exiting heartbeat loop
+W210608 12:23:25.920225 545 jobs/registry.go:729 ⋮ [-] 310  canceling all adopted jobs due to stopper quiescing
+I210608 12:23:25.936728 1 1@cli/start.go:873 ⋮ [-] 311  server drained and shutdown completed

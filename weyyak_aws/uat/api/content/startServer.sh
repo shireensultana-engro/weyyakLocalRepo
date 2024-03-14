@@ -1,0 +1,29 @@
+export SERVICE_PORT=3001 \
+export DB_SERVER=msapiqa-rds.z5.com \
+export DB_PORT=5432 \
+export DB_USER=weyyak_aurora \
+export DB_PASSWORD=M5Ltay9sDY93khvmcpNE \
+export DB_DATABASE=wyk_content \
+export FRONTEND_DB_DATABASE=wk_frontend \
+export DEFAULT_PAGE_SIZE=20 \
+export CONTENT_COMMON_API_URL=https://qa-ms-api-contentcommon.wyk.z5.com/ \
+export CMS=https://apiqa.wyk.z5.com/v1/ \
+export UM=https://apiqa.wyk.z5.com/v1/ \
+export IMAGES=https://contents-uat.weyyak.z5.com/ \
+export GEO_LOCATION=https://geo.weyyak1.z5.com \
+export VIDEO_API=https://api-weyyak.akamaized.net/get_info/ \
+export AD_TAG_URL=https://s3.ap-south-1.amazonaws.com/z5xml/mobile_apps_ads_ios.xml \
+export BASE_URL=https://apiqa.wyk.z5.com/v1/ \
+export IMAGERY_URL=https://contents-uat.weyyak.z5.com/ \
+export AWS_REGION=ap-south-1 \
+export ACCESS_SECRET=AKIAYOGUWMUMEEQD6CPW \
+export S3_BUCKET=z5content-uat \
+export S3_REGION=ap-south-1 \
+export S3_ID=AKIAYOGUWMUMGAQLMW3U \
+export S3_SECRET=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 \
+export REDIS_CACHE_URL=https://msapiqa-events.z5.com/cache \
+export REDIS_CONTENT_KEY=GOAPIQA \
+export DOTNET_URL=https://apiqa.wyk.z5.com/v1/ar/oauth2/tokendata?access_token=export 
+export JEAGER_URL=https://jaeger-tracer.weyyak.com/api/traces
+export JEAGER_SERVICE_NAME=Content 
+go run *.go

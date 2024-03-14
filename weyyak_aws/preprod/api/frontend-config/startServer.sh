@@ -1,0 +1,25 @@
+export SERVICE_PORT=3004 
+export DB_SERVER=msapiqa-rds.z5.com 
+export DB_PORT=5432 
+export DB_USER=weyyak_aurora 
+export DB_PASSWORD=M5Ltay9sDY93khvmcpNE 
+export DB_DATABASE=wyk_frontend_config 
+export CDB_DATABASE=wyk_content 
+export FDB_DATABASE=wk_frontend 
+export USER_DB_DATABASE=wk_user_management 
+export DEFAULT_PAGE_SIZE=50 
+export CMS=https://apiqa.wyk.z5.com/v1/ 
+export UM=https://apiqa.wyk.z5.com/v1/ 
+export IMAGES=https://contents-uat.weyyak.z5.com/ 
+export GEO_LOCATION=https://geo.weyyak1.z5.com 
+export VIDEO_API=https://api-weyyak.akamaized.net/get_info/ 
+export AD_TAG_URL=https://s3.ap-south-1.amazonaws.com/z5xml/mobile_apps_ads_ios.xml 
+export BASE_URL=https://msapifo-preprod-me.weyyak.z5.com/v1/ 
+export S3_BUCKET=z5content-uat 
+export S3_REGION=ap-south-1 
+export S3_ID=AKIAYOGUWMUMGAQLMW3U 
+export S3_SECRET=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 
+export REDIS_CONTENT_KEY=GOAPIQA
+export REDIS_CACHE_URL=https://msapipreprod-me-events.z5.com/cache 
+export DOTNET_URL=https://v49i5nv633.execute-api.me-south-1.amazonaws.com/bo-preprod/v1/ar/oauth2/tokendata?access_token=export
+go run *.go

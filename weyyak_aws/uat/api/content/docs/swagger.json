@@ -1,0 +1,3421 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "contact": {}
+    },
+    "paths": {
+        "/api/Actors": {
+            "get": {
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "description": "get list of all actor's",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Actors"
+                ],
+                "summary": "Show a list of all actor's",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/actor.Actor"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/actors": {
+            "put": {
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "description": "Create New Actor",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Actors"
+                ],
+                "summary": "Create New Actor",
+                "parameters": [
+                    {
+                        "description": "Raw JSON string",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/actor.Actor"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/actor.Actor"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/agegroups": {
+            "get": {
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "description": "get agegroups",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Agegroup"
+                ],
+                "summary": "Show agegroups",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/agegroup.AgeGroup"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/content/digitalrights/types": {
+            "get": {
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "description": "get list of all digital types",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Digital"
+                ],
+                "summary": "Show a list of all digital types",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/digitalRights.ContentRights"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/content/displaystatuses": {
+            "get": {
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "description": "get list of all display status",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Digital"
+                ],
+                "summary": "Show a list of all display status",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/digitalRights.DisplayStatus"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/content/productnames": {
+            "get": {
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "description": "get product names",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Product Name"
+                ],
+                "summary": "Show ProductNames",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/productname.ProductName"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/contents": {
+            "get": {
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "description": "Get all contents by filters",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Content"
+                ],
+                "summary": "Get all contents",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Limit",
+                        "name": "limit",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Offset",
+                        "name": "offset",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Content Type",
+                        "name": "contentType",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Search Text",
+                        "name": "searchText",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/contents/multitier/published/{id}": {
+            "post": {
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "description": "Create Or Update published Multitier Content Detail",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "multitier"
+                ],
+                "summary": "Create Or Update published Multitier Content Detail",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "published or draft",
+                        "name": "result",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Raw JSON string",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/multitiercontent.MainResponse"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/contents/multitier/titles": {
+            "get": {
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "description": "get Multitier Content With Tittles",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "onetier or multitier"
+                ],
+                "summary": "Show Multitier Content With Tittles",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/multitiercontent.Multitier"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/contents/multitier/{id}": {
+            "get": {
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "description": "Get multitier content details by content id",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Content"
+                ],
+                "summary": "Get multitier content details",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Content Id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/contents/multitier/{result}/{id}": {
+            "post": {
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "description": "Create Or Update Draft Multitier Content Details",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "multitier"
+                ],
+                "summary": "Create Or Update Draft Multitier Content Details",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "published or draft",
+                        "name": "result",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Raw JSON string",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/multitiercontent.MainResponse"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/contents/onetier/draft/{id}": {
+            "post": {
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "description": "Create Or Update onetier Content Details",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "onetier or multitier"
+                ],
+                "summary": "Create Or Update onetier Content Details",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "published or draft",
+                        "name": "result",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Raw JSON string",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/multitiercontent.OnetierContentRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/contents/onetier/published": {
+            "post": {
+                "description": "Create onetier content details",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Content"
+                ],
+                "summary": "Create onetier content details",
+                "parameters": [
+                    {
+                        "description": "Raw JSON string",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/content.OnetierContentRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/contents/onetier/{id}": {
+            "get": {
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "description": "Get One Tier Content Details Based on Content ID",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Page"
+                ],
+                "summary": "Get One Tier Content Details Based on Content ID",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/contents/onetier/{id}/status/{status}": {
+            "post": {
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "description": "post Update onetier or multitier status",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "onetier or multitier"
+                ],
+                "summary": "Show Update onetier or multitier status",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "tier",
+                        "name": "tier",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "status",
+                        "name": "status",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/contents/onetier/{result}/{id}": {
+            "post": {
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "description": "Create Or Update onetier Content Details",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "onetier or multitier"
+                ],
+                "summary": "Create Or Update onetier Content Details",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "published or draft",
+                        "name": "result",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Raw JSON string",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/multitiercontent.OnetierContentRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/contents/{value}/{id}": {
+            "delete": {
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "description": "delete Delete one tier or multitier details by one tier id or multitier id",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "onetier or multitier"
+                ],
+                "summary": "Delete one tier or multitier details by one tier id or multitier id",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/contentvariances/{id}": {
+            "delete": {
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "description": "Delete content variances details by contentvariance id",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "contentvariance"
+                ],
+                "summary": "Delete content variances details by contentvariance id",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/contentvariances/{id}/status/{status}": {
+            "post": {
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "description": "post Update  contentvariance status",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "contentvariance"
+                ],
+                "summary": "Show contentvariance status",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "status",
+                        "name": "status",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/directors": {
+            "get": {
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "description": "get list of all Director's",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Directors"
+                ],
+                "summary": "Show a list of all Director's",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/director.Director"
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "Create New Director",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Directors"
+                ],
+                "summary": "Create New Director",
+                "parameters": [
+                    {
+                        "description": "Raw JSON string",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/director.Director"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/director.Director"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/episodes": {
+            "get": {
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "description": "Get Episodes Based on Season ID",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Episode"
+                ],
+                "summary": "Get Episodes Based on Season ID",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "seasonid",
+                        "name": "seasonid",
+                        "in": "path"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Offset",
+                        "name": "offset",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Limit",
+                        "name": "limit",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Page",
+                        "name": "page",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/episodes/draft/{id}": {
+            "post": {
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Page"
+                ],
+                "summary": "Create or Update draft episode",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Raw JSON string",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/episode.Episodes"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/episodes/published/{id}": {
+            "post": {
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "description": "Create or Update episodes",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Page"
+                ],
+                "summary": "Create or Update episodes",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Raw JSON string",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/episode.Episodes"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/episodes/{id}": {
+            "delete": {
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "description": "Delete episode details by episode id",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "episode"
+                ],
+                "summary": "Delete episode details by episode id",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/episodes/{id}/status/{status}": {
+            "post": {
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "description": "post Update Episode status",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "episode"
+                ],
+                "summary": "Show Update Episode status",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "status",
+                        "name": "status",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/genre/{genre_id}": {
+            "get": {
+                "description": "get list of all genre",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Genre"
+                ],
+                "summary": "Show a list of all genre",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Genre Id",
+                        "name": "castid",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/genre.Genre"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/genres/{genre_id}/subgenres": {
+            "get": {
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "description": "get list of all Sub Genere Based on Genere ID",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Genre"
+                ],
+                "summary": "Show a list of all Sub Genere Based on Genere ID",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Genre Id",
+                        "name": "castid",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/genre.Genre"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/musiccomposers": {
+            "get": {
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "description": "get list of all MusicComposer's",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "MusicComposers"
+                ],
+                "summary": "Show a list of all MusicComposer's",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/musiccomposer.MusicComposer"
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "Create New MusicComposer",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "MusicComposers"
+                ],
+                "summary": "Create New MusicComposer",
+                "parameters": [
+                    {
+                        "description": "Raw JSON string",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/musiccomposer.MusicComposer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/musiccomposer.MusicComposer"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/seasons": {
+            "get": {
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "description": "Get List of Seasons from content id",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Season"
+                ],
+                "summary": "Get List of Seasons from content id",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Content Id",
+                        "name": "ContentId",
+                        "in": "path"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Offset",
+                        "name": "offset",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Limit",
+                        "name": "limit",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Page",
+                        "name": "page",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/seasons/draft/{id}": {
+            "post": {
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "description": "Draft season details by content id",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Content"
+                ],
+                "summary": "Draft season details",
+                "parameters": [
+                    {
+                        "description": "Raw JSON string",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/content.CreateSeasonRequest"
+                        }
+                    },
+                    {
+                        "type": "string",
+                        "description": "Id",
+                        "name": "id",
+                        "in": "path"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/seasons/published/{id}": {
+            "post": {
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "description": "Create seasonVarince",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Content"
+                ],
+                "summary": "Create season details",
+                "parameters": [
+                    {
+                        "description": "Raw JSON string",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/content.CreateSeasonVarainceRequest"
+                        }
+                    },
+                    {
+                        "type": "string",
+                        "description": "Id",
+                        "name": "id",
+                        "in": "path"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/seasons/{id}/status/{status}": {
+            "post": {
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "description": "post Update Season",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Season"
+                ],
+                "summary": "Show Update Season",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "status",
+                        "name": "status",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/singers": {
+            "get": {
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "description": "get list of all Singer's",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Singers"
+                ],
+                "summary": "Show a list of all Singer's",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/singer.Singer"
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "Create New Singer",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Singers"
+                ],
+                "summary": "Create New Singer",
+                "parameters": [
+                    {
+                        "description": "Raw JSON string",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/singer.Singer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/singer.Singer"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/songwriters": {
+            "get": {
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "description": "get list of all SongWriter's",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "SongWriters"
+                ],
+                "summary": "Show a list of all SongWriter's",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/songwriter.SongWriter"
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "Create New SongWriter",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "SongWriters"
+                ],
+                "summary": "Create New SongWriter",
+                "parameters": [
+                    {
+                        "description": "Raw JSON string",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/songwriter.SongWriter"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/songwriter.SongWriter"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/subscription/plan": {
+            "get": {
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "description": "get GetSubscriptionPlan",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "SubscriptionPlan"
+                ],
+                "summary": "Show GetSubscriptionPlan",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/textualdatatags": {
+            "get": {
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "description": "get list of all Tags's",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Tags"
+                ],
+                "summary": "Show a list of all Tags's",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/tags.TextualDataTag"
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "description": "Create New TextualDataTag",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Tags"
+                ],
+                "summary": "Create New TextualDataTag",
+                "parameters": [
+                    {
+                        "description": "Raw JSON string",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/tags.TextualDataTag"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/tags.TextualDataTag"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/viewactivities/filters": {
+            "get": {
+                "description": "get ViewActivitiesFilters",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "ViewActivities"
+                ],
+                "summary": "Show ViewActivitiesFilters",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/writers": {
+            "get": {
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "description": "get list of all Writer's",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Writers"
+                ],
+                "summary": "Show a list of all Writer's",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/writer.Writer"
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "Create New Writer",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Writers"
+                ],
+                "summary": "Create New Writer",
+                "parameters": [
+                    {
+                        "description": "Raw JSON string",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/writer.Writer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/writer.Writer"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/{value}/{id}": {
+            "delete": {
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "description": "Delete Season by season id",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Season"
+                ],
+                "summary": "Delete Season by season id",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/content/digitalrights/regions/all": {
+            "get": {
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "description": "Get digital rights regions",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Digital"
+                ],
+                "summary": "show list of digital rights regions",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/genres": {
+            "get": {
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "description": "get all genres list",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Genre"
+                ],
+                "summary": "Get all genres list",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "actor.Actor": {
+            "type": "object",
+            "properties": {
+                "arabicName": {
+                    "type": "string"
+                },
+                "englishName": {
+                    "type": "string"
+                }
+            }
+        },
+        "agegroup.AgeGroup": {
+            "type": "object",
+            "properties": {
+                "arabicName": {
+                    "type": "string"
+                },
+                "englishName": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                }
+            }
+        },
+        "content.AboutTheContent": {
+            "type": "object",
+            "properties": {
+                "acquisitionDepartment": {
+                    "type": "string"
+                },
+                "ageGroup": {
+                    "type": "integer"
+                },
+                "arabicSynopsis": {
+                    "type": "string"
+                },
+                "englishSynopsis": {
+                    "type": "string"
+                },
+                "introDuration": {
+                    "type": "string"
+                },
+                "introStart": {
+                    "type": "string"
+                },
+                "originalLanguage": {
+                    "type": "string"
+                },
+                "outroDuration": {
+                    "type": "string"
+                },
+                "outroStart": {
+                    "type": "string"
+                },
+                "productionCountries": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "productionHouse": {
+                    "type": "string"
+                },
+                "productionYear": {
+                    "type": "integer"
+                },
+                "supplier": {
+                    "type": "string"
+                }
+            }
+        },
+        "content.AboutTheContentInfoRequest": {
+            "type": "object",
+            "required": [
+                "ageGroup",
+                "arabicSynopsis",
+                "englishSynopsis",
+                "introDuration",
+                "introStart",
+                "originalLanguage",
+                "outroDuration",
+                "outroStart",
+                "supplier"
+            ],
+            "properties": {
+                "acquisitionDepartment": {
+                    "type": "string"
+                },
+                "ageGroup": {
+                    "type": "integer"
+                },
+                "arabicSynopsis": {
+                    "type": "string"
+                },
+                "englishSynopsis": {
+                    "type": "string"
+                },
+                "introDuration": {
+                    "type": "string"
+                },
+                "introStart": {
+                    "type": "string"
+                },
+                "originalLanguage": {
+                    "type": "string"
+                },
+                "outroDuration": {
+                    "type": "string"
+                },
+                "outroStart": {
+                    "type": "string"
+                },
+                "productionCountries": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "productionHouse": {
+                    "type": "string"
+                },
+                "productionYear": {
+                    "type": "integer"
+                },
+                "supplier": {
+                    "type": "string"
+                }
+            }
+        },
+        "content.Cast": {
+            "type": "object",
+            "properties": {
+                "actors": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "directors": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "mainActorId": {
+                    "type": "string"
+                },
+                "mainActressId": {
+                    "type": "string"
+                },
+                "writers": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "content.ContentGenres": {
+            "type": "object",
+            "properties": {
+                "genreId": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "subgenresId": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "content.ContentTranslation": {
+            "type": "object",
+            "properties": {
+                "dubbingDialectId": {
+                    "type": "integer"
+                },
+                "dubbingLanguage": {
+                    "type": "string"
+                },
+                "languageType": {
+                    "type": "string"
+                },
+                "subtitlingLanguage": {
+                    "type": "string"
+                }
+            }
+        },
+        "content.ContentVariances": {
+            "type": "object",
+            "properties": {
+                "countryCheck": {
+                    "type": "boolean"
+                },
+                "createdBy": {
+                    "type": "string"
+                },
+                "digitalRightsEndDate": {
+                    "type": "string"
+                },
+                "digitalRightsRegions": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "digitalRightsStartDate": {
+                    "type": "string"
+                },
+                "digitalRightsType": {
+                    "type": "integer"
+                },
+                "dubbingDialectId": {
+                    "type": "integer"
+                },
+                "dubbingLanguage": {
+                    "type": "string"
+                },
+                "dubbingScript": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "languageType": {
+                    "type": "string"
+                },
+                "overlayPosterImage": {
+                    "type": "string"
+                },
+                "products": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "publishingPlatforms": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "schedulingDateTime": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "integer"
+                },
+                "statusCanBeChanged": {
+                    "type": "boolean"
+                },
+                "subStatusName": {
+                    "type": "string"
+                },
+                "subscriptionPlans": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "subtitlingLanguage": {
+                    "type": "string"
+                },
+                "subtitlingScript": {
+                    "type": "string"
+                },
+                "varianceTrailers": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "videoContentId": {
+                    "type": "string"
+                }
+            }
+        },
+        "content.CreateSeasonRequest": {
+            "type": "object",
+            "properties": {
+                "Seasonid": {
+                    "type": "string"
+                },
+                "aboutTheContent": {
+                    "$ref": "#/definitions/content.AboutTheContentInfoRequest"
+                },
+                "cast": {
+                    "$ref": "#/definitions/content.Cast"
+                },
+                "contentGenres": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/content.ContentGenres"
+                    }
+                },
+                "contentId": {
+                    "type": "string"
+                },
+                "countryCheck": {
+                    "type": "boolean"
+                },
+                "introStart": {
+                    "type": "string"
+                },
+                "music": {
+                    "$ref": "#/definitions/content.Music"
+                },
+                "nonTextualData": {
+                    "$ref": "#/definitions/content.NonTextualData"
+                },
+                "primaryInfo": {
+                    "$ref": "#/definitions/content.PrimaryInfoRequest"
+                },
+                "products": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "rights": {
+                    "$ref": "#/definitions/content.RightsRequest"
+                },
+                "seoDetails": {
+                    "$ref": "#/definitions/content.SeoDetails"
+                },
+                "tagInfo": {
+                    "$ref": "#/definitions/content.TagInfo"
+                },
+                "translation": {
+                    "$ref": "#/definitions/content.ContentTranslation"
+                },
+                "varianceTrailers": {
+                    "type": "array",
+                    "items": {}
+                }
+            }
+        },
+        "content.CreateSeasonVarainceRequest": {
+            "type": "object",
+            "properties": {
+                "Seasonid": {
+                    "type": "string"
+                },
+                "aboutTheContent": {
+                    "$ref": "#/definitions/content.AboutTheContentInfoRequest"
+                },
+                "cast": {
+                    "$ref": "#/definitions/content.Cast"
+                },
+                "contentGenres": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/content.ContentGenres"
+                    }
+                },
+                "contentId": {
+                    "type": "string"
+                },
+                "introStart": {
+                    "type": "string"
+                },
+                "music": {
+                    "$ref": "#/definitions/content.Music"
+                },
+                "nonTextualData": {
+                    "$ref": "#/definitions/content.NonTextualData"
+                },
+                "primaryInfo": {
+                    "$ref": "#/definitions/content.PrimaryInfoRequest"
+                },
+                "products": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "rights": {
+                    "$ref": "#/definitions/content.RightsRequests"
+                },
+                "seoDetails": {
+                    "$ref": "#/definitions/content.SeoDetails"
+                },
+                "tagInfo": {
+                    "$ref": "#/definitions/content.TagInfo"
+                },
+                "translation": {
+                    "$ref": "#/definitions/content.ContentTranslation"
+                },
+                "varianceTrailers": {
+                    "type": "array",
+                    "items": {}
+                }
+            }
+        },
+        "content.Music": {
+            "type": "object",
+            "properties": {
+                "musicComposers": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "singers": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "songWriters": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "content.NonTextualData": {
+            "type": "object",
+            "properties": {
+                "detailsBackground": {
+                    "type": "string"
+                },
+                "mobileDetailsBackground": {
+                    "type": "string"
+                },
+                "overlayPosterImage": {
+                    "type": "string"
+                },
+                "posterImage": {
+                    "type": "string"
+                }
+            }
+        },
+        "content.OnetierContentRequest": {
+            "type": "object",
+            "required": [
+                "nonTextualData",
+                "textualData"
+            ],
+            "properties": {
+                "nonTextualData": {
+                    "$ref": "#/definitions/content.NonTextualData"
+                },
+                "textualData": {
+                    "$ref": "#/definitions/content.TextualData"
+                }
+            }
+        },
+        "content.PrimaryInfo": {
+            "type": "object",
+            "properties": {
+                "alternativeTitle": {
+                    "type": "string"
+                },
+                "arabicTitle": {
+                    "type": "string"
+                },
+                "contentType": {
+                    "type": "string"
+                },
+                "introStart": {
+                    "type": "string"
+                },
+                "notes": {
+                    "type": "string"
+                },
+                "number": {
+                    "type": "integer"
+                },
+                "originalTitle": {
+                    "type": "string"
+                },
+                "outroStart": {
+                    "type": "string"
+                },
+                "seasonNumber": {
+                    "type": "integer"
+                },
+                "synopsisArabic": {
+                    "type": "string"
+                },
+                "synopsisEnglish": {
+                    "type": "string"
+                },
+                "transliteratedTitle": {
+                    "type": "string"
+                },
+                "videoContentId": {
+                    "type": "string"
+                }
+            }
+        },
+        "content.PrimaryInfoRequest": {
+            "type": "object",
+            "properties": {
+                "alternativeTitle": {
+                    "type": "string"
+                },
+                "arabicTitle": {
+                    "type": "string"
+                },
+                "notes": {
+                    "type": "string"
+                },
+                "originalTitle": {
+                    "type": "string"
+                },
+                "seasonNumber": {
+                    "type": "integer"
+                },
+                "transliteratedTitle": {
+                    "type": "string"
+                }
+            }
+        },
+        "content.RightsRequest": {
+            "type": "object",
+            "properties": {
+                "digitalRightsRegions": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "digitalRightsStartDate": {
+                    "type": "string"
+                },
+                "digitalRightsType": {
+                    "type": "integer"
+                },
+                "digitalRightsendDate": {
+                    "type": "string"
+                },
+                "subscriptionPlans": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                }
+            }
+        },
+        "content.RightsRequests": {
+            "type": "object",
+            "properties": {
+                "digitalRightsRegions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "digitalRightsStartDate": {
+                    "type": "string"
+                },
+                "digitalRightsType": {
+                    "type": "integer"
+                },
+                "digitalRightsendDate": {
+                    "type": "string"
+                },
+                "subscriptionPlans": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                }
+            }
+        },
+        "content.SeoDetails": {
+            "type": "object",
+            "properties": {
+                "arabicMetaDescription": {
+                    "type": "string"
+                },
+                "arabicMetaTitle": {
+                    "type": "string"
+                },
+                "englishMetaDescription": {
+                    "type": "string"
+                },
+                "englishMetaTitle": {
+                    "type": "string"
+                }
+            }
+        },
+        "content.TagInfo": {
+            "type": "object",
+            "properties": {
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "content.TextualData": {
+            "type": "object",
+            "required": [
+                "aboutTheContent",
+                "cast",
+                "contentGenres",
+                "contentVariances",
+                "music",
+                "primaryInfo",
+                "seoDetails",
+                "tagInfo"
+            ],
+            "properties": {
+                "aboutTheContent": {
+                    "$ref": "#/definitions/content.AboutTheContent"
+                },
+                "cast": {
+                    "$ref": "#/definitions/content.Cast"
+                },
+                "contentGenres": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/content.ContentGenres"
+                    }
+                },
+                "contentVariances": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/content.ContentVariances"
+                    }
+                },
+                "music": {
+                    "$ref": "#/definitions/content.Music"
+                },
+                "primaryInfo": {
+                    "$ref": "#/definitions/content.PrimaryInfo"
+                },
+                "seoDetails": {
+                    "$ref": "#/definitions/content.SeoDetails"
+                },
+                "tagInfo": {
+                    "$ref": "#/definitions/content.TagInfo"
+                }
+            }
+        },
+        "digitalRights.ContentRights": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "digitalRights.DisplayStatus": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "director.Director": {
+            "type": "object",
+            "properties": {
+                "arabicName": {
+                    "type": "string"
+                },
+                "englishName": {
+                    "type": "string"
+                }
+            }
+        },
+        "episode.Cast": {
+            "type": "object",
+            "properties": {
+                "actors": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "directors": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "mainActorId": {
+                    "type": "string"
+                },
+                "mainActressId": {
+                    "type": "string"
+                },
+                "writers": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "episode.Episodes": {
+            "type": "object",
+            "properties": {
+                "cast": {
+                    "$ref": "#/definitions/episode.Cast"
+                },
+                "music": {
+                    "$ref": "#/definitions/episode.Music"
+                },
+                "nonTextualData": {
+                    "$ref": "#/definitions/episode.NonTextualData"
+                },
+                "primaryInfo": {
+                    "$ref": "#/definitions/episode.PrimaryInfo"
+                },
+                "publishingPlatforms": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "rights": {
+                    "$ref": "#/definitions/episode.Rights"
+                },
+                "schedulingDateTime": {
+                    "type": "string"
+                },
+                "seasonId": {
+                    "type": "string"
+                },
+                "seoDetails": {
+                    "$ref": "#/definitions/episode.SeoDetails"
+                },
+                "tagInfo": {
+                    "$ref": "#/definitions/episode.TagInfo"
+                }
+            }
+        },
+        "episode.Music": {
+            "type": "object",
+            "properties": {
+                "musicComposers": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "singers": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "songWriters": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "episode.NonTextualData": {
+            "type": "object",
+            "properties": {
+                "detailsBackground": {
+                    "type": "string"
+                },
+                "dubbingScript": {
+                    "type": "string"
+                },
+                "mobileDetailsBackground": {
+                    "type": "string"
+                },
+                "overlayPosterImage": {
+                    "type": "string"
+                },
+                "posterImage": {
+                    "type": "string"
+                },
+                "subtitlingScript": {
+                    "type": "string"
+                }
+            }
+        },
+        "episode.PrimaryInfo": {
+            "type": "object",
+            "properties": {
+                "alternativeTitle": {
+                    "type": "string"
+                },
+                "arabicTitle": {
+                    "type": "string"
+                },
+                "contentType": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "introStart": {
+                    "type": "string"
+                },
+                "notes": {
+                    "type": "string"
+                },
+                "number": {
+                    "type": "integer"
+                },
+                "originalTitle": {
+                    "type": "string"
+                },
+                "outroStart": {
+                    "type": "string"
+                },
+                "savedEpisodes": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "savedEpisodesAndTitles": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/episode.SavedEpisodesAndTitles"
+                    }
+                },
+                "seasonNumber": {
+                    "type": "integer"
+                },
+                "synopsisArabic": {
+                    "type": "string"
+                },
+                "synopsisEnglish": {
+                    "type": "string"
+                },
+                "transliteratedTitle": {
+                    "type": "string"
+                },
+                "videoContentId": {
+                    "type": "string"
+                }
+            }
+        },
+        "episode.Rights": {
+            "type": "object",
+            "properties": {
+                "digitalRightsEndDate": {
+                    "type": "string"
+                },
+                "digitalRightsRegions": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "digitalRightsStartDate": {
+                    "type": "string"
+                },
+                "digitalRightsType": {
+                    "type": "integer"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "subscriptionPlans": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                }
+            }
+        },
+        "episode.SavedEpisodesAndTitles": {
+            "type": "object",
+            "properties": {
+                "number": {
+                    "type": "integer"
+                },
+                "transliteratedTitle": {
+                    "type": "string"
+                }
+            }
+        },
+        "episode.SeoDetails": {
+            "type": "object",
+            "properties": {
+                "arabicMetaDescription": {
+                    "type": "string"
+                },
+                "arabicMetaTitle": {
+                    "type": "string"
+                },
+                "englishMetaDescription": {
+                    "type": "string"
+                },
+                "englishMetaTitle": {
+                    "type": "string"
+                }
+            }
+        },
+        "episode.TagInfo": {
+            "type": "object",
+            "properties": {
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "genre.Genre": {
+            "type": "object",
+            "properties": {
+                "arabic_name": {
+                    "type": "string"
+                },
+                "english_name": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                }
+            }
+        },
+        "multitiercontent.AboutTheContent": {
+            "type": "object",
+            "properties": {
+                "acquisitionDepartment": {
+                    "type": "string"
+                },
+                "ageGroup": {
+                    "type": "integer"
+                },
+                "arabicSynopsis": {
+                    "type": "string"
+                },
+                "englishSynopsis": {
+                    "type": "string"
+                },
+                "introDuration": {
+                    "type": "string"
+                },
+                "introStart": {
+                    "type": "string"
+                },
+                "originalLanguage": {
+                    "type": "string"
+                },
+                "outroDuration": {
+                    "type": "string"
+                },
+                "outroStart": {
+                    "type": "string"
+                },
+                "productionCountries": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "productionHouse": {
+                    "type": "string"
+                },
+                "productionYear": {
+                    "type": "integer"
+                },
+                "supplier": {
+                    "type": "string"
+                }
+            }
+        },
+        "multitiercontent.Actors": {
+            "type": "object",
+            "properties": {
+                "arabicname": {
+                    "type": "string"
+                },
+                "englishname": {
+                    "type": "string"
+                }
+            }
+        },
+        "multitiercontent.Cast": {
+            "type": "object",
+            "properties": {
+                "actors": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/multitiercontent.Actors"
+                    }
+                },
+                "directors": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/multitiercontent.Directors"
+                    }
+                },
+                "mainActorId": {
+                    "type": "string"
+                },
+                "mainActressId": {
+                    "type": "string"
+                },
+                "writers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/multitiercontent.Writers"
+                    }
+                }
+            }
+        },
+        "multitiercontent.ContentGenres": {
+            "type": "object",
+            "properties": {
+                "genreId": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "subgenresId": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "multitiercontent.ContentGenresrequest": {
+            "type": "object",
+            "properties": {
+                "genreId": {
+                    "type": "string"
+                },
+                "subgenresId": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "multitiercontent.ContentVariances": {
+            "type": "object",
+            "properties": {
+                "countryCheck": {
+                    "type": "boolean"
+                },
+                "createdBy": {
+                    "type": "string"
+                },
+                "digitalRightsEndDate": {
+                    "type": "string"
+                },
+                "digitalRightsRegions": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "digitalRightsStartDate": {
+                    "type": "string"
+                },
+                "digitalRightsType": {
+                    "type": "integer"
+                },
+                "dubbingDialectId": {
+                    "type": "integer"
+                },
+                "dubbingLanguage": {
+                    "type": "string"
+                },
+                "dubbingScript": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "introDuration": {
+                    "type": "string"
+                },
+                "introStart": {
+                    "type": "string"
+                },
+                "languageType": {
+                    "type": "string"
+                },
+                "overlayPosterImage": {
+                    "type": "string"
+                },
+                "products": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "publishingPlatforms": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "schedulingDateTime": {
+                    "type": "string"
+                },
+                "status": {
+                    "description": "ID                     string             `json:\"id\"`",
+                    "type": "integer"
+                },
+                "statusCanBeChanged": {
+                    "type": "boolean"
+                },
+                "subStatusName": {
+                    "type": "string"
+                },
+                "subscriptionPlans": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "subtitlingLanguage": {
+                    "type": "string"
+                },
+                "subtitlingScript": {
+                    "type": "string"
+                },
+                "varianceTrailers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/multitiercontent.VarianceTrailers"
+                    }
+                },
+                "videoContentId": {
+                    "type": "string"
+                }
+            }
+        },
+        "multitiercontent.Directors": {
+            "type": "object",
+            "properties": {
+                "arabicname": {
+                    "type": "string"
+                },
+                "englishname": {
+                    "type": "string"
+                }
+            }
+        },
+        "multitiercontent.MainResponse": {
+            "type": "object",
+            "properties": {
+                "contentGenres": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/multitiercontent.ContentGenres"
+                    }
+                },
+                "primaryInfo": {
+                    "$ref": "#/definitions/multitiercontent.PrimaryInfo"
+                },
+                "seoDetails": {
+                    "$ref": "#/definitions/multitiercontent.SeoDetails"
+                }
+            }
+        },
+        "multitiercontent.Multitier": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "transliteratedTitle": {
+                    "type": "string"
+                }
+            }
+        },
+        "multitiercontent.Music": {
+            "type": "object",
+            "properties": {
+                "musicComposers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/multitiercontent.MusicComposers"
+                    }
+                },
+                "singers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/multitiercontent.Singers"
+                    }
+                },
+                "songWriters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/multitiercontent.SongWriters"
+                    }
+                }
+            }
+        },
+        "multitiercontent.MusicComposers": {
+            "type": "object",
+            "properties": {
+                "arabicname": {
+                    "type": "string"
+                },
+                "englishname": {
+                    "type": "string"
+                }
+            }
+        },
+        "multitiercontent.NonTextualData": {
+            "type": "object",
+            "properties": {
+                "detailsBackground": {
+                    "type": "string"
+                },
+                "mobileDetailsBackground": {
+                    "type": "string"
+                },
+                "posterImage": {
+                    "type": "string"
+                }
+            }
+        },
+        "multitiercontent.OnetierContentRequest": {
+            "type": "object",
+            "required": [
+                "nonTextualData",
+                "textualData"
+            ],
+            "properties": {
+                "nonTextualData": {
+                    "$ref": "#/definitions/multitiercontent.NonTextualData"
+                },
+                "textualData": {
+                    "$ref": "#/definitions/multitiercontent.TextualData"
+                }
+            }
+        },
+        "multitiercontent.PrimaryInfo": {
+            "type": "object",
+            "properties": {
+                "alternativeTitle": {
+                    "type": "string"
+                },
+                "arabicTitle": {
+                    "type": "string"
+                },
+                "contentType": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "introStart": {
+                    "type": "string"
+                },
+                "notes": {
+                    "type": "string"
+                },
+                "originalTitle": {
+                    "type": "string"
+                },
+                "outroStart": {
+                    "type": "string"
+                },
+                "transliteratedTitle": {
+                    "type": "string"
+                }
+            }
+        },
+        "multitiercontent.PrimaryInforequest": {
+            "type": "object",
+            "properties": {
+                "alternativeTitle": {
+                    "type": "string"
+                },
+                "arabicTitle": {
+                    "type": "string"
+                },
+                "contentType": {
+                    "type": "string"
+                },
+                "introStart": {
+                    "type": "string"
+                },
+                "notes": {
+                    "type": "string"
+                },
+                "originalTitle": {
+                    "type": "string"
+                },
+                "outroStart": {
+                    "type": "string"
+                },
+                "transliteratedTitle": {
+                    "type": "string"
+                }
+            }
+        },
+        "multitiercontent.SeoDetails": {
+            "type": "object",
+            "properties": {
+                "arabicMetaDescription": {
+                    "type": "string"
+                },
+                "arabicMetaTitle": {
+                    "type": "string"
+                },
+                "englishMetaDescription": {
+                    "type": "string"
+                },
+                "englishMetaTitle": {
+                    "type": "string"
+                }
+            }
+        },
+        "multitiercontent.SeoDetailsrequest": {
+            "type": "object",
+            "properties": {
+                "arabicMetaDescription": {
+                    "type": "string"
+                },
+                "arabicMetaTitle": {
+                    "type": "string"
+                },
+                "englishMetaDescription": {
+                    "type": "string"
+                },
+                "englishMetaTitle": {
+                    "type": "string"
+                }
+            }
+        },
+        "multitiercontent.Singers": {
+            "type": "object",
+            "properties": {
+                "arabicname": {
+                    "type": "string"
+                },
+                "englishname": {
+                    "type": "string"
+                }
+            }
+        },
+        "multitiercontent.SongWriters": {
+            "type": "object",
+            "properties": {
+                "arabicname": {
+                    "type": "string"
+                },
+                "englishname": {
+                    "type": "string"
+                }
+            }
+        },
+        "multitiercontent.TagInfo": {
+            "type": "object",
+            "properties": {
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "multitiercontent.TextualData": {
+            "type": "object",
+            "required": [
+                "aboutTheContent",
+                "cast",
+                "contentGenres",
+                "contentVariances",
+                "music",
+                "primaryInfo",
+                "seoDetails",
+                "tagInfo"
+            ],
+            "properties": {
+                "aboutTheContent": {
+                    "$ref": "#/definitions/multitiercontent.AboutTheContent"
+                },
+                "cast": {
+                    "$ref": "#/definitions/multitiercontent.Cast"
+                },
+                "contentGenres": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/multitiercontent.ContentGenresrequest"
+                    }
+                },
+                "contentVariances": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/multitiercontent.ContentVariances"
+                    }
+                },
+                "music": {
+                    "$ref": "#/definitions/multitiercontent.Music"
+                },
+                "primaryInfo": {
+                    "$ref": "#/definitions/multitiercontent.PrimaryInforequest"
+                },
+                "seoDetails": {
+                    "$ref": "#/definitions/multitiercontent.SeoDetailsrequest"
+                },
+                "tagInfo": {
+                    "$ref": "#/definitions/multitiercontent.TagInfo"
+                }
+            }
+        },
+        "multitiercontent.VarianceTrailers": {
+            "type": "object",
+            "properties": {
+                "Id": {
+                    "type": "string"
+                },
+                "arabicTitle": {
+                    "type": "string"
+                },
+                "duration": {
+                    "type": "integer"
+                },
+                "englishTitle": {
+                    "type": "string"
+                },
+                "hasTrailerPosterImage": {
+                    "type": "boolean"
+                },
+                "order": {
+                    "type": "integer"
+                },
+                "trailerposterImage": {
+                    "type": "string"
+                },
+                "videoTrailerId": {
+                    "type": "string"
+                }
+            }
+        },
+        "multitiercontent.Writers": {
+            "type": "object",
+            "properties": {
+                "arabicname": {
+                    "type": "string"
+                },
+                "englishname": {
+                    "type": "string"
+                }
+            }
+        },
+        "musiccomposer.MusicComposer": {
+            "type": "object",
+            "properties": {
+                "arabicName": {
+                    "type": "string"
+                },
+                "englishName": {
+                    "type": "string"
+                }
+            }
+        },
+        "productname.ProductName": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "singer.Singer": {
+            "type": "object",
+            "properties": {
+                "arabicName": {
+                    "type": "string"
+                },
+                "englishName": {
+                    "type": "string"
+                }
+            }
+        },
+        "songwriter.SongWriter": {
+            "type": "object",
+            "properties": {
+                "arabicName": {
+                    "type": "string"
+                },
+                "englishName": {
+                    "type": "string"
+                }
+            }
+        },
+        "tags.TextualDataTag": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "writer.Writer": {
+            "type": "object",
+            "properties": {
+                "arabicName": {
+                    "type": "string"
+                },
+                "englishName": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
