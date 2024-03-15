@@ -1,9 +1,9 @@
 export SERVICE_PORT=3003 
-export DB_SERVER=34.18.48.27
-export DB_SERVER_READER=34.18.48.27
+export DB_SERVER=34.100.228.116
+export DB_SERVER_READER=34.100.228.116
 export DB_PORT=5432 
 export DB_USER=appuser 
-export DB_PASSWORD=Yy017EUY5aSz 
+export DB_PASSWORD=weyyakbo345123UAT 
 export DB_DATABASE=wk_frontend 
 export CONTENT_DB_DATABASE=wyk_content 
 export FRONTEND_CONFIG_DB_DATABASE=wyk_frontend_config 

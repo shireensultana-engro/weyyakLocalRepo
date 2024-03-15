@@ -1,6 +1,6 @@
 export GIN_MODE=release
 export SERVICE_PORT=3005 
-export REDIS_SERVER=10.243.128.6:6379
+export REDIS_SERVER=34.93.101.168:6379
 export USE_CACHE=true 
 export LOG_MODE=FILE
 export ELASTICSEARCH_URL=http://10.33.82.63:9200/

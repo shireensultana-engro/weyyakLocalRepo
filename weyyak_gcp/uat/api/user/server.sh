@@ -1,9 +1,9 @@
-export SERVICE_PORT=2000 
-export DB_SERVER=localhost
-export DB_SERVER_READER=localhost
+export SERVICE_PORT=2001 
+export DB_SERVER=34.100.228.116
+export DB_SERVER_READER=34.100.228.116
 export DB_PORT=5432 
-export DB_USER=postgres 
-export DB_PASSWORD=12345678
+export DB_USER=appuser 
+export DB_PASSWORD=weyyakbo345123UAT
 export DB_DATABASE=wk_user_management 
 export CONTENT_DB_DATABASE=wyk_content 
 export FRONTEND_DB_DATABASE=wyk_frontend_config 

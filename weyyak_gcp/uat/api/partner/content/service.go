@@ -34,6 +34,9 @@ func (hs *HandlerService) Bootstrap(r *gin.Engine) {
 	srg.GET("/get_menu", hs.GetMenuDetails)
 	srg.GET("/get_page/:pageId", hs.GetPageDetails)
 	srg.GET("/get_info/:videoId", hs.GetVideoDuration)
+
+	srg.GET("/deleted-content", hs.GetDeletedContentDetails)
+	srg.GET("/modified-content", hs.GetModifiedContentDetails)
 }
 
 // Login -  Login user
@@ -2860,7 +2863,7 @@ func (hs *HandlerService) GetMultiTierDetailsBasedonContentID(c *gin.Context) {
 	contentResult.SeoDetails.ArabicMetaDescription = finalContentResult.ArabicMetaDescription
 	contentResult.CreatedAt = finalContentResult.CreatedAt
 	contentResult.ModifiedAt = finalContentResult.ModifiedAt
-	//content id
+	//content idId
 	contentResult.ContentId = finalContentResult.ContentId
 
 	if CountryResult != 0 || (country == "" || country == "all") {

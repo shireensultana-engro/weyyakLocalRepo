@@ -26,7 +26,7 @@ import (
 	"github.com/aws/aws-sdk-go/aws/credentials"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/ses"
-	"github.com/aws/aws-sdk-go/service/sns"
+	// "github.com/aws/aws-sdk-go/service/sns"
 	"github.com/gin-gonic/gin"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
@@ -212,14 +212,15 @@ func (hs *HandlerService) RegisterUserUsingEmail(c *gin.Context) {
 	}
 	var emailError ErrorCode
 
-	db.Table("user").Where("email = ?", registeruseremail.Email).Scan(&emailcheck)
+	db.Table("user").Where("email = ?", registeruseremail.Email).First(&emailcheck)
+	fmt.Println("emailcjheck",emailcheck)
 
-	// if emailcheck.EmailConfirmed {
-	// 	errorFlag = true
-	// 	emailError = ErrorCode{"error_user_email_already_exists", "Specified email already exists."}
-	// 	l.JSON(c, http.StatusBadRequest, emailError)
-	// 	return
-	// }
+	if emailcheck.Email == registeruseremail.Email {
+		errorFlag = true
+		emailError = ErrorCode{"error_user_email_already_exists", "Specified email already exists."}
+		l.JSON(c, http.StatusBadRequest, emailError)
+		return
+	}
 
 	if !common.RegEmail(registeruseremail.Email) && registeruseremail.Email != "" {
 		errorFlag = true
@@ -229,7 +230,16 @@ func (hs *HandlerService) RegisterUserUsingEmail(c *gin.Context) {
 	if registeruseremail.Email == "" {
 		errorFlag = true
 		emailError = ErrorCode{"error_user_email_required", "Email is required."}
+	
 	}
+
+
+
+	if emailcheck.Email != ""{
+		emailError = ErrorCode{"error_user_email_already_exists", "Specified email already exists."}
+	}
+
+
 
 	if !emailcheck.DeleteInitiatesAt.IsZero() {
 		DeleteInitiatesDate := emailcheck.DeleteInitiatesAt.AddDate(0, 0, 30)
@@ -322,18 +332,26 @@ func (hs *HandlerService) RegisterUserUsingEmail(c *gin.Context) {
 				registeruseremail.IsRecommend, registeruseremail.LanguageId,
 				hashedPassword, registeruseremail.PrivacyPolicy, time.Now(), saltString, time.Now(), emailcheck.Email).Scan(&usersResult)
 
-			db.Table("user").Where("email = ?", emailcheck.Email).Find(&usersFinal)
+			db.Table("user").Where("email =? or username=?" ,emailcheck.Email,emailcheck.Email).Find(&usersFinal)
 			CreateRecordPayCMS(db, usersFinal)
 			fmt.Println("user.RegistrationPlatform",user.RegistrationPlatform) 
+			fmt.Println("user11111111",usersFinal.Id)
 		}
 
 	} else {
 		if emailcheck.Email == "" {
 			db.Table("user").Create(&user)
+			fmt.Println("user",user)
 			fmt.Println("user.RegistrationPlatform",user.RegistrationPlatform) 
 			CreateRecordPayCMS(db, user)
+			fmt.Println("userrrrrrrrrrrr",user.Id,"11111111111111",user.RoleId)
 		}
 	}
+	// fmt.Println("userrrrrrrrrrrr",user.RoleId)
+	// if user.Id == "" {
+	// 	fmt.Println("error")
+	// }
+	
 
 	// Sending Email Notification
 	ConfirmationToken := base64.StdEncoding.EncodeToString([]byte(user.Id))
@@ -342,6 +360,8 @@ func (hs *HandlerService) RegisterUserUsingEmail(c *gin.Context) {
 	fmt.Println("time-tieme-----", timeToString)
 	DateTimeToken := base64.StdEncoding.EncodeToString([]byte(timeToString))
 	fmt.Println("-=-=-=-=-=-=", DateTimeToken)
+	fmt.Println("confiramationtoken",ConfirmationToken)
+	fmt.Println("userid",user.Id)
 	if registeruseremail.Source != ".net" {
 		if registeruseremail.LanguageId == 1 {
 			templatePath = "CreateFrontOfficeUserBodyEN.html"
@@ -616,10 +636,10 @@ func (hs *HandlerService) RegisterUserUsingSMS(c *gin.Context) {
 		} else {
 			language = `استخدم الرمز التعريفي ` + string(otp) + `لتفعيل حسابك في وياك`
 		}
-		AwsRegion := "ap-south-1"
+		// AwsRegion := "ap-south-1"
 		otpRecord := OtpRecord{Phone: user.PhoneNumber, Message: otp, SentOn: time.Now(), Number: 1}
-		Access_key := "AKIAYOGUWMUMEEQD6CPW"
-		Secret_Key := "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"
+		// Access_key := "AKIAYOGUWMUMEEQD6CPW"
+		// Secret_Key := "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"
 
 		var otpRecordExist []OtpRecord
 		db.Table("otp_record").Where("phone = ?", user.PhoneNumber).First(&otpRecordExist)
@@ -633,25 +653,36 @@ func (hs *HandlerService) RegisterUserUsingSMS(c *gin.Context) {
 				return
 			}
 		}
+		body := map[string]interface{}{
+			"phonenumber": registerusersms.PhoneNumber,
+			"Message":     language,
+			"CallingCode": callingCode,
+		}
+		langdetails1, err := common.PostCurlCall("POST", "https://api-backoffice-production.weyyak.com/users/send_otp", body)
+		fmt.Println("registerrrrrrrrrrrrrrrrrrrrrrr res", string(langdetails1))
+		if err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"message": err.Error(), "status": http.StatusInternalServerError})
+			return
+		}
 
-		sess, res := session.NewSession(&aws.Config{
-			Region:      aws.String(AwsRegion),
-			Credentials: credentials.NewStaticCredentials(Access_key, Secret_Key, ""),
-		})
-		if res != nil {
-			l.JSON(c, http.StatusInternalServerError, gin.H{"error": "server_error", "description": "حدث خطأ ما", "code": "error_server_error", "requestId": randstr.String(32)})
-			return
-		}
-		svc := sns.New(sess)
-		params := &sns.PublishInput{
-			Message:     aws.String(language),
-			PhoneNumber: aws.String(user.PhoneNumber),
-		}
-		_, sample := svc.Publish(params)
-		if sample != nil {
-			l.JSON(c, http.StatusInternalServerError, gin.H{"error": "server_error", "description": "حدث خطأ ما", "code": "error_server_error", "requestId": randstr.String(32)})
-			return
-		}
+		// sess, res := session.NewSession(&aws.Config{
+		// 	Region:      aws.String(AwsRegion),
+		// 	Credentials: credentials.NewStaticCredentials(Access_key, Secret_Key, ""),
+		// })
+		// if res != nil {
+		// 	l.JSON(c, http.StatusInternalServerError, gin.H{"error": "server_error", "description": "حدث خطأ ما", "code": "error_server_error", "requestId": randstr.String(32)})
+		// 	return
+		// }
+		// svc := sns.New(sess)
+		// params := &sns.PublishInput{
+		// 	Message:     aws.String(language),
+		// 	PhoneNumber: aws.String(user.PhoneNumber),
+		// }
+		// _, sample := svc.Publish(params)
+		// if sample != nil {
+		// 	l.JSON(c, http.StatusInternalServerError, gin.H{"error": "server_error", "description": "حدث خطأ ما", "code": "error_server_error", "requestId": randstr.String(32)})
+		// 	return
+		// }
 	}
 	l.JSON(c, http.StatusOK, gin.H{"status": 1, "message": "Otp sent to user"})
 	// Sending details to PayCMS
@@ -1795,7 +1826,7 @@ func (hs *HandlerService) SendOtp(c *gin.Context) {
 	var finalErrorResponse FinalErrorResponse
 	var invalid Invalid
 	otp := common.EncodeToString(4)
-	AwsRegion := os.Getenv("AWS_REGION")
+	// AwsRegion := os.Getenv("AWS_REGION")
 	var errorFlag bool
 	errorFlag = false
 	if number := c.ShouldBindJSON(&phn); number != nil {
@@ -1808,6 +1839,8 @@ func (hs *HandlerService) SendOtp(c *gin.Context) {
 	db.Table("public.user").Where("phone_number = ?", phn.Phone).Find(&phonenumbercheck)
 	fmt.Println(phonenumbercheck.PhoneNumber)
 	fmt.Println(phonenumbercheck.PhoneNumberConfirmed, "confiremd", phn.RequestType)
+	var OTPuser Users
+	db.Table("public.user").Where("phone_number = ?", phn.Phone).Find(&OTPuser)
 	if phn.RequestType == "nm" || phn.RequestType == "up" {
 		if phonenumbercheck.PhoneNumber != "" && phonenumbercheck.PhoneNumberConfirmed {
 			phoneError = phoneNumberError{"error_phone_number_registered", "Phone Number Already Exists"}
@@ -1909,18 +1942,29 @@ func (hs *HandlerService) SendOtp(c *gin.Context) {
 		}
 	}
 	user := UserDetails{Phone: phn.Phone, Message: otp, SentOn: time.Now(), Number: 1}
-	Access_key := os.Getenv("ACCESS_SECRET")
-	Secret_Key := os.Getenv("REFRESH_SECRET")
-	sess, res := session.NewSession(&aws.Config{
-		Region:      aws.String(AwsRegion),
-		Credentials: credentials.NewStaticCredentials(Access_key, Secret_Key, ""),
-	})
-	if res != nil {
-		l.JSON(c, http.StatusInternalServerError, gin.H{"message": res.Error(), "status": http.StatusInternalServerError})
-		return
-	}
+	// Access_key := os.Getenv("ACCESS_SECRET")
+	// Secret_Key := os.Getenv("REFRESH_SECRET")
+	// sess, res := session.NewSession(&aws.Config{
+	// 	Region:      aws.String(AwsRegion),
+	// 	Credentials: credentials.NewStaticCredentials(Access_key, Secret_Key, ""),
+	// })
+	// if res != nil {
+	// 	l.JSON(c, http.StatusInternalServerError, gin.H{"message": res.Error(), "status": http.StatusInternalServerError})
+	// 	return
+	// }
 
-	svc := sns.New(sess)
+	// svc := sns.New(sess)
+	body := map[string]interface{}{
+		"phonenumber": userlangdetails.PhoneNumber,
+		"Message":     language,
+		"CallingCode": OTPuser.CallingCode,
+	}
+	langdetails1, err := common.PostCurlCall("POST", "https://api-backoffice-production.weyyak.com/users/send_otp", body)
+		fmt.Println("registerrrrrrrrrrrrrrrrrrrrrrr res", string(langdetails1))
+		if err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"message": err.Error(), "status": http.StatusInternalServerError})
+			return
+		}
 	var phonenumberfinal string
 	if phn.RequestType == "fp" {
 		if strings.Contains(phn.Phone, "+") {
@@ -1932,17 +1976,17 @@ func (hs *HandlerService) SendOtp(c *gin.Context) {
 		phonenumberfinal = phn.Phone
 	}
 	fmt.Println(phonenumberfinal, userlangdetails.PhoneNumber, "kkkkkkkk")
-	params := &sns.PublishInput{
-		Message:     aws.String(language),
-		PhoneNumber: aws.String(userlangdetails.PhoneNumber),
-	}
+	// params := &sns.PublishInput{
+	// 	Message:     aws.String(language),
+	// 	PhoneNumber: aws.String(userlangdetails.PhoneNumber),
+	// }
 	// params for grant type up
-	var paramsfp *sns.PublishInput
+	// var paramsfp *sns.PublishInput
 	if phn.RequestType == "up" {
-		paramsfp = &sns.PublishInput{
-			Message:     aws.String(language),
-			PhoneNumber: aws.String(phonenumberfinal),
-		}
+		// paramsfp = &sns.PublishInput{
+		// 	Message:     aws.String(language),
+		// 	PhoneNumber: aws.String(phonenumberfinal),
+		// }
 	}
 	var forcount UserDetails
 	if phn.RequestType == "fp" {
@@ -2016,17 +2060,23 @@ func (hs *HandlerService) SendOtp(c *gin.Context) {
 
 	if forcount.Number < 6 {
 		if phn.RequestType == "up" {
-			_, sample := svc.Publish(paramsfp)
-			if sample != nil {
-				l.JSON(c, http.StatusInternalServerError, gin.H{"message": sample.Error(), "status": http.StatusInternalServerError})
+			langdetails1, err := common.PostCurlCall("POST", "https://api-backoffice-production.weyyak.com/users/send_otp", body)
+			fmt.Println("lang2@@@@@@@@@@@@@@@@", string(langdetails1))
+			if err != nil {
+				c.JSON(http.StatusBadRequest, gin.H{"message": err.Error(), "status": http.StatusInternalServerError})
 				return
 			}
-		} else {
-			_, sample := svc.Publish(params)
-			if sample != nil {
-				l.JSON(c, http.StatusInternalServerError, gin.H{"message": sample.Error(), "status": http.StatusInternalServerError})
-				return
-			}
+			// _, sample := svc.Publish(paramsfp)
+			// if sample != nil {
+			// 	l.JSON(c, http.StatusInternalServerError, gin.H{"message": sample.Error(), "status": http.StatusInternalServerError})
+			// 	return
+			// }
+		//} else {
+			// _, sample := svc.Publish(params)
+			// if sample != nil {
+			// 	l.JSON(c, http.StatusInternalServerError, gin.H{"message": sample.Error(), "status": http.StatusInternalServerError})
+			// 	return
+			// }
 		}
 	} else {
 		type SentTime struct {
@@ -2049,11 +2099,17 @@ func (hs *HandlerService) SendOtp(c *gin.Context) {
 		fmt.Println("lllllllllllllllll", isSameDay(forcount.SentOn, time.Now()))
 		if senttime.SentOn.After(startOfDay) && !isSameDay(forcount.SentOn, time.Now()) {
 			fmt.Println("inside the time loop")
-			_, sample := svc.Publish(params)
-			if sample != nil {
-				l.JSON(c, http.StatusInternalServerError, gin.H{"message": sample.Error(), "status": http.StatusInternalServerError})
+			langdetails1, err := common.PostCurlCall("POST", "https://api-backoffice-production.weyyak.com/users/send_otp", body)
+			fmt.Println("lang2@@@@@@@@@@@@@@@@", string(langdetails1))
+			if err != nil {
+				c.JSON(http.StatusBadRequest, gin.H{"message": err.Error(), "status": http.StatusInternalServerError})
 				return
 			}
+			// _, sample := svc.Publish(params)
+			// if sample != nil {
+			// 	l.JSON(c, http.StatusInternalServerError, gin.H{"message": sample.Error(), "status": http.StatusInternalServerError})
+			// 	return
+			// }
 			if result := db.Table("otp_record").Where("phone=(?)", userlangdetails.PhoneNumber).Update(UserDetails{Message: otp, SentOn: time.Now(), Number: 1}).Error; result != nil {
 				l.JSON(c, http.StatusInternalServerError, gin.H{"message": result.Error(), "status": http.StatusInternalServerError})
 				return

@@ -1,8 +1,8 @@
 package main
 
 import (
-	"bytes"
-	"encoding/json"
+	// "bytes"
+	// "encoding/json"
 	"fmt"
 	"io/ioutil"
 	"log"
@@ -79,8 +79,9 @@ func logMiddleware() gin.HandlerFunc {
 		case 500:
 			logType = "warning"
 		}
+		fmt.Println("duration",duration , "method",method, "logType",logType)
 
-		Loki(c, logType, method, traceID, duration)
+		//  Loki(c, logType, method, traceID, duration)
 	}
 }
 
@@ -134,12 +135,13 @@ func Loki(c *gin.Context, logType string, msg string, TraceId string, duration t
 			},
 		},
 	}
+	fmt.Println("lokijson",Lokijson)
 
-	jsonValue, _ := json.Marshal(Lokijson)
+	// jsonValue, _ := json.Marshal(Lokijson)
 
-	url := "http://3.110.118.98:3100/loki/api/v1/push"
+	// url := "http://3.110.118.98:3100/loki/api/v1/push"
 
-	resp, err := http.Post(url, "application/json", bytes.NewBuffer(jsonValue))
+	// // resp, err := http.Post(url, "application/json", bytes.NewBuffer(jsonValue))
 
-	log.Println(resp, err)
+	// log.Println(resp, err)
 }

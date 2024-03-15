@@ -122,6 +122,17 @@ type MultiTierContent struct {
 	ModifiedAt     time.Time          `json:"modifiedAt"`
 	ContentId      string             `json:"id"` //content ID
 }
+
+type MultiTierContent2 struct {
+	ContentKey     int                      `json:"contentKey"`
+	PrimaryInfo    ContentPrimaryInfo       `json:"primaryInfo"`
+	ContentGenres  []MultiTierContentGenres `json:"contentGenres"`
+	ContentSeasons []ContentSeasons2         `json:"contentSeasons"`
+	SeoDetails     SeoDetails               `json:"seoDetails"`
+	CreatedAt      time.Time                `json:"createdAt"`
+	ModifiedAt     time.Time                `json:"modifiedAt"`
+	Id             string                   `json:"id"` //content ID
+}
 type AllMultiTierContent struct {
 	ContentKey     int                 `json:"contentKey"`
 	ContentSeasons []AllContentSeasons `json:"contentSeasons"`
@@ -193,6 +204,25 @@ type ContentSeasons struct {
 	DigitalRightsRegions  []int                 `json:"digitalRightsRegions"`
 	SeasonId              string                `json:"id"` //season ID
 }
+type ContentSeasons2 struct {
+	ContentId             string                   `json:"contentId"`
+	SeasonKey             int                      `json:"seasonKey"`
+	SeasonNumber          int                      `json:"seasonNumber"`
+	CreatedAt             time.Time                `json:"createdAt"`
+	ModifiedAt            time.Time                `json:"modifiedAt"`
+	PrimaryInfo           SeasonPrimaryInfo        `json:"primaryInfo"`
+	Cast                  Cast                     `json:"cast"`
+	Music                 Music                    `json:"music"`
+	TagInfo               TagInfo                  `json:"tagInfo"`
+	SeasonGenres          []MultiTierContentGenres `json:"seasonGenres"`
+	TrailerInfo           []interface{}            `json:"trailersInfo"`
+	AboutTheContent       AboutTheContent          `json:"aboutTheContent"`
+	Translation           Translation2              `json:"translation"`
+	EpisodeResult         []ContentEpisode         `json:"episodes"`
+	ContentNonTextualData ContentNonTextualData    `json:"nonTextualData"`
+	DigitalRightsRegions  []int                    `json:"digitalRightsRegions"`
+	SeasonId              string                   `json:"id"` //season ID
+}
 type Rights struct {
 	DigitalRightsRegions []int `json:"digitalRightsRegion"`
 }
@@ -259,12 +289,12 @@ type PrimaryInfo struct {
 }
 type Cast struct {
 	CastId             string   `json:"castId"`
-	MainActorId        *string  `json:"mainActorId"`
-	MainActressId      *string  `json:"mainActressId"`
-	MainActorEnglish   *string  `json:"mainActorEnglish"`
-	MainActorArabic    *string  `json:"mainActorArabic"`
-	MainActressEnglish *string  `json:"mainActressEnglish"`
-	MainActressArabic  *string  `json:"mainActressArabic"`
+	MainActorId        string   `json:"mainActorId"`
+	MainActressId      string   `json:"mainActressId"`
+	MainActorEnglish   string   `json:"mainActorEnglish"`
+	MainActorArabic    string   `json:"mainActorArabic"`
+	MainActressEnglish string   `json:"mainActressEnglish"`
+	MainActressArabic  string   `json:"mainActressArabic"`
 	ActorIds           []string `json:"actorIds"`
 	ActorEnglish       []string `json:"actorEnglish"`
 	ActorArabic        []string `json:"actorArabic"`
@@ -502,6 +532,14 @@ type Translation struct {
 	DubbingDialectId   *int    `json:"dubbingDialectId"`
 	SubtitlingLanguage *string `json:"subtitlingLanguage"`
 }
+
+type Translation2 struct {
+	LanguageType       string  `json:"languageType"`
+	DubbingLanguage    *string `json:"dubbingLanguage"`
+	DubbingDialectId   int     `json:"dubbingDialectId"`
+	DubbingDialectName string  `json:"dubbingDialectName"`
+	SubtitlingLanguage *string `json:"subtitlingLanguage"`
+}
 type MenuDetails struct {
 	Total       int        `json:"total"`
 	PerPage     int        `json:"per_page"`
@@ -553,14 +591,14 @@ type FeaturedDetails struct {
 	Playlists []FeaturedPlaylists `json:"playlists"`
 }
 
-//FeaturedPlaylists struct for DB binding
+// FeaturedPlaylists struct for DB binding
 type FeaturedPlaylists struct {
 	ID           int32             `json:"id"`
 	PlaylistType string            `json:"playlist_type"`
 	Content      []PlaylistContent `json:"content"`
 }
 
-//PlaylistContent struct for DB binding
+// PlaylistContent struct for DB binding
 type PlaylistContent struct {
 	ContentId             string                `json:"content_id"`
 	ContentKey            int                   `json:"content_key"`
@@ -583,7 +621,7 @@ type PlaylistContent struct {
 	ModifiedAt            time.Time             `json:"modified_at"`
 }
 
-//ContentImageryDetails for DB binding
+// ContentImageryDetails for DB binding
 type ContentImageryDetails struct {
 	Thumbnail     string `json:"thumbnail"`
 	Backdrop      string `json:"backdrop"`
@@ -592,7 +630,7 @@ type ContentImageryDetails struct {
 	OverlayPoster string `json:"overlayPoster"`
 }
 
-//MenuPlaylists struct for DB binding
+// MenuPlaylists struct for DB binding
 type MenuPlaylists struct {
 	ID           int32             `json:"id"`
 	TitleEnglish string            `json:"title_english"`
@@ -639,7 +677,7 @@ type Slider struct {
 	ModifiedAt          time.Time `json:"modified_at"`
 }
 
-//Playlist - binding for db
+// Playlist - binding for db
 type Playlist struct {
 	ID                  string    `json:"id" gorm:"primary_key"`
 	EnglishTitle        string    `json:"english_title"`
@@ -687,4 +725,73 @@ type ErrorResponse struct {
 			Code        string `json:"code"`
 		} `json:"additionalProp3"`
 	} `json:"invalid"`
+}
+
+type FinalSeasonResultContentOneTire struct {
+	MultiTierContentKey    int       `json:"multi_tier_content_key"`
+	ContentType            string    `json:"content_type"`
+	OriginalTitle          string    `json:"original_title"`
+	AlternativeTitle       string    `json:"alternative_title"`
+	ArabicTitle            string    `json:"arabic_title"`
+	TransliteratedTitle    string    `json:"transliterated_title"`
+	EnglishMetaTitle       string    `json:"english_meta_title"`
+	ArabicMetaTitle        string    `json:"arabic_meta_title"`
+	EnglishMetaDescription string    `json:"english_meta_description"`
+	ArabicMetaDescription  string    `json:"arabic_meta_description"`
+	Notes                  string    `json:"notes"`
+	ContentId              string    `json:"content_id"`
+	ModifiedAt             time.Time `json:"modified_at"`
+	CreatedAt              time.Time `json:"created_at"`
+}
+
+type MultiTierContentGenres struct {
+	GenerEnglishName string   `json:"generEnglishName"`
+	GenerArabicName  string   `json:"generArabicName"`
+	SubGenerEnglish  []string `json:"subGenerEnglish"`
+	SubGenerArabic   []string `json:"subGenerArabic"`
+	Id               string   `json:"id"`
+}
+
+type Seasons struct {
+	Id                         string    `json:"id"`
+	ContentId                  string    `json:"content_id"`
+	Status                     int       `json:"status"`
+	ModifiedAt                 time.Time `json:"modified_at"`
+	CreatedByUserId            string    `json:"created_by_user_id"`
+	PrimaryInfoId              string    `json:"primary_info_id"`
+	Number                     int       `json:"number"`
+	TranslationId              string    `json:"translation_id"`
+	AboutTheContentInfoId      string    `json:"about_the_content_info_id"`
+	HasPosterImage             bool      `json:"has_poster_image"`
+	HasOverlayPosterImage      bool      `json:"has_overlay_poster_image"`
+	HasDetailsBackground       bool      `json:"has_details_background"`
+	HasMobileDetailsBackground bool      `json:"has_mobile_details_background"`
+	CastId                     string    `json:"cast_id"`
+	MusicId                    string    `json:"music_id"`
+	TagInfoId                  string    `json:"tag_info_id"`
+	RightsId                   string    `json:"rights_id"`
+	DeletedByUserId            string    `json:"deleted_by_user_id"`
+	SeasonKey                  int       `json:"season_key"`
+	CreatedAt                  time.Time `json:"created_at"`
+	EnglishMetaTitle           string    `json:"english_meta_title"`
+	ArabicMetaTitle            string    `json:"arabic_meta_title"`
+	EnglishMetaDescription     string    `json:"english_meta_description"`
+	ArabicMetaDescription      string    `json:"arabic_meta_description"`
+	HasAllRights               bool      `json:"has_all_rights"`
+	ThirdPartySeasonKey        int       `json:"third_party_season_key"`
+}
+
+type AgeRatingsCode struct {
+	Code string `json:"code"`
+}
+
+type ContentEpisode struct {
+	EpisodeNumber   int            `json:"episodeNumber"`
+	EpisodeKey      int            `json:"episodeKey"`
+	Length          int            `json:"length"`
+	VideoContentUrl string         `json:"videoContentUrl"`
+	SynopsisEnglish string         `json:"synopsisEnglish"`
+	SynopsisArabic  string         `json:"synopsisArabic"`
+	NonTextualData  NonTextualData `json:"nonTextualData"`
+	EpisodeId       string         `json:"id"`
 }

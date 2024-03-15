@@ -392,6 +392,7 @@ func (hs *HandlerService) RegisterUserUsingSMS(c *gin.Context) {
 	var registerusersms RequestRegisterUserUsingSMS
 	var phonenumbercheck PhoneNumber
 	var errorFlag bool
+
 	errorFlag = false
 	if err := c.ShouldBindJSON(&registerusersms); err != nil {
 		l.JSON(c, http.StatusBadRequest, gin.H{"message": err.Error(), "Status": http.StatusBadRequest})
@@ -399,6 +400,11 @@ func (hs *HandlerService) RegisterUserUsingSMS(c *gin.Context) {
 	}
 
 	db := c.MustGet("DB").(*gorm.DB)
+	fcdb := c.MustGet("FDB").(*gorm.DB)
+	var BlockedCountrie BlockedCountry
+	fcdb.Table("application_setting").Select("*").Scan(&BlockedCountrie)
+	fmt.Println("Blocked ",BlockedCountrie)
+	fmt.Println("111111",BlockedCountrie.Value)
 	// Split PhoneNumber & collect(callingCode,NationalNumber) from phoneNumber
 	num, err := phonenumbers.Parse(registerusersms.PhoneNumber, "")
 	if err != nil {
@@ -599,7 +605,8 @@ func (hs *HandlerService) RegisterUserUsingSMS(c *gin.Context) {
 		db.Table("user").Create(&user)
 		CreateRecordPayCMS(db, user)
 	}
-
+	
+	
 	if registerusersms.Source != ".net" {
 		// sending otp to mobille number using AWS SNS Service
 		otp := common.EncodeToString(4)
@@ -646,6 +653,10 @@ func (hs *HandlerService) RegisterUserUsingSMS(c *gin.Context) {
 		// 	l.JSON(c, http.StatusInternalServerError, gin.H{"error": "server_error", "description": "حدث خطأ ما", "code": "error_server_error", "requestId": randstr.String(32)})
 		// 	return
 		// }
+		if user.CallingCode == BlockedCountrie.Value{
+			l.JSON(c, http.StatusInternalServerError, gin.H{"message": "You have exceeded the maximum daily limit. Please try again after 24 hours", "status": http.StatusNotFound})
+				return
+		}	
 		body := map[string]interface{}{
 			"phonenumber": registerusersms.PhoneNumber,
 			"Message":     language,
@@ -1799,10 +1810,13 @@ func (hs *HandlerService) SendOtp(c *gin.Context) {
 	}
 	var phonenumbercheck PhoneNumber
 	var phoneError phoneNumberError
+	fcdb := c.MustGet("FDB").(*gorm.DB)
+	var BlockedCountrie BlockedCountry
+	fcdb.Table("application_setting").Select("*").Scan(&BlockedCountrie)
 
 	db.Table("public.user").Where("phone_number = ?", phn.Phone).Find(&phonenumbercheck)
-	fmt.Println(phonenumbercheck.PhoneNumber)
-	fmt.Println(phonenumbercheck.PhoneNumberConfirmed, "confiremd", phn.RequestType)
+	// fmt.Println(phonenumbercheck.PhoneNumber)
+	// fmt.Println(phonenumbercheck.PhoneNumberConfirmed, "confiremd", phn.RequestType)
 	var OTPuser Users
 	db.Table("public.user").Where("phone_number = ?", phn.Phone).Find(&OTPuser)
 	if phn.RequestType == "nm" || phn.RequestType == "up" {
@@ -1918,6 +1932,10 @@ func (hs *HandlerService) SendOtp(c *gin.Context) {
 	// }
 
 	// svc := sns.New(sess)
+	if OTPuser.CallingCode == BlockedCountrie.Value{
+		l.JSON(c, http.StatusInternalServerError, gin.H{"message": "You have exceeded the maximum daily limit. Please try again after 24 hours", "status": http.StatusNotFound})
+		return
+	}	
 	body := map[string]interface{}{
 		"phonenumber": userlangdetails.PhoneNumber,
 		"Message":     language,
@@ -2023,6 +2041,10 @@ func (hs *HandlerService) SendOtp(c *gin.Context) {
 	// }
 
 	if forcount.Number < 6 {
+		if OTPuser.CallingCode == BlockedCountrie.Value{
+			l.JSON(c, http.StatusInternalServerError, gin.H{"message": "You have exceeded the maximum daily limit. Please try again after 24 hours", "status": http.StatusNotFound})			
+			return
+		}	
 		if phn.RequestType == "up" {
 			langdetails1, err := common.PostCurlCall("POST", "https://api-backoffice-production.weyyak.com/users/send_otp", body)
 			fmt.Println("lang2@@@@@@@@@@@@@@@@", string(langdetails1))
@@ -2064,6 +2086,10 @@ func (hs *HandlerService) SendOtp(c *gin.Context) {
 		if senttime.SentOn.After(startOfDay) && !isSameDay(forcount.SentOn, time.Now()) {
 
 			fmt.Println("inside the time loop")
+			if OTPuser.CallingCode == BlockedCountrie.Value{
+				l.JSON(c, http.StatusInternalServerError, gin.H{"message": "You have exceeded the maximum daily limit. Please try again after 24 hours", "status": http.StatusNotFound})
+				return
+			}	
 			langdetails1, err := common.PostCurlCall("POST", "https://api-backoffice-production.weyyak.com/users/send_otp", body)
 			fmt.Println("lang2@@@@@@@@@@@@@@@@", string(langdetails1))
 			if err != nil {

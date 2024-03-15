@@ -526,10 +526,10 @@ type GetOtpDetails struct {
 // Update user details by user id
 
 type UpdateUserDetails struct {
-	Country    int    `json:"countryId"`
-	FirstName  string `json:"firstName"`
-	LastName   string `json:"lastName"`
-	LanguageId int    `json:"languageId"`
+	Country     int    `json:"countryId"`
+	FirstName   string `json:"firstName"`
+	LastName    string `json:"lastName"`
+	LanguageId  int    `json:"languageId"`
 	CallingCode string `json:"callingCode"`
 }
 
@@ -1094,4 +1094,9 @@ type CookieUserProfileResponse struct {
 	LastActivityAt       time.Time `json:"last_activity_at"`
 	AppleUserId          bool      `json:"appleDeviceId"`
 	AppleSignIn          bool      `json:"appleSignIn"`
+}
+
+type BlockedCountry struct {
+	Name  string `json:"name"`
+	Value string `json:"value"`
 }

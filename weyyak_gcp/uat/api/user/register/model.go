@@ -226,6 +226,7 @@ type Emailcheck struct {
 	Email             string    `json:"email"`
 	DeleteInitiatesAt time.Time `json:"delete_initiates_at"`
 	EmailConfirmed    bool      `json:"email_confirmed"`
+	UserId            string    `json:"userId"`
 }
 
 // Reset password with email
@@ -388,10 +389,11 @@ type Number struct {
 	RequestType string `json:"requestType"`
 }
 type UserDetails struct {
-	Phone   string `json:"Phoneumber"`
-	Message string `json:"message"`
-	SentOn  time.Time
-	Number  int `json:"number"` // for count
+	Phone       string `json:"Phoneumber"`
+	Message     string `json:"message"`
+	SentOn      time.Time
+	Number      int    `json:"number"` // for count
+	CallingCode string `json:"callingCode"`
 }
 
 type Message struct {
