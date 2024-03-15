@@ -56,36 +56,38 @@ type User struct {
 	AppleUserId          bool      `json:"appleDeviceId"`
 	AppleSignIn          bool      `json:"appleSignIn"`
 	CleverTap            bool      `json:"cleverTap"`
+	RegistrationPlatform string    `json:"registrationPlatform"`
 }
 
 // RequestRegisterUserUsingEmail - struct for DB binding
 type RequestRegisterUserUsingEmail struct {
-	Password      string `json:"password"`
-	LanguageId    int    `json:"languageId"`
-	PrivacyPolicy bool   `json:"PrivacyPolicy"`
-	IsAdult       bool   `json:"isAdult"`
-	IsRecommend   bool   `json:"IsRecommend"`
-	Email         string `json:"email"`
-	CountryName   string `json:"countryName"`
-	Alpha2code    string `json:"Alpha2code"`
-	Source        string `json:"source"`                             /* sync usecase */
-	UserId        string `json:"userId" gorm:"type:uuid;primaryKey"` /* sync usecase */
-
+	Password             string `json:"password"`
+	LanguageId           int    `json:"languageId"`
+	PrivacyPolicy        bool   `json:"PrivacyPolicy"`
+	IsAdult              bool   `json:"isAdult"`
+	IsRecommend          bool   `json:"IsRecommend"`
+	Email                string `json:"email"`
+	CountryName          string `json:"countryName"`
+	Alpha2code           string `json:"Alpha2code"`
+	Source               string `json:"source"`                             /* sync usecase */
+	UserId               string `json:"userId" gorm:"type:uuid;primaryKey"` /* sync usecase */
+	RegistrationPlatform string `json:"registrationPlatform"`
 }
 
 // RequestRegisterUserUsingSMS - struct for DB binding
 type RequestRegisterUserUsingSMS struct {
-	Password           string `json:"password"`
-	LanguageId         int    `json:"languageId"`
-	PrivacyPolicy      bool   `json:"PrivacyPolicy"`
-	IsAdult            bool   `json:"isAdult"`
-	IsRecommend        bool   `json:"IsRecommend"`
-	PhoneNumber        string `json:"phonenumber"`
-	Silentregistration bool   `json:"silentregistration"`
-	Source             string `json:"source"` /* sync usecase */
-	UserId             string `json:"userId"` /* sync usecase */
-	RecaptchaToken     string `json:"recaptcha_token"`
-	DeviceId           string `json:"DeviceId"`
+	Password             string `json:"password"`
+	LanguageId           int    `json:"languageId"`
+	PrivacyPolicy        bool   `json:"PrivacyPolicy"`
+	IsAdult              bool   `json:"isAdult"`
+	IsRecommend          bool   `json:"IsRecommend"`
+	PhoneNumber          string `json:"phonenumber"`
+	Silentregistration   bool   `json:"silentregistration"`
+	Source               string `json:"source"` /* sync usecase */
+	UserId               string `json:"userId"` /* sync usecase */
+	RecaptchaToken       string `json:"recaptcha_token"`
+	DeviceId             string `json:"DeviceId"`
+	RegistrationPlatform string `json:"registrationPlatform"`
 }
 
 type SilentUser struct {
@@ -176,6 +178,8 @@ type userProfileResponse struct {
 	VerificationStatus   bool   `json:"verificationStatus"`
 	AppleUserId          bool   `json:"appleDeviceId"`
 	AppleSignIn          bool   `json:"appleSignIn"`
+	UserCount            int    `json:"user_count"`
+	RegistrationPlatform string `json:"registrationPlatform"`
 }
 
 type LanguageDetails struct {
@@ -222,6 +226,7 @@ type Emailcheck struct {
 	Email             string    `json:"email"`
 	DeleteInitiatesAt time.Time `json:"delete_initiates_at"`
 	EmailConfirmed    bool      `json:"email_confirmed"`
+	UserId            string    `json:"userId"`
 }
 
 // Reset password with email
@@ -741,7 +746,6 @@ type Users struct {
 	SourceName           string    `json:"registrationSourceName"`
 	Platform             string    `json:"platform"`
 	Token                string    `json:"token"`
-	// CallingCode          string    `json:"callingCode"`
 }
 
 /*Get User Ratings details with search text*/
@@ -1095,4 +1099,6 @@ type CookieUserProfileResponse struct {
 	LastActivityAt       time.Time `json:"last_activity_at"`
 	AppleUserId          bool      `json:"appleDeviceId"`
 	AppleSignIn          bool      `json:"appleSignIn"`
+	UserCount            int       `json:"user_count"`
+	RegistrationPlatform string    `json:"registrationPlatform"`
 }

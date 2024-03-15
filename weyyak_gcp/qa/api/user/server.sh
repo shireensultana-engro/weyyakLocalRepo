@@ -1,9 +1,9 @@
 export SERVICE_PORT=3000 
-export DB_SERVER=34.100.228.116
-export DB_SERVER_READER=34.100.228.116
+export DB_SERVER=34.100.186.121
+export DB_SERVER_READER=34.100.186.121
 export DB_PORT=5432 
-export DB_USER=appuser 
-export DB_PASSWORD=weyyakbo345123UAT 
+export DB_USER=cloudsqlexternalsync 
+export DB_PASSWORD=weyyakbo345123QA 
 export DB_DATABASE=wk_user_management 
 export CONTENT_DB_DATABASE=wyk_content 
 export FRONTEND_DB_DATABASE=wyk_frontend_config 

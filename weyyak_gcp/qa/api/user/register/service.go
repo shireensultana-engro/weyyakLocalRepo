@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 	"html/template"
 	"log"
-
+	// "user/common"
 	//	"encoding/json"
 	"bytes"
 	"encoding/csv"
@@ -107,8 +107,11 @@ func (hs *HandlerService) Bootstrap(r *gin.Engine) {
 	oqrg := r.Group("/v1/oauth2")
 	oqrg.POST("/device/code", hs.GeneratePairingCode)
 	uoqrg := r.Group("/v1/oauth2")
+
+	uoqrg1 := r.Group("/oauth2")
 	uoqrg.Use(common.ValidateToken())
 	uoqrg.POST("/device/auth", hs.VerifyPairingCode)
+	uoqrg1.POST("/device/auth", hs.VerifyPairingCode)
 
 	//twitter related APIs
 	r.GET("/v1/:lang/usertoken", hs.TwitterUserToken)
@@ -209,14 +212,15 @@ func (hs *HandlerService) RegisterUserUsingEmail(c *gin.Context) {
 	}
 	var emailError ErrorCode
 
-	db.Table("user").Where("email = ?", registeruseremail.Email).Scan(&emailcheck)
+	db.Table("user").Where("email = ?", registeruseremail.Email).First(&emailcheck)
+	fmt.Println("emailcjheck",emailcheck)
 
-	// if emailcheck.EmailConfirmed {
-	// 	errorFlag = true
-	// 	emailError = ErrorCode{"error_user_email_already_exists", "Specified email already exists."}
-	// 	l.JSON(c, http.StatusBadRequest, emailError)
-	// 	return
-	// }
+	if emailcheck.Email == registeruseremail.Email {
+		errorFlag = true
+		emailError = ErrorCode{"error_user_email_already_exists", "Specified email already exists."}
+		l.JSON(c, http.StatusBadRequest, emailError)
+		return
+	}
 
 	if !common.RegEmail(registeruseremail.Email) && registeruseremail.Email != "" {
 		errorFlag = true
@@ -226,7 +230,16 @@ func (hs *HandlerService) RegisterUserUsingEmail(c *gin.Context) {
 	if registeruseremail.Email == "" {
 		errorFlag = true
 		emailError = ErrorCode{"error_user_email_required", "Email is required."}
+	
 	}
+
+
+
+	if emailcheck.Email != ""{
+		emailError = ErrorCode{"error_user_email_already_exists", "Specified email already exists."}
+	}
+
+
 
 	if !emailcheck.DeleteInitiatesAt.IsZero() {
 		DeleteInitiatesDate := emailcheck.DeleteInitiatesAt.AddDate(0, 0, 30)
@@ -266,9 +279,9 @@ func (hs *HandlerService) RegisterUserUsingEmail(c *gin.Context) {
 	// In current system they differentiating the user role based on basepath of the respective backoffice and frontoffice
 	var user User
 	if registeruseremail.Source == ".net" {
-		user = User{Id: registeruseremail.UserId, Email: registeruseremail.Email, PasswordHash: hashedPassword, LanguageId: registeruseremail.LanguageId, PrivacyPolicy: registeruseremail.PrivacyPolicy, IsAdult: registeruseremail.IsAdult, IsRecommend: registeruseremail.IsRecommend, Version: 2, SaltStored: saltString, UserName: registeruseremail.Email, RoleId: "91f15b92-97fd-e611-814f-0af7afba4acb", RegistrationSource: 1, CountryName: registeruseremail.CountryName, Country: countryId, RegisteredAt: time.Now(), ModifiedAt: time.Now()}
+		user = User{Id: registeruseremail.UserId, Email: registeruseremail.Email, PasswordHash: hashedPassword, LanguageId: registeruseremail.LanguageId, PrivacyPolicy: registeruseremail.PrivacyPolicy, IsAdult: registeruseremail.IsAdult, IsRecommend: registeruseremail.IsRecommend, Version: 2, SaltStored: saltString, UserName: registeruseremail.Email, RoleId: "91f15b92-97fd-e611-814f-0af7afba4acb", RegistrationSource: 1, CountryName: registeruseremail.CountryName, Country: countryId, RegisteredAt: time.Now(), ModifiedAt: time.Now(), RegistrationPlatform: registeruseremail.RegistrationPlatform}
 	} else {
-		user = User{Email: registeruseremail.Email, PasswordHash: hashedPassword, LanguageId: registeruseremail.LanguageId, PrivacyPolicy: registeruseremail.PrivacyPolicy, IsAdult: registeruseremail.IsAdult, IsRecommend: registeruseremail.IsRecommend, Version: 2, SaltStored: saltString, UserName: registeruseremail.Email, RoleId: "91f15b92-97fd-e611-814f-0af7afba4acb", RegistrationSource: 1, CountryName: registeruseremail.CountryName, Country: countryId, RegisteredAt: time.Now(), ModifiedAt: time.Now()}
+		user = User{Email: registeruseremail.Email, PasswordHash: hashedPassword, LanguageId: registeruseremail.LanguageId, PrivacyPolicy: registeruseremail.PrivacyPolicy, IsAdult: registeruseremail.IsAdult, IsRecommend: registeruseremail.IsRecommend, Version: 2, SaltStored: saltString, UserName: registeruseremail.Email, RoleId: "91f15b92-97fd-e611-814f-0af7afba4acb", RegistrationSource: 1, CountryName: registeruseremail.CountryName, Country: countryId, RegisteredAt: time.Now(), ModifiedAt: time.Now(), RegistrationPlatform: registeruseremail.RegistrationPlatform}
 	}
 	var invalid Invalid
 	if emailError.Code != "" {
@@ -319,16 +332,26 @@ func (hs *HandlerService) RegisterUserUsingEmail(c *gin.Context) {
 				registeruseremail.IsRecommend, registeruseremail.LanguageId,
 				hashedPassword, registeruseremail.PrivacyPolicy, time.Now(), saltString, time.Now(), emailcheck.Email).Scan(&usersResult)
 
-			db.Table("user").Where("email = ?", emailcheck.Email).Find(&usersFinal)
+			db.Table("user").Where("email =? or username=?" ,emailcheck.Email,emailcheck.Email).Find(&usersFinal)
 			CreateRecordPayCMS(db, usersFinal)
+			fmt.Println("user.RegistrationPlatform",user.RegistrationPlatform) 
+			fmt.Println("user11111111",usersFinal.Id)
 		}
 
 	} else {
 		if emailcheck.Email == "" {
 			db.Table("user").Create(&user)
+			fmt.Println("user",user)
+			fmt.Println("user.RegistrationPlatform",user.RegistrationPlatform) 
 			CreateRecordPayCMS(db, user)
+			fmt.Println("userrrrrrrrrrrr",user.Id,"11111111111111",user.RoleId)
 		}
 	}
+	// fmt.Println("userrrrrrrrrrrr",user.RoleId)
+	// if user.Id == "" {
+	// 	fmt.Println("error")
+	// }
+	
 
 	// Sending Email Notification
 	ConfirmationToken := base64.StdEncoding.EncodeToString([]byte(user.Id))
@@ -337,6 +360,8 @@ func (hs *HandlerService) RegisterUserUsingEmail(c *gin.Context) {
 	fmt.Println("time-tieme-----", timeToString)
 	DateTimeToken := base64.StdEncoding.EncodeToString([]byte(timeToString))
 	fmt.Println("-=-=-=-=-=-=", DateTimeToken)
+	fmt.Println("confiramationtoken",ConfirmationToken)
+	fmt.Println("userid",user.Id)
 	if registeruseremail.Source != ".net" {
 		if registeruseremail.LanguageId == 1 {
 			templatePath = "CreateFrontOfficeUserBodyEN.html"
@@ -369,7 +394,7 @@ func (hs *HandlerService) RegisterUserUsingEmail(c *gin.Context) {
 	}
 	// }
 	// Sending details to PayCMS
-
+	fmt.Println("user.RegistrationPlatform",user.RegistrationPlatform) 
 	l.JSON(c, http.StatusOK, gin.H{"message": "Confirmation Token Sent to User.", "status": 1})
 }
 
@@ -388,6 +413,7 @@ func (hs *HandlerService) RegisterUserUsingSMS(c *gin.Context) {
 		l.JSON(c, http.StatusMethodNotAllowed, gin.H{"message": "The requested resource does not support http method '" + c.Request.Method + "'."})
 		return
 	}
+	fmt.Println("registerrrrrrrrrrrrr")
 	var registerusersms RequestRegisterUserUsingSMS
 	var phonenumbercheck PhoneNumber
 	var errorFlag bool
@@ -416,7 +442,7 @@ func (hs *HandlerService) RegisterUserUsingSMS(c *gin.Context) {
 		} else {
 			password := randstr.String(8)
 			hashedPassword, saltString := common.HashPassword(password)
-			user := User{PhoneNumber: registerusersms.PhoneNumber, CallingCode: callingCode, NationalNumber: nationalNumber[1], PhoneNumberConfirmed: true, RegisteredAt: time.Now(), PasswordHash: hashedPassword, LanguageId: registerusersms.LanguageId, PrivacyPolicy: registerusersms.PrivacyPolicy, IsAdult: registerusersms.IsAdult, IsRecommend: registerusersms.IsRecommend, Version: 2, SaltStored: saltString, UserName: registerusersms.PhoneNumber, RoleId: "91f15b92-97fd-e611-814f-0af7afba4acb", RegistrationSource: 4, ModifiedAt: time.Now()}
+			user := User{PhoneNumber: registerusersms.PhoneNumber, CallingCode: callingCode, NationalNumber: nationalNumber[1], PhoneNumberConfirmed: true, RegisteredAt: time.Now(), PasswordHash: hashedPassword, LanguageId: registerusersms.LanguageId, PrivacyPolicy: registerusersms.PrivacyPolicy, IsAdult: registerusersms.IsAdult, IsRecommend: registerusersms.IsRecommend, Version: 2, SaltStored: saltString, UserName: registerusersms.PhoneNumber, RoleId: "91f15b92-97fd-e611-814f-0af7afba4acb", RegistrationSource: 4, ModifiedAt: time.Now(), RegistrationPlatform: registerusersms.RegistrationPlatform}
 			if newSilentUser := db.Create(&user).Error; newSilentUser != nil {
 				l.JSON(c, http.StatusInternalServerError, gin.H{"message": newSilentUser.Error(), "status": http.StatusInternalServerError})
 				return
@@ -439,6 +465,7 @@ func (hs *HandlerService) RegisterUserUsingSMS(c *gin.Context) {
 		switch registerusersms.DeviceId {
 		case "web":
 			Secret = os.Getenv("ReCAPTCHA_SECRET_web")
+			fmt.Println("webbbbbbbbbbb",Secret)
 		case "ios":
 			Secret = os.Getenv("ReCAPTCHA_SECRET_ios")
 		case "android":
@@ -448,6 +475,7 @@ func (hs *HandlerService) RegisterUserUsingSMS(c *gin.Context) {
 		}
 
 		captcha, err := recaptcha.NewWithSecert(Secret)
+		fmt.Println("captchaaaaaaaaaaa",captcha)
 
 		if err != nil {
 			l.JSON(c, http.StatusInternalServerError, gin.H{
@@ -650,12 +678,11 @@ func (hs *HandlerService) RegisterUserUsingSMS(c *gin.Context) {
 		// 	Message:     aws.String(language),
 		// 	PhoneNumber: aws.String(user.PhoneNumber),
 		// }
-	// 	_, sample := svc.Publish(params)
-	// 	if sample != nil {
-	// 		l.JSON(c, http.StatusInternalServerError, gin.H{"error": "server_error", "description": "حدث خطأ ما", "code": "error_server_error", "requestId": randstr.String(32)})
-	// 		return
-	// 	}
-	// }
+		// _, sample := svc.Publish(params)
+		// if sample != nil {
+		// 	l.JSON(c, http.StatusInternalServerError, gin.H{"error": "server_error", "description": "حدث خطأ ما", "code": "error_server_error", "requestId": randstr.String(32)})
+		// 	return
+		// }
 	}
 	l.JSON(c, http.StatusOK, gin.H{"status": 1, "message": "Otp sent to user"})
 	// Sending details to PayCMS
@@ -672,7 +699,7 @@ func CreateRecordPayCMS(db *gorm.DB, user User) error {
 	PostData["phoneNumber"] = user.PhoneNumber
 	PostData["registeredAt"] = currentTime.Format("2006-01-02 15:04:05")
 	PostData["countryName"] = user.CountryName
-	payCMSResponse, err := common.PostCurlCall("POST", "https://zpapi.wyk.z5.com/payment/registration/insert", PostData)
+	payCMSResponse, err := common.PostCurlCall("POST", "https://paymentapistg.weyyak.z5.com/payment/registration/insert", PostData)
 	fmt.Println("payCMSResponse", string(payCMSResponse))
 	// var user User
 	if err == nil {
@@ -935,6 +962,12 @@ func (hs *HandlerService) GetUserDetails(c *gin.Context) {
 			user.VerificationStatus = false
 		}
 		l.JSON(c, http.StatusOK, gin.H{"data": user})
+
+		// if err := common.RedisFlush(c); err != nil {
+			
+		// 	return 
+		// }
+		
 	} else {
 		var cookieChanges CookieUserProfileResponse
 		platformInt, _ := strconv.Atoi(c.Query("platform"))
@@ -961,6 +994,11 @@ func (hs *HandlerService) GetUserDetails(c *gin.Context) {
 			cookieChanges.VerificationStatus = false
 		}
 		l.JSON(c, http.StatusOK, gin.H{"data": cookieChanges})
+		// if err := common.RedisFlush(c); err != nil {
+			
+		// 	return 
+		// }
+		
 	}
 
 }
@@ -1803,7 +1841,6 @@ func (hs *HandlerService) SendOtp(c *gin.Context) {
 	fmt.Println(phonenumbercheck.PhoneNumberConfirmed, "confiremd", phn.RequestType)
 	var OTPuser Users
 	db.Table("public.user").Where("phone_number = ?", phn.Phone).Find(&OTPuser)
-	
 	if phn.RequestType == "nm" || phn.RequestType == "up" {
 		if phonenumbercheck.PhoneNumber != "" && phonenumbercheck.PhoneNumberConfirmed {
 			phoneError = phoneNumberError{"error_phone_number_registered", "Phone Number Already Exists"}
@@ -1905,14 +1942,9 @@ func (hs *HandlerService) SendOtp(c *gin.Context) {
 		}
 	}
 	user := UserDetails{Phone: phn.Phone, Message: otp, SentOn: time.Now(), Number: 1}
-	body := map[string]interface{}{
-		"phonenumber": userlangdetails.PhoneNumber,
-		"Message":     language,
-		"CallingCode": OTPuser.CallingCode,
-	}
 	// Access_key := os.Getenv("ACCESS_SECRET")
 	// Secret_Key := os.Getenv("REFRESH_SECRET")
-	// // sess, res := session.NewSession(&aws.Config{
+	// sess, res := session.NewSession(&aws.Config{
 	// 	Region:      aws.String(AwsRegion),
 	// 	Credentials: credentials.NewStaticCredentials(Access_key, Secret_Key, ""),
 	// })
@@ -1922,6 +1954,11 @@ func (hs *HandlerService) SendOtp(c *gin.Context) {
 	// }
 
 	// svc := sns.New(sess)
+	body := map[string]interface{}{
+		"phonenumber": userlangdetails.PhoneNumber,
+		"Message":     language,
+		"CallingCode": OTPuser.CallingCode,
+	}
 	langdetails1, err := common.PostCurlCall("POST", "https://api-backoffice-production.weyyak.com/users/send_otp", body)
 		fmt.Println("registerrrrrrrrrrrrrrrrrrrrrrr res", string(langdetails1))
 		if err != nil {
@@ -2034,7 +2071,7 @@ func (hs *HandlerService) SendOtp(c *gin.Context) {
 			// 	l.JSON(c, http.StatusInternalServerError, gin.H{"message": sample.Error(), "status": http.StatusInternalServerError})
 			// 	return
 			// }
-		// } else {
+		//} else {
 			// _, sample := svc.Publish(params)
 			// if sample != nil {
 			// 	l.JSON(c, http.StatusInternalServerError, gin.H{"message": sample.Error(), "status": http.StatusInternalServerError})

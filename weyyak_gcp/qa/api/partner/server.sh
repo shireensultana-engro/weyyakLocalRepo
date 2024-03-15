@@ -1,6 +1,6 @@
 export SERVICE_PORT=3006 
-export DB_SERVER=10.243.129.17
-export DB_SERVER_READER=10.243.129.17
+export DB_SERVER=34.100.186.121
+export DB_SERVER_READER=34.100.186.121
 export DB_PORT=5432 
 export DB_USER=cloudsqlexternalsync 
 export DB_PASSWORD=weyyakbo345123QA 

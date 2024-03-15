@@ -8,6 +8,7 @@ import (
 	"frontend_service/common"
 	l "frontend_service/logger"
 	"frontend_service/pagination"
+
 	// "math/rand"
 	"net/http"
 	"os"
@@ -403,6 +404,18 @@ func (hs *HandlerService) GetMenuDetails(c *gin.Context) {
 				ids = append(ids, pageid.Id)
 			}
 		}
+
+		var isPageExists int
+		if err := db.Table("page_country pc").Select("pc.country_id").Where("pc.page_id = ? and pc.country_id = ?", details.Id, countryCodeInt).Count(&isPageExists).Error; err != nil {
+			l.JSON(c, http.StatusInternalServerError, serverError)
+			return
+		}
+
+		if isPageExists == 0 {
+			l.JSON(c, http.StatusInternalServerError, serverError)
+			return
+		}
+
 		menuPage.ID = details.PageKey
 		menuPage.FriendlyUrl = details.EnglishPageFriendlyUrl
 		menuPage.SeoDescription = details.EnglishMetaDescription
