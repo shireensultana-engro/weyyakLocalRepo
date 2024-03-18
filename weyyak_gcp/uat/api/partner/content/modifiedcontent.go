@@ -79,6 +79,7 @@ func (hs *HandlerService) GetModifiedContentDetails(c *gin.Context) {
 
 	if days > 7 {
 		c.JSON(http.StatusBadRequest, gin.H{"message": "Please provide dates within 7 days range"})
+		return
 	} else {
 		var finalOnetierContentResult []FinalSeasonResultOneTire
 		var totalCount int

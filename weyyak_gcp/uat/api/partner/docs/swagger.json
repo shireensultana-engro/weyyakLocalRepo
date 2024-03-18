@@ -458,6 +458,106 @@
                     }
                 }
             }
+        },
+        "/deleted-content": {
+            "get": {
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "description": "Get All Deleted Content Keys",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Deleted"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Enter start date to fetch data from the particular date.",
+                        "name": "from",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Enter end date to fetch data to that particular date.",
+                        "name": "to",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/content.AllDeleted"
+                        }
+                    },
+                    "404": {
+                        "description": "The object was not found."
+                    },
+                    "500": {
+                        "description": "Internal server error.",
+                        "schema": {
+                            "$ref": "#/definitions/content.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/modified-content": {
+            "get": {
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "description": "Get All Modified Content Details",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Modified"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Enter start date to fetch data from the particular date.",
+                        "name": "from",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Enter end date to fetch data to that particular date.",
+                        "name": "to",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/content.AllModified"
+                        }
+                    },
+                    "404": {
+                        "description": "The object was not found."
+                    },
+                    "500": {
+                        "description": "Internal server error.",
+                        "schema": {
+                            "$ref": "#/definitions/content.ErrorResponse"
+                        }
+                    }
+                }
+            }
         }
     },
     "definitions": {
