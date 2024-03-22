@@ -458,6 +458,116 @@
                     }
                 }
             }
+        },
+        "/v1/contents/deleted": {
+            "get": {
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "description": "Get All Deleted Content Details",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Content Updates"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "format": "date",
+                        "example": "2000-01-01",
+                        "description": "Date from which deleted data to be fetched.",
+                        "name": "from",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "format": "date",
+                        "example": "2000-01-01",
+                        "description": "Date to which deleted data to be fetched.",
+                        "name": "to",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    },
+                    "404": {
+                        "description": "The object was not found."
+                    },
+                    "500": {
+                        "description": "Internal server error.",
+                        "schema": {
+                            "$ref": "#/definitions/content.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/contents/modified": {
+            "get": {
+                "security": [
+                    {
+                        "Authorization": []
+                    }
+                ],
+                "description": "Get All Modified Content Details",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Content Updates"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "format": "date",
+                        "example": "2000-01-01",
+                        "description": "Date from which modified data to be fetched.",
+                        "name": "from",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "format": "date",
+                        "example": "2000-01-01",
+                        "description": "Date to which modified data to be fetched.",
+                        "name": "to",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    },
+                    "404": {
+                        "description": "The object was not found."
+                    },
+                    "500": {
+                        "description": "Internal server error.",
+                        "schema": {
+                            "$ref": "#/definitions/content.ErrorResponse"
+                        }
+                    }
+                }
+            }
         }
     },
     "definitions": {
@@ -600,7 +710,7 @@
                 "id": {
                     "type": "string"
                 },
-                "modifiedAt": {
+                "modifiedAt": {                    
                     "description": "InsertedAt       time.Time       `json:\"insertedAt,omitempty\"`",
                     "type": "string"
                 },

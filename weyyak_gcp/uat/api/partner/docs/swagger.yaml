@@ -980,6 +980,78 @@ paths:
       summary: User login with generate token
       tags:
       - Login
+  /v1/contents/deleted:
+    get:
+      consumes:
+      - application/json
+      description: Get All Deleted Content Details
+      parameters:
+      - description: Date from which deleted data to be fetched.
+        example: "2000-01-01"
+        format: date
+        in: query
+        name: from
+        type: string
+      - description: Date to which deleted data to be fetched.
+        example: "2000-01-01"
+        format: date
+        in: query
+        name: to
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "404":
+          description: The object was not found.
+        "500":
+          description: Internal server error.
+          schema:
+            $ref: '#/definitions/content.ErrorResponse'
+      security:
+      - Authorization: []
+      tags:
+      - Content Updates
+  /v1/contents/modified:
+    get:
+      consumes:
+      - application/json
+      description: Get All Modified Content Details
+      parameters:
+      - description: Date from which modified data to be fetched.
+        example: "2000-01-01"
+        format: date
+        in: query
+        name: from
+        type: string
+      - description: Date to which modified data to be fetched.
+        example: "2000-01-01"
+        format: date
+        in: query
+        name: to
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "404":
+          description: The object was not found.
+        "500":
+          description: Internal server error.
+          schema:
+            $ref: '#/definitions/content.ErrorResponse'
+      security:
+      - Authorization: []
+      tags:
+      - Content Updates
 securityDefinitions:
   Authorization:
     in: header

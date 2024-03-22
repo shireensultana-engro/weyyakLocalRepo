@@ -62,7 +62,7 @@ type VarianceTrailers struct {
 	SeasonId              string `json:"seasonid,omitempty"`
 }
 
-type FinalSeasonResultOneTire struct {
+type FinalSeasonResultOneTier struct {
 	Id                         string    `json:"id"`
 	ContentKey                 int       `json:"content_key"`
 	PrimaryInfoId              string    `json:"primary_info_id"`
@@ -127,7 +127,7 @@ type MultiTierContent2 struct {
 	ContentKey     int                      `json:"contentKey"`
 	PrimaryInfo    ContentPrimaryInfo       `json:"primaryInfo"`
 	ContentGenres  []MultiTierContentGenres `json:"contentGenres"`
-	ContentSeasons []ContentSeasons2         `json:"contentSeasons"`
+	ContentSeasons []ContentSeasons2        `json:"contentSeasons"`
 	SeoDetails     SeoDetails               `json:"seoDetails"`
 	CreatedAt      time.Time                `json:"createdAt"`
 	ModifiedAt     time.Time                `json:"modifiedAt"`
@@ -217,7 +217,7 @@ type ContentSeasons2 struct {
 	SeasonGenres          []MultiTierContentGenres `json:"seasonGenres"`
 	TrailerInfo           []interface{}            `json:"trailersInfo"`
 	AboutTheContent       AboutTheContent          `json:"aboutTheContent"`
-	Translation           Translation2              `json:"translation"`
+	Translation           Translation2             `json:"translation"`
 	EpisodeResult         []ContentEpisode         `json:"episodes"`
 	ContentNonTextualData ContentNonTextualData    `json:"nonTextualData"`
 	DigitalRightsRegions  []int                    `json:"digitalRightsRegions"`
@@ -727,7 +727,7 @@ type ErrorResponse struct {
 	} `json:"invalid"`
 }
 
-type FinalSeasonResultContentOneTire struct {
+type FinalSeasonResultContentOneTier struct {
 	MultiTierContentKey    int       `json:"multi_tier_content_key"`
 	ContentType            string    `json:"content_type"`
 	OriginalTitle          string    `json:"original_title"`
@@ -794,4 +794,16 @@ type ContentEpisode struct {
 	SynopsisArabic  string         `json:"synopsisArabic"`
 	NonTextualData  NonTextualData `json:"nonTextualData"`
 	EpisodeId       string         `json:"id"`
+}
+
+type ContentData struct {
+	ContentKey int `json:"content_key"`
+}
+
+type SeasonData struct {
+	SeasonKey int `json:"season_key"`
+}
+
+type EpisodeData struct {
+	EpisodeKey int `json:"episode_key"`
 }
