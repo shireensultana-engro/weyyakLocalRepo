@@ -501,6 +501,8 @@ func (hs *HandlerService) GetMenuDetails(c *gin.Context) {
 											AND to_timestamp(details->>'scheduling_date_time', 'YYYY-MM-DD HH24:MI:SS') IS NOT NULL
 										)
 									)
+									and rights_start_date <= now()
+									and rights_end_date >= now()
 						`, Ids, countryCodeInt, language, platformNameInt).Scan(&contentFragmentDetails).Error; err != nil {
 						l.JSON(c, http.StatusInternalServerError, serverError)
 						return

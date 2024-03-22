@@ -542,11 +542,11 @@ func MultiTierContentDetails(contentId string, language string, country int, c *
 						join content_rights_plan crp on
 							crp.rights_id = pi2.rights_id
 						where
-							(e.episode_key = ?)` ,episode.Id ).Find(&SubsPlansEpi).Error; err != nil {
+							(e.episode_key = ?)`, episode.Id).Find(&SubsPlansEpi).Error; err != nil {
 								fmt.Println("err", err)
 								return
 							}
-							EpiPlans:= make([]int, 0)
+							EpiPlans := make([]int, 0)
 							EpiPlansName := make([]string, 0)
 							// var EpiSubsPlans []ContentSubsPlans
 							for _, plan := range SubsPlansEpi {
@@ -562,8 +562,8 @@ func MultiTierContentDetails(contentId string, language string, country int, c *
 								EpiPlansName = append(EpiPlansName, planNameSubsEpi.Name)
 								EpiPlans = append(EpiPlans, plan.SubscriptionPlanId)
 							}
-							fmt.Println("plansName" ,EpiPlansName)
-							fmt.Println("plans" , EpiPlans)
+							fmt.Println("plansName", EpiPlansName)
+							fmt.Println("plans", EpiPlans)
 							//episode Imaginery Details
 							var Imagery ContentImageryDetails
 							ImageryDetails := make(chan ContentImageryDetails)
@@ -2086,7 +2086,7 @@ func (hs *HandlerService) GetMediaObjectDetails(c *gin.Context) {
 	for _, data := range strings.Split(c.Param("ids"), ",") {
 		details := strings.Split(data, ".")
 		if len(details) == 2 {
-			if details[1] == "Episode" {
+			if details[1] == "episode" || details[1] == "Episode" {
 				episodeIds = append(episodeIds, details[0])
 			}
 			contentIds = append(contentIds, details[0])
@@ -2120,7 +2120,8 @@ func (hs *HandlerService) GetMediaObjectDetails(c *gin.Context) {
 				details.Geoblock = false
 				ImageryDetails := make(chan ContentImageryDetails)
 				fmt.Println("details", details.ContentType)
-				if details.ContentType == "movie" || details.ContentType == "LiveTV" || details.ContentType == "play" || details.ContentType == "livetv" {
+				details.ContentType = strings.ToLower(details.ContentType)
+				if details.ContentType == "movie" || details.ContentType == "play" || details.ContentType == "livetv" {
 					go OnetierImagery(details.ContentId, details.VarianceId, ImageryDetails)
 				} else if details.ContentType == "series" || details.ContentType == "program" {
 					go MultitierImagery(details.ContentId, details.VarianceId, ImageryDetails)
@@ -2687,8 +2688,7 @@ func (hs *HandlerService) GetResumbleContentsFlutterContinuewatching(c *gin.Cont
 			Name:               details.Title,
 			OneTierContentId:   details.OneTierContentId,
 			Isaddtoplaylist:    Isaddtoplaylist,
-			LastWatchPosition: details.LastWatchPosition, 
-			
+			LastWatchPosition:  details.LastWatchPosition,
 		})
 
 		resumableContent.UserData = &userRating

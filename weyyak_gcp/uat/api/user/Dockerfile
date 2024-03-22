@@ -66,7 +66,8 @@ ENV SERVICE_PORT=3000 \
     JEAGER_URL=https://jaeger-tracer.weyyak.com/api/traces \
     JEAGER_SERVICE_NAME=User \
     TWITTER_CONSUMER_KEY=9eZDfmSeYROq2unPSqEXbIKrH \
-    TWITTER_CONSUMER_SECRET_KEY=WqPZJ3uloFI876gKosGb4zujv2cW8TD4X5jPeWgU7pAd9Mxbmq 
+    TWITTER_CONSUMER_SECRET_KEY=WqPZJ3uloFI876gKosGb4zujv2cW8TD4X5jPeWgU7pAd9Mxbmq \
+    BOPASSWORDCHANGEURL=https://wyk2bo.weyyak.com/reset-password? 
 
 EXPOSE ${SERVICE_PORT}
 

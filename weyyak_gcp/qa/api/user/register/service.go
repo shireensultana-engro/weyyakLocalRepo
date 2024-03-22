@@ -413,7 +413,6 @@ func (hs *HandlerService) RegisterUserUsingSMS(c *gin.Context) {
 		l.JSON(c, http.StatusMethodNotAllowed, gin.H{"message": "The requested resource does not support http method '" + c.Request.Method + "'."})
 		return
 	}
-	fmt.Println("registerrrrrrrrrrrrr")
 	var registerusersms RequestRegisterUserUsingSMS
 	var phonenumbercheck PhoneNumber
 	var errorFlag bool

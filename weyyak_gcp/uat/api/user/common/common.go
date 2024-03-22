@@ -168,7 +168,7 @@ func RegMobile(phonenumber string) bool {
 // }
 
 func ValidTime(time string) bool {
-	Re := regexp.MustCompile(`(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2}.\d{9}) (\+\d{4}).(\w+)`)
+	Re := regexp.MustCompile(`(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2}.\d{0,10}) (\+\d{4}).(\w+)`)
 	return Re.MatchString(time)
 }
 

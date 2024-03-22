@@ -218,8 +218,8 @@ func (hs *HandlerService) RegisterUserUsingEmail(c *gin.Context) {
 	if emailcheck.Email == registeruseremail.Email {
 		errorFlag = true
 		emailError = ErrorCode{"error_user_email_already_exists", "Specified email already exists."}
-		l.JSON(c, http.StatusBadRequest, emailError)
-		return
+		// l.JSON(c, http.StatusBadRequest, emailError)
+		// return
 	}
 
 	if !common.RegEmail(registeruseremail.Email) && registeruseremail.Email != "" {
@@ -1111,7 +1111,7 @@ func (hs *HandlerService) RegistrationConfirmation(c *gin.Context) {
 	} else {
 		userId, _ := base64.StdEncoding.DecodeString(confirmEmail.ConfirmationToken)
 		Timetoken, _ := base64.StdEncoding.DecodeString(confirmEmail.DateTimeToken)
-		tokentime := string(Timetoken)
+		tokentime := string(Timetoken)		
 		layout := "2006-01-02 15:04:05 -0700 MST"
 		validTokenTime, err := time.Parse(layout, tokentime)
 		if err != nil {
@@ -1124,6 +1124,7 @@ func (hs *HandlerService) RegistrationConfirmation(c *gin.Context) {
 		var datetimetoken DateTimeToken
 		var invalid Invalid
 		var count int
+		
 		if !(diff < 0) {
 			errorFlag = true
 			datetimetoken = DateTimeToken{"error_expired_confirmation_token", "Confirmation token is expired."}
@@ -1131,6 +1132,7 @@ func (hs *HandlerService) RegistrationConfirmation(c *gin.Context) {
 		}
 		db.Table("user").Where("id=?", userId).Count(&count)
 		if count < 1 {
+			fmt.Println("count",count)
 			errorFlag = true
 			confirmToken = ConfirmationToken{Code: "error_invalid_confirmation_token", Description: "Confirmation Token is Invalid."}
 		}
@@ -1139,6 +1141,7 @@ func (hs *HandlerService) RegistrationConfirmation(c *gin.Context) {
 			confirmToken = ConfirmationToken{Code: "NotEmptyValidator", Description: "Confirmation Token' should not be empty."}
 		}
 		if !common.ValidTime(tokentime) {
+			fmt.Println("!!!!!!!!!!!!!!1")
 			errorFlag = true
 			datetimetoken = DateTimeToken{Code: "error_dateTime_token_invalid", Description: "DateTime Token is Invalid."}
 		}
@@ -3088,7 +3091,7 @@ func (hs *HandlerService) UsersListandSearchbyFilterswithPagination(c *gin.Conte
 		rawquery += "and  lower(user_lead)=lower('" + UserLead + "') "
 	}
 	if searchText != "" {
-		rawquery += " and (lower(searchable_text) like  lower('%" + searchText + "%') or lower(first_name) like  lower('%" + searchText + "%') or lower(last_name) like  lower('%" + searchText + "%') or lower(email) like  lower('%" + searchText + "%')) "
+		rawquery += " and (lower(searchable_text) like  lower('%" + searchText + "%') or lower(phone_number) like  lower('%" + searchText + "%') or lower(first_name) like  lower('%" + searchText + "%') or lower(last_name) like  lower('%" + searchText + "%') or  lower(email) like  lower('%" + searchText + "%')) "
 	}
 	if StartDate != "" && EndDate != "" {
 		rawquery += "and registered_at BETWEEN '" + StartDate + " 00:00:00" + "' and '" + EndDate + " 23:59:00 ' "

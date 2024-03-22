@@ -38,7 +38,7 @@ func main() {
 	// Initialize Dependencies
 	// Service Port, Database, Logger, Cache, Message Queue etc.
 	router := gin.Default()
-	router.Use(logMiddleware())
+	// router.Use(logMiddleware())
 	router.Use(CORSMiddleware())
 	log := zerolog.New(zerolog.ConsoleWriter{Out: os.Stdout, NoColor: false})
 	// Database

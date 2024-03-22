@@ -2052,7 +2052,7 @@ func (hs *HandlerService) GetMediaObjectDetails(c *gin.Context) {
 	for _, data := range strings.Split(c.Param("ids"), ",") {
 		details := strings.Split(data, ".")
 		if len(details) == 2 {
-			if details[1] == "Episode" {
+			if details[1] == "Episode" || details[1] == "episode" {
 				episodeIds = append(episodeIds, details[0])
 			}
 			contentIds = append(contentIds, details[0])

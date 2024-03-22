@@ -401,10 +401,14 @@ func (hs *HandlerService) RegisterUserUsingSMS(c *gin.Context) {
 
 	db := c.MustGet("DB").(*gorm.DB)
 	fcdb := c.MustGet("FDB").(*gorm.DB)
-	var BlockedCountrie BlockedCountry
-	fcdb.Table("application_setting").Select("*").Scan(&BlockedCountrie)
-	fmt.Println("Blocked ",BlockedCountrie)
-	fmt.Println("111111",BlockedCountrie.Value)
+	// var BlockedCountrie BlockedCountry
+	// fcdb.Table("application_setting").Select("*").Scan(&BlockedCountrie)
+	// fmt.Println("Blocked ",BlockedCountrie)
+	// fmt.Println("111111",BlockedCountrie.Value)
+
+	var blockedCountries BlockedCountry
+    fcdb.Table("application_setting").Where("Name = ?", "BlockedCountries").Scan(&blockedCountries)
+	fmt.Println("blocked ",blockedCountries.Value)
 	// Split PhoneNumber & collect(callingCode,NationalNumber) from phoneNumber
 	num, err := phonenumbers.Parse(registerusersms.PhoneNumber, "")
 	if err != nil {
@@ -653,7 +657,7 @@ func (hs *HandlerService) RegisterUserUsingSMS(c *gin.Context) {
 		// 	l.JSON(c, http.StatusInternalServerError, gin.H{"error": "server_error", "description": "حدث خطأ ما", "code": "error_server_error", "requestId": randstr.String(32)})
 		// 	return
 		// }
-		if user.CallingCode == BlockedCountrie.Value{
+		if user.CallingCode == blockedCountries.Value{
 			l.JSON(c, http.StatusInternalServerError, gin.H{"message": "You have exceeded the maximum daily limit. Please try again after 24 hours", "status": http.StatusNotFound})
 				return
 		}	
@@ -1811,8 +1815,10 @@ func (hs *HandlerService) SendOtp(c *gin.Context) {
 	var phonenumbercheck PhoneNumber
 	var phoneError phoneNumberError
 	fcdb := c.MustGet("FDB").(*gorm.DB)
-	var BlockedCountrie BlockedCountry
-	fcdb.Table("application_setting").Select("*").Scan(&BlockedCountrie)
+	// var BlockedCountrie BlockedCountry
+	// fcdb.Table("application_setting").Select("*").Scan(&BlockedCountrie)
+	var blockedCountries BlockedCountry
+    fcdb.Table("application_setting").Where("Name = ?", "BlockedCountries").Scan(&blockedCountries)
 
 	db.Table("public.user").Where("phone_number = ?", phn.Phone).Find(&phonenumbercheck)
 	// fmt.Println(phonenumbercheck.PhoneNumber)
@@ -1932,7 +1938,7 @@ func (hs *HandlerService) SendOtp(c *gin.Context) {
 	// }
 
 	// svc := sns.New(sess)
-	if OTPuser.CallingCode == BlockedCountrie.Value{
+	if OTPuser.CallingCode == blockedCountries.Value{
 		l.JSON(c, http.StatusInternalServerError, gin.H{"message": "You have exceeded the maximum daily limit. Please try again after 24 hours", "status": http.StatusNotFound})
 		return
 	}	
@@ -2041,7 +2047,7 @@ func (hs *HandlerService) SendOtp(c *gin.Context) {
 	// }
 
 	if forcount.Number < 6 {
-		if OTPuser.CallingCode == BlockedCountrie.Value{
+		if OTPuser.CallingCode == blockedCountries.Value{
 			l.JSON(c, http.StatusInternalServerError, gin.H{"message": "You have exceeded the maximum daily limit. Please try again after 24 hours", "status": http.StatusNotFound})			
 			return
 		}	
@@ -2086,7 +2092,7 @@ func (hs *HandlerService) SendOtp(c *gin.Context) {
 		if senttime.SentOn.After(startOfDay) && !isSameDay(forcount.SentOn, time.Now()) {
 
 			fmt.Println("inside the time loop")
-			if OTPuser.CallingCode == BlockedCountrie.Value{
+			if OTPuser.CallingCode == blockedCountries.Value{
 				l.JSON(c, http.StatusInternalServerError, gin.H{"message": "You have exceeded the maximum daily limit. Please try again after 24 hours", "status": http.StatusNotFound})
 				return
 			}	

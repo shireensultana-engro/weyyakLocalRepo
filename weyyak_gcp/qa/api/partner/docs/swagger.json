@@ -459,14 +459,14 @@
                 }
             }
         },
-        "/deleted-content": {
+        "/v1/contents/deleted": {
             "get": {
                 "security": [
                     {
                         "Authorization": []
                     }
                 ],
-                "description": "Get All Deleted Content Keys",
+                "description": "Get All Deleted Content Details",
                 "consumes": [
                     "application/json"
                 ],
@@ -474,18 +474,22 @@
                     "application/json"
                 ],
                 "tags": [
-                    "Deleted"
+                    "Content Updates"
                 ],
                 "parameters": [
                     {
                         "type": "string",
-                        "description": "Enter start date to fetch data from the particular date.",
+                        "format": "date",
+                        "example": "2000-01-01",
+                        "description": "Date from which deleted data to be fetched.",
                         "name": "from",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "Enter end date to fetch data to that particular date.",
+                        "format": "date",
+                        "example": "2000-01-01",
+                        "description": "Date to which deleted data to be fetched.",
                         "name": "to",
                         "in": "query"
                     }
@@ -494,7 +498,8 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/content.AllDeleted"
+                            "type": "object",
+                            "additionalProperties": true
                         }
                     },
                     "404": {
@@ -509,7 +514,7 @@
                 }
             }
         },
-        "/modified-content": {
+        "/v1/contents/modified": {
             "get": {
                 "security": [
                     {
@@ -524,18 +529,22 @@
                     "application/json"
                 ],
                 "tags": [
-                    "Modified"
+                    "Content Updates"
                 ],
                 "parameters": [
                     {
                         "type": "string",
-                        "description": "Enter start date to fetch data from the particular date.",
+                        "format": "date",
+                        "example": "2000-01-01",
+                        "description": "Date from which modified data to be fetched.",
                         "name": "from",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "Enter end date to fetch data to that particular date.",
+                        "format": "date",
+                        "example": "2000-01-01",
+                        "description": "Date to which modified data to be fetched.",
                         "name": "to",
                         "in": "query"
                     }
@@ -544,7 +553,8 @@
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/content.AllModified"
+                            "type": "object",
+                            "additionalProperties": true
                         }
                     },
                     "404": {

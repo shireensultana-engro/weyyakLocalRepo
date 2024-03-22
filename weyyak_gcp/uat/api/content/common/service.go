@@ -933,12 +933,10 @@ func ClearRedisKeyKeys(c *gin.Context, pageKey string) {
 	}
 }
 
-
-
 func RedisFlush(c *gin.Context) error {
 
 	rdb := redis.NewClient(&redis.Options{
-		Addr:     "34.93.101.168:6379",
+		Addr:     "10.0.22.31:6379",
 		Password: "",
 		DB:       0,
 	})
@@ -952,19 +950,18 @@ func RedisFlush(c *gin.Context) error {
 
 }
 
-
 func GetMenu() error {
-	baseUrls :=[]string{os.Getenv("EN_BASE_URL"), os.Getenv("AR_BASE_URL")}
+	baseUrls := []string{os.Getenv("EN_BASE_URL"), os.Getenv("AR_BASE_URL")}
 	for _, baseUrl := range baseUrls {
-		baseUrl =baseUrl+"menu?"
+		baseUrl = baseUrl + "menu?"
 		for platform := 0; platform <= 10; platform++ {
 			deviceString := DeviceNames(platform)
 			queryParam := "device=" + deviceString
 			url := baseUrl + queryParam
-			fmt.Println("urllllllllllllllllllll",url)
+			fmt.Println("urllllllllllllllllllll", url)
 			fmt.Println("queryplatform ", queryParam)
 			response, err := http.Get(url)
-			fmt.Println("responseeeeeeeeeeeeeeeeeeeeeeeeeee",response)
+			fmt.Println("responseeeeeeeeeeeeeeeeeeeeeeeeeee", response)
 			if err != nil {
 				fmt.Printf("Error fetching data for platform %s: %v\n", deviceString, err)
 				continue
@@ -974,20 +971,20 @@ func GetMenu() error {
 			menuData, err := ioutil.ReadAll(response.Body)
 			var Jsonmenu map[string]interface{}
 			if err := json.Unmarshal(menuData, &Jsonmenu); err != nil {
-			return fmt.Errorf("error unmarshaling menu data: %v", err)
+				return fmt.Errorf("error unmarshaling menu data: %v", err)
 			}
-			fmt.Println("Json",Jsonmenu)
+			fmt.Println("Json", Jsonmenu)
 
-		// menuString := string(menuData)		
+			// menuString := string(menuData)
 			if err != nil {
 				fmt.Printf("Error reading response body for platform %s: %v\n", deviceString, err)
 				continue
 			}
 
-		// if err := PostRedisDataWithKey(deviceString, menuData); err != nil {
-		// 	fmt.Printf("Error posting data to Redis for platform %s: %v\n", deviceString, err)
-		// 	continue
-		// }
+			// if err := PostRedisDataWithKey(deviceString, menuData); err != nil {
+			// 	fmt.Printf("Error posting data to Redis for platform %s: %v\n", deviceString, err)
+			// 	continue
+			// }
 			// if err != postRedis(menuData) {
 			// 	fmt.Println("error:", err)
 			// 	continue
@@ -1001,10 +998,9 @@ func GetMenu() error {
 	return nil
 }
 
-
 // func postRedis(data interface{}) error {
 // 	client := redisv9.NewClient(&redisv9.Options{
-// 		Addr:     "34.93.101.168:6379",
+// 		Addr:     "10.0.22.31:6379",
 // 		Password: "", // no password set
 // 		DB:       0,  // use default DB
 // 	})
@@ -1018,12 +1014,11 @@ func GetMenu() error {
 // 	return nil
 // }
 
-
 func Contenttype() error {
 	baseUrls := []string{os.Getenv("EN_BASE_URL"), os.Getenv("AR_BASE_URL")}
 
 	for _, baseUrl := range baseUrls {
-		baseUrl=baseUrl+"contenttype?"
+		baseUrl = baseUrl + "contenttype?"
 		for platform := 0; platform <= 10; platform++ {
 			deviceString := DeviceNames(platform)
 			for country := 0; country <= 900; country++ {
@@ -1069,56 +1064,56 @@ func Contenttype() error {
 }
 
 func Pagekey() error {
-    baseUrls := []string{os.Getenv("EN_BASE_URL"), os.Getenv("AR_BASE_URL")}
+	baseUrls := []string{os.Getenv("EN_BASE_URL"), os.Getenv("AR_BASE_URL")}
 
-    pageKey := 61 // Starting pageKey value
-    if pageKey >= 200 {
-        return fmt.Errorf("pageKey not found: %d", pageKey)
-    }
+	pageKey := 61 // Starting pageKey value
+	if pageKey >= 200 {
+		return fmt.Errorf("pageKey not found: %d", pageKey)
+	}
 
-    for _, baseUrl := range baseUrls {
-        baseUrl = baseUrl + "menu/"
-        for {
-            for country := 0; country <= 900; country++ {
-                countryString := CountryNames(country)
-                if countryString == "" {
-                    continue // Skip empty country strings
-                }
-                url := fmt.Sprintf("%s%d?cascade=2&country=%s", baseUrl, pageKey, countryString)
-                fmt.Println("URL:", url)
+	for _, baseUrl := range baseUrls {
+		baseUrl = baseUrl + "menu/"
+		for {
+			for country := 0; country <= 900; country++ {
+				countryString := CountryNames(country)
+				if countryString == "" {
+					continue // Skip empty country strings
+				}
+				url := fmt.Sprintf("%s%d?cascade=2&country=%s", baseUrl, pageKey, countryString)
+				fmt.Println("URL:", url)
 
-                response, err := http.Get(url)
-                if err != nil {
-                    return fmt.Errorf("error fetching content for page key %d: %v", pageKey, err)
-                }
-                defer response.Body.Close()
+				response, err := http.Get(url)
+				if err != nil {
+					return fmt.Errorf("error fetching content for page key %d: %v", pageKey, err)
+				}
+				defer response.Body.Close()
 
-                contentData, err := ioutil.ReadAll(response.Body)
-                if err != nil {
-                    return fmt.Errorf("error reading response body for page key %d: %v", pageKey, err)
-                }
+				contentData, err := ioutil.ReadAll(response.Body)
+				if err != nil {
+					return fmt.Errorf("error reading response body for page key %d: %v", pageKey, err)
+				}
 
-                var contentJson map[string]interface{}
-                if err := json.Unmarshal(contentData, &contentJson); err != nil {
-                    return fmt.Errorf("error unmarshaling content data for page key %d: %v", pageKey, err)
-                }
-                fmt.Println("Content JSON for page key", pageKey, "and country", countryString, ":", contentJson)
+				var contentJson map[string]interface{}
+				if err := json.Unmarshal(contentData, &contentJson); err != nil {
+					return fmt.Errorf("error unmarshaling content data for page key %d: %v", pageKey, err)
+				}
+				fmt.Println("Content JSON for page key", pageKey, "and country", countryString, ":", contentJson)
 
-                // Post content data to Redis
-                // if err := postRedis(contentJson); err != nil {
-                //     fmt.Println("Error:", err)
-                //     return err
-                // }
+				// Post content data to Redis
+				// if err := postRedis(contentJson); err != nil {
+				//     fmt.Println("Error:", err)
+				//     return err
+				// }
 
-                // fmt.Printf("Content data for page key %d and country %s posted to Redis successfully.\n", pageKey, countryString)
+				// fmt.Printf("Content data for page key %d and country %s posted to Redis successfully.\n", pageKey, countryString)
 
-            }
-            // Increment pageKey for the next iteration
-            pageKey++
-            if pageKey >= 200 {
-                break
-            }
-        }
-    }
-    return nil
+			}
+			// Increment pageKey for the next iteration
+			pageKey++
+			if pageKey >= 200 {
+				break
+			}
+		}
+	}
+	return nil
 }

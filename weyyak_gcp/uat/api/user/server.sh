@@ -34,6 +34,7 @@ export TWITTER_CONSUMER_SECRET_KEY=WqPZJ3uloFI876gKosGb4zujv2cW8TD4X5jPeWgU7pAd9
 export SESSION_SECRET="70Ie7PiMuS8JUIl1n-CcEP07Les5Y7Nk-eBc8x0jaHLz8ilfow" 
 export JEAGER_URL=http://localhost:14268/api/traces
 export JEAGER_SERVICE_NAME=User
+export BOPASSWORDCHANGEURL=https://wyk2bo.weyyak.com/reset-password?
 
 # export PATH=$(go env GOPATH)/bin:$PATH
 # swag init -g main.go

@@ -980,17 +980,21 @@ paths:
       summary: User login with generate token
       tags:
       - Login
-  /deleted-content:
+  /v1/contents/deleted:
     get:
       consumes:
       - application/json
-      description: Get All Deleted Content Keys
+      description: Get All Deleted Content Details
       parameters:
-      - description: Enter start date to fetch data from the particular date.
+      - description: Date from which deleted data to be fetched.
+        example: "2000-01-01"
+        format: date
         in: query
         name: from
         type: string
-      - description: Enter end date to fetch data to that particular date.
+      - description: Date to which deleted data to be fetched.
+        example: "2000-01-01"
+        format: date
         in: query
         name: to
         type: string
@@ -1000,7 +1004,8 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '"#/definitions/content.AllDeleted'
+            additionalProperties: true
+            type: object
         "404":
           description: The object was not found.
         "500":
@@ -1010,18 +1015,22 @@ paths:
       security:
       - Authorization: []
       tags:
-      - Deleted
-  /modified-content:
+      - Content Updates
+  /v1/contents/modified:
     get:
       consumes:
       - application/json
       description: Get All Modified Content Details
       parameters:
-      - description: Enter start date to fetch data from the particular date.
+      - description: Date from which modified data to be fetched.
+        example: "2000-01-01"
+        format: date
         in: query
         name: from
         type: string
-      - description: Enter end date to fetch data to that particular date.
+      - description: Date to which modified data to be fetched.
+        example: "2000-01-01"
+        format: date
         in: query
         name: to
         type: string
@@ -1031,7 +1040,8 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '"#/definitions/content.AllModified'
+            additionalProperties: true
+            type: object
         "404":
           description: The object was not found.
         "500":
@@ -1041,8 +1051,7 @@ paths:
       security:
       - Authorization: []
       tags:
-      - Modified
-  
+      - Content Updates
 securityDefinitions:
   Authorization:
     in: header
