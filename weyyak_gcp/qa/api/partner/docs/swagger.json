@@ -88,8 +88,8 @@
                     {
                         "type": "string",
                         "description": "Country code of the user.",
-                        "name": "country",
-                        "in": "path"
+                        "name": "Country",
+                        "in": "query"
                     }
                 ],
                 "responses": {
@@ -147,8 +147,8 @@
                     {
                         "type": "string",
                         "description": "Country code of the user.",
-                        "name": "country",
-                        "in": "path"
+                        "name": "Country",
+                        "in": "query"
                     }
                 ],
                 "responses": {
@@ -198,8 +198,8 @@
                     {
                         "type": "string",
                         "description": "Country code of the user.",
-                        "name": "country",
-                        "in": "path"
+                        "name": "Country",
+                        "in": "query"
                     }
                 ],
                 "responses": {
@@ -578,7 +578,7 @@
                     "type": "string"
                 },
                 "ageGroups": {
-                    "type": "integer"
+                    "type": "string"
                 },
                 "arabicSynopsis": {
                     "type": "string"
@@ -649,6 +649,10 @@
                 "tagInfo": {
                     "$ref": "#/definitions/content.TagInfo"
                 },
+                "trailersInfo": {
+                    "type": "array",
+                    "items": {}
+                },
                 "translation": {
                     "$ref": "#/definitions/content.Translation"
                 }
@@ -702,7 +706,10 @@
                 },
                 "contentVariances": {
                     "type": "array",
-                    "items": {}
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": true
+                    }
                 },
                 "createdAt": {
                     "type": "string"
@@ -711,7 +718,6 @@
                     "type": "string"
                 },
                 "modifiedAt": {
-                    "description": "InsertedAt       time.Time       `json:\"insertedAt,omitempty\"`",
                     "type": "string"
                 },
                 "music": {
@@ -924,6 +930,10 @@
                 },
                 "tagInfo": {
                     "$ref": "#/definitions/content.TagInfo"
+                },
+                "trailersInfo": {
+                    "type": "array",
+                    "items": {}
                 },
                 "translation": {
                     "$ref": "#/definitions/content.Translation"
@@ -1179,10 +1189,13 @@
                     "items": {}
                 },
                 "contentKey": {
-                    "type": "string"
+                    "type": "integer"
                 },
                 "contentSeasons": {
-                    "$ref": "#/definitions/content.ContentSeasons"
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/content.ContentSeasons"
+                    }
                 },
                 "createdAt": {
                     "type": "string"
@@ -1385,6 +1398,9 @@
                     "type": "integer"
                 },
                 "page_type": {
+                    "type": "integer"
+                },
+                "third_party_page_key": {
                     "type": "integer"
                 }
             }

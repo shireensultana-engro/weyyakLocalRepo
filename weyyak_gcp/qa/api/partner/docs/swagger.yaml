@@ -4,7 +4,7 @@ definitions:
       acquisitionDepartment:
         type: string
       ageGroups:
-        type: integer
+        type: string
       arabicSynopsis:
         type: string
       englishSynopsis:
@@ -51,6 +51,9 @@ definitions:
         type: integer
       tagInfo:
         $ref: '#/definitions/content.TagInfo'
+      trailersInfo:
+        items: {}
+        type: array
       translation:
         $ref: '#/definitions/content.Translation'
     type: object
@@ -86,14 +89,15 @@ definitions:
       contentKey:
         type: integer
       contentVariances:
-        items: {}
+        items:
+          additionalProperties: true
+          type: object
         type: array
       createdAt:
         type: string
       id:
         type: string
       modifiedAt:
-        description: InsertedAt       time.Time       `json:"insertedAt,omitempty"`
         type: string
       music:
         $ref: '#/definitions/content.Music'
@@ -235,6 +239,9 @@ definitions:
         type: integer
       tagInfo:
         $ref: '#/definitions/content.TagInfo'
+      trailersInfo:
+        items: {}
+        type: array
       translation:
         $ref: '#/definitions/content.Translation'
     type: object
@@ -401,9 +408,11 @@ definitions:
         items: {}
         type: array
       contentKey:
-        type: string
+        type: integer
       contentSeasons:
-        $ref: '#/definitions/content.ContentSeasons'
+        items:
+          $ref: '#/definitions/content.ContentSeasons'
+        type: array
       createdAt:
         type: string
       id:
@@ -538,6 +547,8 @@ definitions:
       page_key:
         type: integer
       page_type:
+        type: integer
+      third_party_page_key:
         type: integer
     type: object
   content.Pagination:
@@ -739,8 +750,8 @@ paths:
         required: true
         type: string
       - description: Country code of the user.
-        in: path
-        name: country
+        in: query
+        name: Country
         type: string
       produces:
       - application/json
@@ -776,8 +787,8 @@ paths:
         name: limit
         type: string
       - description: Country code of the user.
-        in: path
-        name: country
+        in: query
+        name: Country
         type: string
       produces:
       - application/json
@@ -808,8 +819,8 @@ paths:
         required: true
         type: string
       - description: Country code of the user.
-        in: path
-        name: country
+        in: query
+        name: Country
         type: string
       produces:
       - application/json

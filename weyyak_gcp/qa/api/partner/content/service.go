@@ -3996,8 +3996,12 @@ func (hs *HandlerService) GetModifiedContentDetails(c *gin.Context) {
 					},
 				})
 			}
-			finalData[types] = allContents
 
+			if len(allContents) == 0 {
+				finalData[types] = make([]string, 0)
+			} else {
+				finalData[types] = allContents
+			}
 			if types == "series" {
 				if UserId == os.Getenv("WATCH_NOW") {
 					if CountryResult != 0 {
@@ -4762,7 +4766,12 @@ func (hs *HandlerService) GetModifiedContentDetails(c *gin.Context) {
 						contentResultFinal = append(contentResultFinal, contentResult)
 					}
 				}
-				finalData[types] = contentResultFinal
+
+				if len(allContents) == 0 {
+					finalData[types] = make([]string, 0)
+				} else {
+					finalData[types] = contentResultFinal
+				}
 			}
 		}
 		c.JSON(http.StatusOK, gin.H{"data": finalData})
