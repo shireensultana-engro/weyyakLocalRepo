@@ -710,7 +710,7 @@
                 "id": {
                     "type": "string"
                 },
-                "modifiedAt": {                    
+                "modifiedAt": {
                     "description": "InsertedAt       time.Time       `json:\"insertedAt,omitempty\"`",
                     "type": "string"
                 },
